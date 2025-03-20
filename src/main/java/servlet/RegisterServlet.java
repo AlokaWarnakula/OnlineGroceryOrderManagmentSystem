@@ -8,14 +8,13 @@ import jakarta.servlet.http.HttpSession;
 import model.FileUtil;
 import model.User;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Random;
 import java.util.List;
+import java.util.Random;
 
 public class RegisterServlet extends HttpServlet {
     private static final String USERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/users.txt";
+    private static final String LOGGED_IN_USER_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/loggedInUser.txt";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,13 +24,20 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String password = request.getParameter("password");
 
-        if (fullName == null || email == null || phoneNumber == null || address == null || password == null) {
+        if (fullName == null || email == null || phoneNumber == null || address == null || password == null ||
+                fullName.trim().isEmpty() || email.trim().isEmpty() || phoneNumber.trim().isEmpty() || address.trim().isEmpty() || password.trim().isEmpty()) {
             request.setAttribute("error", "All fields are required.");
             request.getRequestDispatcher("/userLogin/login.jsp").forward(request, response);
             return;
         }
 
         List<User> users = FileUtil.readUsers(USERS_FILE);
+        if (users == null) {
+            request.setAttribute("error", "Error reading user data. Please try again later.");
+            request.getRequestDispatcher("/userLogin/login.jsp").forward(request, response);
+            return;
+        }
+
         System.out.println("Checking email: " + email + ", existing users: " + users); // Debug log
         if (users.stream().anyMatch(u -> u.getEmail().equals(email))) {
             System.out.println("Email already registered: " + email); // Debug log
@@ -45,24 +51,34 @@ public class RegisterServlet extends HttpServlet {
             userNumber = "US" + String.format("%012d", Math.abs(new Random().nextLong() % 1000000000000L));
         } while (!FileUtil.isUserNumberUnique(userNumber, USERS_FILE));
 
-        User user = new User(userNumber, fullName, email, phoneNumber, address, password);
+        // Use email as username
+        String username = email;
+        User user = new User(username, password, userNumber, fullName, email, phoneNumber, address);
 
+        // Add the new user to the list and write to users.txt
         synchronized (this) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(USERS_FILE, true))) {
-                writer.write("--- User Start: " + userNumber + " ---\n");
-                writer.write("userNumber=" + userNumber + "\n");
-                writer.write("fullName=" + fullName + "\n");
-                writer.write("email=" + email + "\n");
-                writer.write("phoneNumber=" + phoneNumber + "\n");
-                writer.write("address=" + address + "\n");
-                writer.write("password=" + password + "\n");
-                writer.write("--- User End ---\n\n");
+            users.add(user);
+            try {
+                FileUtil.writeUsers(USERS_FILE, users);
+                System.out.println("Added new user to users.txt: " + user.toString());
+            } catch (IOException e) {
+                System.err.println("Error writing user to file: " + e.getMessage());
+                request.setAttribute("error", "Error saving user data. Please try again later.");
+                request.getRequestDispatcher("/userLogin/login.jsp").forward(request, response);
+                return;
             }
         }
 
         // Set user in session before redirecting to Success.jsp
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+        System.out.println("Set user in session: " + user.toString());
+
+        // Write to loggedInUser.txt
+        FileUtil.writeLoggedInUser(LOGGED_IN_USER_FILE, user);
+        System.out.println("Wrote new user to loggedInUser.txt: " + user.toString());
+
+        // Redirect to success page
         response.sendRedirect(request.getContextPath() + "/userLogin/Success.jsp?type=signup");
     }
 }

@@ -74,6 +74,18 @@
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
 
+  <!-- Servlet Definition for UserProfileServlet -->
+  <servlet>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <servlet-class>servlet.UserProfileServlet</servlet-class>
+  </servlet>
+
+  <!-- Servlet Mapping for UserProfileServlet -->
+  <servlet-mapping>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <url-pattern>/UserProfileServlet</url-pattern>
+  </servlet-mapping>
+
 
   <!-- Optional: Welcome file list -->
   <welcome-file-list>

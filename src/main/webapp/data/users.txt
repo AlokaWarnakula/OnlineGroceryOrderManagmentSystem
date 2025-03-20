@@ -1,27 +1,20 @@
---- User Start: US143000078979 ---
-userNumber=US143000078979
+--- User Start: US021583101081 ---
+username=alokawarnakula77@gmail.com
+password=123456
+userNumber=US021583101081
 fullName=aloka warnakula
 email=alokawarnakula77@gmail.com
 phoneNumber=0711641638
 address=21/6/6A, somanada mawatha, pitumpe, padukka
-password=123456
 --- User End ---
 
---- User Start: US434197982790 ---
-userNumber=US434197982790
-fullName=tester123
-email=tester@gmail.com
-phoneNumber=123456
-address=tester,home
-password=123456
---- User End ---
-
---- User Start: US860888769492 ---
-userNumber=US860888769492
-fullName=jayashan guruge
-email=jguruge2021@gmail.com
-phoneNumber=0764350677
-address="Sampatha"
-password=12345678
+--- User Start: US181627987900 ---
+username=user@gmail.com
+password=123
+userNumber=US181627987900
+fullName=user
+email=user@gmail.com
+phoneNumber=0000000000
+address=xxxxxxxyyyyyyyzzzzzzzz
 --- User End ---
 

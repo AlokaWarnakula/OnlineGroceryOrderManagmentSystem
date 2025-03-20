@@ -1,0 +1,405 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally to prevent padding issues */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Add background image */
+    background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');
+    background-size: cover; /* Make the image cover the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Keep the image fixed while scrolling */
+    margin: 0;
+    padding: 0; /* Remove padding from body to allow header to span full width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between elements */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background for better contrast */
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* For centering the logo */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove any margins */
+}
+
+.back-link {
+    text-decoration: none;
+    color: #333; /* Default color */
+    font-size: 16px; /* Updated from 18px */
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+.back-link:hover {
+    color: #8bc34a; /* Light green on hover */
+}
+
+.logo {
+    text-decoration: none;
+    color: #333; /* Default color for text */
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute; /* Center the logo */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+.logo i {
+    color: #8bc34a; /* Green color for the basket icon by default */
+    margin-right: 5px;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.logo:hover i {
+    color: #689f38; /* Slightly darker green on hover for the basket icon */
+}
+
+.content {
+    width: 100%;
+    padding: 5px 1cm 20px 1cm; /* Reduced left and right padding to 1cm to allow more space for content */
+    background-color: transparent; /* Remove the solid background color to show the body background image */
+}
+
+/* Style for the user info profile container */
+.profile-container:nth-child(1) {
+    max-width: 1000px; /* Updated from 800px to 1000px */
+    margin: 10px auto 20px auto; /* Center the box and keep the bottom margin for gap */
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white background for better contrast */
+    padding: 20px; /* Increased from 15px to 20px for more internal space */
+    border: 1px solid #DDD;
+    border-radius: 30px; /* Updated from 20px to 30px */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the activity profile container */
+.profile-container:nth-child(2) {
+    max-width: 1200px; /* Increased from 1000px to 1200px */
+    margin: 0 auto; /* Center the box */
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white background for better contrast */
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 30px; /* Updated from 20px to 30px */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-info-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.edit-btn {
+    background-color: #00CED1; /* Cyan color to match the screenshot */
+    color: #FFF;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn i {
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #00B7B9; /* Slightly darker cyan on hover */
+}
+
+.user-details {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    margin-bottom: 30px;
+}
+
+.user-details-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.user-icon {
+    font-size: 60px; /* Large user icon */
+    color: #333;
+}
+
+.user-details-text p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.user-details-text p strong {
+    color: #333;
+}
+
+.activity-section {
+    margin-top: 20px;
+}
+
+.activity-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 20px;
+}
+
+.activity-tabs .tab {
+    padding: 10px 0;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.activity-tabs .tab.active {
+    color: #333;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+}
+
+.activity-tabs .tab:hover {
+    color: #333;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    background-color: #F9F9F9;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.activity-item i {
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.activity-item p {
+    margin: 0;
+    flex: 1;
+}
+
+.activity-item .timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+.activity-item .status {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #FFF;
+}
+
+.activity-item .status.pending {
+    background-color: #FFA500; /* Orange for Pending */
+}
+
+.activity-item .status.completed {
+    background-color: #28A745; /* Green for Completed */
+}
+
+.activity-item .status.on-hold {
+    background-color: #FFA500; /* Orange for On Hold */
+}
+
+.activity-item .status.disabled {
+    background-color: #DC3545; /* Red for Disabled */
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.form-group input[readonly] {
+    background-color: #F5F5F5;
+    cursor: not-allowed;
+}
+
+.form-buttons {
+    text-align: center;
+}
+
+.save-btn,
+.delete-btn {
+    display: inline-block;
+    margin: 10px 5px 0 0;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.save-btn {
+    background-color: #8bc34a;
+    color: #FFF;
+}
+
+.save-btn:hover {
+    background-color: #689f38;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: #FFF;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Modal (Popup) Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 500px;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.modal-header {
+    padding: 2em;
+    background-color: #FF4D4D; /* Red background for warning */
+    background: rgba(255, 0, 0, 0.3);
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.modal-header h3 {
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+    margin: 0;
+    color: #B22222; /* Darker red for text */
+}
+
+.modal-body {
+    padding: 2em;
+    background: #fff;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.modal-body p {
+    color: #757575;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin: 0 0 1.5em 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.modal-btn {
+    padding: 0.8em 2em;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.confirm-btn {
+    background: #FF4D4D;
+    color: #fff;
+    box-shadow: 0px 10px 20px rgba(50, 50, 50, 0.21);
+}
+
+.confirm-btn:hover {
+    box-shadow: 0px 10px 20px rgba(50, 50, 50, 0.41);
+}
+
+.cancel-btn {
+    background: #689f38;
+    color: #fff;
+    box-shadow: 0px 10px 20px rgba(50, 50, 50, 0.21);
+}
+
+.cancel-btn:hover {
+    box-shadow: 0px 10px 20px rgba(50, 50, 50, 0.41);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

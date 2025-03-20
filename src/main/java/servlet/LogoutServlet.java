@@ -36,7 +36,13 @@ public class LogoutServlet extends HttpServlet {
             System.err.println("Error clearing loggedInUser.txt during logout: " + e.getMessage());
         }
 
-        // Redirect to index.jsp
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        // Get success message from query parameter
+        String successMessage = request.getParameter("success");
+        if (successMessage == null || successMessage.trim().isEmpty()) {
+            successMessage = "Logged out successfully";
+        }
+
+        // Redirect to index.jsp with success message
+        response.sendRedirect(request.getContextPath() + "/index.jsp?success=" + java.net.URLEncoder.encode(successMessage, "UTF-8"));
     }
 }

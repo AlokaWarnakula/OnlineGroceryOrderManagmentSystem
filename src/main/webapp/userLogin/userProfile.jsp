@@ -1,93 +1,135 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
-<%@ page import="model.FileUtil" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
-    .profile-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .profile-container h2 {
-      text-align: center;
-      color: #333;
-    }
-    .profile-container p {
-      font-size: 16px;
-      color: #555;
-      margin: 10px 0;
-    }
-    .profile-container .edit-btn {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #fff;
-      background-color: #8bc34a;
-      padding: 8px 15px;
-      border-radius: 5px;
-    }
-    .profile-container .edit-btn:hover {
-      background-color: #689f38;
-    }
-    .back-button {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-    }
-    .back-button a {
-      text-decoration: none;
-      color: #fff;
-      background-color: #8bc34a;
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
-    .back-button a:hover {
-      background-color: #689f38;
-    }
-  </style>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userProfile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class="profile-container">
-  <h2>User Profile</h2>
+<header>
+  <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+  <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fas fa-shopping-basket"></i> GROCERY</a>
+</header>
+
+<div class="content">
   <%
     User loggedInUser = (User) session.getAttribute("user");
-    String loggedInUserFile = application.getRealPath("/data/loggedInUser.txt");
-    User fileUser = FileUtil.readLoggedInUser(loggedInUserFile);
-    if (loggedInUser == null && fileUser == null) {
+    if (loggedInUser == null) {
   %>
   <p>You must be logged in to view this page.</p>
   <p><a href="${pageContext.request.contextPath}/userLogin/login.jsp">Log In</a></p>
-  <% } else {
-    User userToDisplay = (loggedInUser != null) ? loggedInUser : fileUser;
-    if (userToDisplay != null) {
-  %>
-  <p><strong>User Number:</strong> <%= userToDisplay.getUserNumber() != null ? userToDisplay.getUserNumber() : "Not available" %></p>
-  <p><strong>Full Name:</strong> <%= userToDisplay.getFullName() %></p>
-  <p><strong>Email:</strong> <%= userToDisplay.getEmail() %></p>
-  <p><strong>Phone Number:</strong> <%= userToDisplay.getPhoneNumber() %></p>
-  <p><strong>Address:</strong> <%= userToDisplay.getAddress() != null ? userToDisplay.getAddress() : "Not provided" %></p>
-  <a href="${pageContext.request.contextPath}/userLogin/editProfile.jsp" class="edit-btn">Edit Profile</a>
   <% } else { %>
-  <p>No user data available. Please log in again.</p>
-  <p><a href="${pageContext.request.contextPath}/userLogin/login.jsp">Log In</a></p>
-  <% }
-  } %>
-  <div class="back-button">
-    <a href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>
+  <div class="profile-container">
+    <div class="user-info">
+      <div class="user-info-header">
+        <h2>User Info</h2>
+        <button id="edit-btn" class="edit-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+      </div>
+      <div class="user-details">
+        <div class="user-details-left">
+          <div class="user-icon">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="user-details-text">
+            <p><strong>User Number:</strong> <span id="userNumberDisplay"><%= loggedInUser.getUserNumber() != null ? loggedInUser.getUserNumber() : "Not available" %></span></p>
+            <p><strong>Email:</strong> <span id="emailDisplay"><%= loggedInUser.getEmail() %></span></p>
+            <p><strong>Full Name:</strong> <span id="fullNameDisplay"><%= loggedInUser.getFullName() %></span></p>
+            <p><strong>Address:</strong> <span id="addressDisplay"><%= loggedInUser.getAddress() != null ? loggedInUser.getAddress() : "Not provided" %></span></p>
+            <p><strong>Phone Number:</strong> <span id="phoneNumberDisplay"><%= loggedInUser.getPhoneNumber() %></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="profile-form-container" style="display: none;">
+      <form id="profile-form" action="${pageContext.request.contextPath}/UserProfileServlet" method="post">
+        <div class="form-group">
+          <label for="userNumber">User Number:</label>
+          <input type="text" id="userNumber" name="userNumber" value="<%= loggedInUser.getUserNumber() != null ? loggedInUser.getUserNumber() : "Not available" %>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="<%= loggedInUser.getEmail() %>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="fullName" value="<%= loggedInUser.getFullName() %>" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" required><%= loggedInUser.getAddress() != null ? loggedInUser.getAddress() : "" %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" name="phoneNumber" value="<%= loggedInUser.getPhoneNumber() %>" required>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" name="action" value="save" class="save-btn">Save</button>
+          <button type="button" id="delete-btn" class="delete-btn">Delete Account</button>
+        </div>
+      </form>
+    </div>
   </div>
+
+  <div class="profile-container">
+    <div class="activity-section">
+      <div class="activity-tabs">
+        <span class="tab active">Activity</span>
+        <span class="tab">Friends</span>
+        <span class="tab">Chat</span>
+      </div>
+      <div class="activity-list">
+        <div class="activity-item">
+          <i class="fas fa-comment"></i>
+          <p><%= loggedInUser.getFullName() %> posted a comment in Avengers Initiative project.</p>
+          <span class="timestamp">2014/08/08 12:08</span>
+        </div>
+        <div class="activity-item">
+          <i class="fas fa-check-circle"></i>
+          <p><%= loggedInUser.getFullName() %> changed order status from <span class="status pending">Pending</span> to <span class="status completed">Completed</span>.</p>
+          <span class="timestamp">2014/08/08 12:08</span>
+        </div>
+        <div class="activity-item">
+          <i class="fas fa-comment"></i>
+          <p><%= loggedInUser.getFullName() %> posted a comment in Lost In Translation opening scene discussion.</p>
+          <span class="timestamp">2014/08/08 12:08</span>
+        </div>
+        <div class="activity-item">
+          <i class="fas fa-heart"></i>
+          <p><%= loggedInUser.getFullName() %> changed order status from <span class="status on-hold">On Hold</span> to <span class="status disabled">Disabled</span>.</p>
+          <span class="timestamp">2014/08/08 12:08</span>
+        </div>
+        <div class="activity-item">
+          <i class="fas fa-comment"></i>
+          <p><%= loggedInUser.getFullName() %> posted a comment in Avengers Initiative project.</p>
+          <span class="timestamp">2014/08/08 12:08</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Warning</h3>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+        <div class="modal-buttons">
+          <button id="confirmDelete" class="modal-btn confirm-btn">Confirm</button>
+          <button id="cancelDelete" class="modal-btn cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </div>
+
+<script src="${pageContext.request.contextPath}/js/userProfile.js"></script>
 </body>
 </html>

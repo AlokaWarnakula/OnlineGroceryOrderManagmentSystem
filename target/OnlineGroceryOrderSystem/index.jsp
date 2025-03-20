@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
-<%@ page import="model.FileUtil" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,18 +23,10 @@
     <div class="icons">
         <div class="fa-solid fa-bars" id="menu-btn"></div>
         <%
-            String basePath = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/";
-            String loggedInUserFile = basePath + "loggedInUser.txt";
             User loggedInUser = (User) session.getAttribute("user");
-            User fileUser = FileUtil.readLoggedInUser(loggedInUserFile);
-            if (loggedInUser != null || fileUser != null) {
-                if (loggedInUser == null) {
-                    loggedInUser = fileUser; // Fallback to file if session expired
-                    session.setAttribute("user", loggedInUser); // Restore session
-                }
-                FileUtil.writeLoggedInUser(loggedInUserFile, loggedInUser); // Ensure file is updated
+            if (loggedInUser != null) {
         %>
-        <a href="${pageContext.request.contextPath}/userLogin/userProfile.jsp" class="icon-link">
+        <a href="${pageContext.request.contextPath}/UserProfileServlet" class="icon-link">
             <i class="fa-solid fa-user profile-icon"></i> <!-- Added profile-icon class -->
         </a>
         <a href="${pageContext.request.contextPath}/LogoutServlet" class="icon-link">
@@ -53,6 +44,12 @@
     <div class="content">
         <h3>Fresh and <span>Organic</span> Product For You</h3>
         <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
+        <%
+            String success = request.getParameter("success");
+            if (success != null && !success.trim().isEmpty()) {
+        %>
+        <p style="color: green;"><%= success %></p>
+        <% } %>
         <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
     </div>
 </section>

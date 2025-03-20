@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class FileUtil {
-    // Read GroceryItem list from a file
+    // Read GroceryItem list from a file (unchanged)
     public static ArrayList<GroceryItem> readItems(String filePath) {
         ArrayList<GroceryItem> items = new ArrayList<>();
         File file = new File(filePath);
@@ -57,7 +57,7 @@ public class FileUtil {
         return items;
     }
 
-    // Write GroceryItem list to a file
+    // Write GroceryItem list to a file (unchanged)
     public static void writeItems(String filePath, ArrayList<GroceryItem> items) throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -122,7 +122,7 @@ public class FileUtil {
         return isUnique;
     }
 
-    // Write an order to a file
+    // Write an order to a file (updated for vertical format)
     public static void writeOrder(String filePath, String orderNumber, String userNumber, String fullName,
                                   String phoneNumber, String address, String deliveryMethod,
                                   String paymentMethod, String deliveryDate, ArrayList<GroceryItem> cartItems,
@@ -134,7 +134,8 @@ public class FileUtil {
             System.out.println("Created new order file at: " + file.getAbsolutePath());
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            writer.write("--- Order Start: " + orderNumber + " ---\n");
             writer.write("orderNumber=" + orderNumber + "\n");
             writer.write("userNumber=" + userNumber + "\n");
             writer.write("name=" + (fullName != null ? fullName : "") + "\n");
@@ -149,6 +150,8 @@ public class FileUtil {
             }
             writer.write("[total]\n");
             writer.write("totalPrice=" + String.format("%.2f", totalPrice) + "\n");
+            writer.write("--- Order End ---\n");
+            writer.write("\n");
             System.out.println("Wrote order " + orderNumber + " to " + filePath);
         } catch (IOException e) {
             System.err.println("Error writing order to file " + filePath + ": " + e.getMessage());
@@ -156,37 +159,39 @@ public class FileUtil {
         }
     }
 
-    // Read all orders from a directory of order files
-    public static List<Order> readAllOrders(String ordersDir) {
+    // Read all orders from a file (updated for vertical format)
+    public static List<Order> readAllOrders(String ordersFilePath) {
         List<Order> orders = new ArrayList<>();
-        File dir = new File(ordersDir);
-        if (!dir.exists() || !dir.isDirectory()) {
-            System.out.println("Orders directory not found: " + ordersDir);
+        File file = new File(ordersFilePath);
+        if (!file.exists()) {
+            System.out.println("Orders file not found: " + ordersFilePath);
             return orders;
         }
 
-        File[] orderFiles = dir.listFiles((d, name) -> name.endsWith(".txt"));
-        if (orderFiles == null) {
-            System.out.println("No order files found in: " + ordersDir);
-            return orders;
-        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            Order order = null;
+            List<String[]> products = null;
+            String currentSection = null;
 
-        for (File file : orderFiles) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                Order order = new Order();
-                List<String[]> products = new ArrayList<>();
-                String line;
-                String currentSection = null;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
 
-                while ((line = reader.readLine()) != null) {
-                    line = line.trim();
-                    if (line.isEmpty()) continue;
-
-                    if (line.startsWith("[") && line.endsWith("]")) {
-                        currentSection = line.substring(1, line.length() - 1);
-                        continue;
+                if (line.startsWith("--- Order Start:")) {
+                    order = new Order();
+                    products = new ArrayList<>();
+                } else if (line.startsWith("--- Order End ---")) {
+                    if (order != null) {
+                        order.setProducts(products);
+                        orders.add(order);
                     }
-
+                    order = null;
+                    products = null;
+                    currentSection = null;
+                } else if (line.startsWith("[") && line.endsWith("]")) {
+                    currentSection = line.substring(1, line.length() - 1);
+                } else if (order != null) {
                     String[] parts = line.split("=", 2);
                     if (parts.length == 2) {
                         String key = parts[0].trim();
@@ -217,13 +222,25 @@ public class FileUtil {
                             case "deliveryDate":
                                 order.setDeliveryDate(value.isEmpty() ? null : value);
                                 break;
+                            case "confirmationDate":
+                                order.setConfirmationDate(value);
+                                break;
+                            case "paymentStatus":
+                                order.setPaymentStatus(value);
+                                break;
+                            case "deliveryStatus":
+                                order.setDeliveryStatus(value);
+                                break;
+                            case "orderStatus":
+                                order.setOrderStatus(value);
+                                break;
                             case "totalPrice":
                                 if ("total".equals(currentSection)) {
                                     order.setTotalPrice(Double.parseDouble(value));
                                 }
                                 break;
-                            default:
-                                if ("products".equals(currentSection) && key.startsWith("productID")) {
+                            case "productID":
+                                if ("products".equals(currentSection)) {
                                     String[] productParts = line.split(", quantity=");
                                     if (productParts.length == 2) {
                                         products.add(new String[]{productParts[0].split("=")[1].trim(), productParts[1].trim()});
@@ -233,19 +250,17 @@ public class FileUtil {
                         }
                     }
                 }
-                order.setProducts(products);
-                orders.add(order);
-            } catch (IOException e) {
-                System.err.println("Error reading order file " + file.getName() + ": " + e.getMessage());
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid number format in file " + file.getName() + ": " + e.getMessage());
             }
+        } catch (IOException e) {
+            System.err.println("Error reading orders file " + ordersFilePath + ": " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid number format in file " + ordersFilePath + ": " + e.getMessage());
         }
-        System.out.println("Read " + orders.size() + " orders from " + ordersDir);
+        System.out.println("Read " + orders.size() + " orders from " + ordersFilePath);
         return orders;
     }
 
-    // Read all users from users.txt
+    // Read all users from users.txt (updated for vertical format)
     public static List<User> readUsers(String filePath) {
         List<User> users = new ArrayList<>();
         File file = new File(filePath);
@@ -262,56 +277,102 @@ public class FileUtil {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            String userNumber = null, fullName = null, email = null, phoneNumber = null, address = null, password = null;
+            User user = null;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty()) continue;
 
                 if (line.startsWith("--- User Start:")) {
-                    try {
-                        userNumber = line.split(":")[1].trim().split(" ---")[0];
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.err.println("Invalid User Start line in " + filePath + ": " + line);
-                        continue;
-                    }
-                } else if (line.startsWith("userNumber=")) {
-                    userNumber = line.split("=", 2)[1].trim();
-                } else if (line.startsWith("fullName=")) {
-                    fullName = line.split("=", 2)[1].trim();
-                } else if (line.startsWith("email=")) {
-                    email = line.split("=", 2)[1].trim();
-                } else if (line.startsWith("phoneNumber=")) {
-                    phoneNumber = line.split("=", 2)[1].trim();
-                } else if (line.startsWith("address=")) {
-                    address = line.split("=", 2)[1].trim();
-                } else if (line.startsWith("password=")) {
-                    password = line.split("=", 2)[1].trim();
+                    user = new User(null, null, null, null, null, null, null);
                 } else if (line.startsWith("--- User End ---")) {
-                    if (userNumber != null && fullName != null && email != null && phoneNumber != null && address != null && password != null) {
-                        users.add(new User(userNumber, fullName, email, phoneNumber, address, password));
+                    if (user != null && user.getUsername() != null && user.getPassword() != null) {
+                        users.add(user);
                     } else {
-                        System.err.println("Incomplete user data in " + filePath + ": userNumber=" + userNumber + ", email=" + email);
+                        System.err.println("Incomplete user data in " + filePath + ": " + user);
                     }
-                    userNumber = fullName = email = phoneNumber = address = password = null; // Reset for next user
+                    user = null;
+                } else if (user != null) {
+                    String[] parts = line.split("=", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+                        switch (key) {
+                            case "username":
+                                user.setUsername(value);
+                                break;
+                            case "password":
+                                user.setPassword(value);
+                                break;
+                            case "userNumber":
+                                user.setUserNumber(value);
+                                break;
+                            case "fullName":
+                                user.setFullName(value);
+                                break;
+                            case "email":
+                                user.setEmail(value);
+                                break;
+                            case "phoneNumber":
+                                user.setPhoneNumber(value);
+                                break;
+                            case "address":
+                                user.setAddress(value);
+                                break;
+                        }
+                    }
                 }
             }
         } catch (IOException e) {
             System.err.println("Error reading users file " + filePath + ": " + e.getMessage());
+            return null;
         }
         System.out.println("Read " + users.size() + " users from " + filePath);
         return users;
     }
 
+    // Write all users to users.txt (updated for vertical format)
+    public static void writeUsers(String filePath, List<User> users) throws IOException {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            System.out.println("Created users file: " + file.getAbsolutePath());
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
+            for (User user : users) {
+                writer.write("--- User Start: " + user.getUserNumber() + " ---\n");
+                writer.write("username=" + (user.getUsername() != null ? user.getUsername() : "") + "\n");
+                writer.write("password=" + (user.getPassword() != null ? user.getPassword() : "") + "\n");
+                writer.write("userNumber=" + (user.getUserNumber() != null ? user.getUserNumber() : "") + "\n");
+                writer.write("fullName=" + (user.getFullName() != null ? user.getFullName() : "") + "\n");
+                writer.write("email=" + (user.getEmail() != null ? user.getEmail() : "") + "\n");
+                writer.write("phoneNumber=" + (user.getPhoneNumber() != null ? user.getPhoneNumber() : "") + "\n");
+                writer.write("address=" + (user.getAddress() != null ? user.getAddress() : "") + "\n");
+                writer.write("--- User End ---\n");
+                writer.write("\n");
+            }
+            writer.flush();
+            System.out.println("Successfully wrote " + users.size() + " users to " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
+            throw e;
+        }
+    }
+
     // Check if a user number is unique in users.txt
     public static boolean isUserNumberUnique(String userNumber, String filePath) {
         List<User> users = readUsers(filePath);
-        boolean isUnique = users.stream().noneMatch(user -> user.getUserNumber().equals(userNumber));
+        if (users == null) {
+            return true; // If file can't be read, assume unique
+        }
+        boolean isUnique = users.stream().noneMatch(user -> user.getUserNumber() != null && user.getUserNumber().equals(userNumber));
         System.out.println("User number " + userNumber + " is " + (isUnique ? "unique" : "not unique") + " in " + filePath);
         return isUnique;
     }
 
-    // Write logged-in user to loggedInUser.txt
-    public static void writeLoggedInUser(String filePath, User user) {
+    // Write logged-in user to loggedInUser.txt (updated for vertical format, synchronized)
+    public static synchronized void writeLoggedInUser(String filePath, User user) {
         File file = new File(filePath);
         if (!file.exists()) {
             try {
@@ -326,11 +387,15 @@ public class FileUtil {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
             if (user != null) {
+                writer.write("--- User Start: " + user.getUserNumber() + " ---\n");
+                writer.write("username=" + (user.getUsername() != null ? user.getUsername() : "") + "\n");
+                writer.write("password=" + (user.getPassword() != null ? user.getPassword() : "") + "\n");
                 writer.write("userNumber=" + (user.getUserNumber() != null ? user.getUserNumber() : "") + "\n");
                 writer.write("fullName=" + (user.getFullName() != null ? user.getFullName() : "") + "\n");
                 writer.write("email=" + (user.getEmail() != null ? user.getEmail() : "") + "\n");
                 writer.write("phoneNumber=" + (user.getPhoneNumber() != null ? user.getPhoneNumber() : "") + "\n");
                 writer.write("address=" + (user.getAddress() != null ? user.getAddress() : "") + "\n");
+                writer.write("--- User End ---\n");
                 System.out.println("Wrote logged-in user to " + filePath + ": " + user.getEmail());
             } else {
                 System.err.println("Cannot write null user to " + filePath);
@@ -340,7 +405,7 @@ public class FileUtil {
         }
     }
 
-    // Read logged-in user from loggedInUser.txt
+    // Read logged-in user from loggedInUser.txt (updated for vertical format)
     public static User readLoggedInUser(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -348,33 +413,45 @@ public class FileUtil {
             return null;
         }
 
-        String userNumber = null, fullName = null, email = null, phoneNumber = null, address = null;
+        User user = null;
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty()) continue;
 
-                String[] parts = line.split("=", 2);
-                if (parts.length == 2) {
-                    String key = parts[0].trim();
-                    String value = parts[1].trim();
-                    switch (key) {
-                        case "userNumber":
-                            userNumber = value.isEmpty() ? null : value;
-                            break;
-                        case "fullName":
-                            fullName = value.isEmpty() ? null : value;
-                            break;
-                        case "email":
-                            email = value.isEmpty() ? null : value;
-                            break;
-                        case "phoneNumber":
-                            phoneNumber = value.isEmpty() ? null : value;
-                            break;
-                        case "address":
-                            address = value.isEmpty() ? null : value;
-                            break;
+                if (line.startsWith("--- User Start:")) {
+                    user = new User(null, null, null, null, null, null, null);
+                } else if (line.startsWith("--- User End ---")) {
+                    break; // Only one user should be in loggedInUser.txt
+                } else if (user != null) {
+                    String[] parts = line.split("=", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+                        switch (key) {
+                            case "username":
+                                user.setUsername(value);
+                                break;
+                            case "password":
+                                user.setPassword(value);
+                                break;
+                            case "userNumber":
+                                user.setUserNumber(value);
+                                break;
+                            case "fullName":
+                                user.setFullName(value);
+                                break;
+                            case "email":
+                                user.setEmail(value);
+                                break;
+                            case "phoneNumber":
+                                user.setPhoneNumber(value);
+                                break;
+                            case "address":
+                                user.setAddress(value);
+                                break;
+                        }
                     }
                 }
             }
@@ -383,8 +460,7 @@ public class FileUtil {
             return null;
         }
 
-        if (userNumber != null && fullName != null && email != null && phoneNumber != null && address != null) {
-            User user = new User(userNumber, fullName, email, phoneNumber, address, "");
+        if (user != null && user.getUserNumber() != null && user.getEmail() != null) {
             System.out.println("Read logged-in user from " + filePath + ": " + user.getEmail());
             return user;
         }
@@ -392,8 +468,8 @@ public class FileUtil {
         return null;
     }
 
-    // Clear loggedInUser.txt on logout
-    public static void clearLoggedInUser(String filePath) {
+    // Clear loggedInUser.txt on logout (synchronized)
+    public static synchronized void clearLoggedInUser(String filePath) {
         File file = new File(filePath);
         if (file.exists()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
@@ -407,7 +483,7 @@ public class FileUtil {
         }
     }
 
-    // Order class for reading orders
+    // Order class for reading orders (updated with additional fields)
     public static class Order {
         private String orderNumber;
         private String userNumber;
@@ -417,6 +493,10 @@ public class FileUtil {
         private String deliveryMethod;
         private String paymentMethod;
         private String deliveryDate;
+        private String confirmationDate;
+        private String paymentStatus;
+        private String deliveryStatus;
+        private String orderStatus;
         private List<String[]> products; // [productID, quantity]
         private double totalPrice;
 
@@ -436,6 +516,14 @@ public class FileUtil {
         public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
         public String getDeliveryDate() { return deliveryDate; }
         public void setDeliveryDate(String deliveryDate) { this.deliveryDate = deliveryDate; }
+        public String getConfirmationDate() { return confirmationDate; }
+        public void setConfirmationDate(String confirmationDate) { this.confirmationDate = confirmationDate; }
+        public String getPaymentStatus() { return paymentStatus; }
+        public void setPaymentStatus(String paymentStatus) { this.paymentStatus = paymentStatus; }
+        public String getDeliveryStatus() { return deliveryStatus; }
+        public void setDeliveryStatus(String deliveryStatus) { this.deliveryStatus = deliveryStatus; }
+        public String getOrderStatus() { return orderStatus; }
+        public void setOrderStatus(String orderStatus) { this.orderStatus = orderStatus; }
         public List<String[]> getProducts() { return products; }
         public void setProducts(List<String[]> products) { this.products = products; }
         public double getTotalPrice() { return totalPrice; }
