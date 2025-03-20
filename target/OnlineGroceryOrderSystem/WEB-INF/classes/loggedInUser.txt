@@ -1,5 +1,0 @@
-userNumber=US143000078979
-fullName=aloka warnakula
-email=alokawarnakula77@gmail.com
-phoneNumber=0711641638
-address=21/6/6A, somanada mawatha, pitumpe, padukka

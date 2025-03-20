@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: alokawarnakula
-Build-Jdk: Oracle OpenJDK 22.0.2 - aarch64
+Built-By: LENOVO
+Build-Jdk: Oracle OpenJDK 22.0.2
 

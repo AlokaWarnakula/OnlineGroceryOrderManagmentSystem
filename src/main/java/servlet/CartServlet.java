@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class CartServlet extends HttpServlet {
-    private static final String ITEMS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/items.txt";
-    private static final String CART_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/cart.txt";
+    private static final String ITEMS_FILE = "C:\\Users\\LENOVO\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\items.txt";
+    private static final String CART_FILE = "C:\\Users\\LENOVO\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\cart.txt";
 
     @Override
     public void init() throws ServletException {
-        File dataDir = new File("/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data");
+        File dataDir = new File("C:\\Users\\LENOVO\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data");
         if (!dataDir.exists()) {
             if (dataDir.mkdirs()) {
                 System.out.println("Created data directory: " + dataDir.getAbsolutePath());
@@ -119,7 +119,7 @@ public class CartServlet extends HttpServlet {
                 System.out.println("Items after name filter: " + filteredItems);
             }
 
-            // Step 3: Filter by price range
+            // Step 3: Filter by price range  lolo
             // Apply minPrice filter
             if (minPriceStr != null && !minPriceStr.trim().isEmpty()) {
                 try {

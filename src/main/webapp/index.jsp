@@ -24,7 +24,7 @@
     <div class="icons">
         <div class="fa-solid fa-bars" id="menu-btn"></div>
         <%
-            String basePath = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/";
+            String basePath = "C:\\Users\\LENOVO\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data";
             String loggedInUserFile = basePath + "loggedInUser.txt";
             User loggedInUser = (User) session.getAttribute("user");
             User fileUser = FileUtil.readLoggedInUser(loggedInUserFile);

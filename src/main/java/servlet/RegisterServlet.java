@@ -15,7 +15,7 @@ import java.util.Random;
 import java.util.List;
 
 public class RegisterServlet extends HttpServlet {
-    private static final String USERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/users.txt";
+    private static final String USERS_FILE = "C:\\Users\\LENOVO\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\users.txt";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
