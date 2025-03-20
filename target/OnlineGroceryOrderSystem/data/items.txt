@@ -1,6 +1,6 @@
 1,Produce,Apple,200.00,https://st.depositphotos.com/1002351/1943/i/950/depositphotos_19439353-stock-photo-red-apple.jpg,10,Fresh and crisp apples perfect for snacking or baking
-2,Produce,Banana,450.00,https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg,0,Sweet and ripe bananas great for a quick energy boost
-27,Produce,Orange,70.00,https://media.istockphoto.com/id/1194662606/photo/orange-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=612x612&w=0&k=20&c=rhITc7KJiHKvRe_aVnC_3Tjae4B67MrvAcH6HpxC8xM=,0,Sweet and tasty fucker
+2,Produce,Banana,450.00,https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg,10,Sweet and ripe bananas great for a quick energy boost
+27,Produce,Orange,70.00,https://media.istockphoto.com/id/1194662606/photo/orange-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=612x612&w=0&k=20&c=rhITc7KJiHKvRe_aVnC_3Tjae4B67MrvAcH6HpxC8xM=,10,Sweet and tasty fucker
 28,Produce,Water Mellon,250.00,https://img.goodfon.com/original/5000x3125/c/3b/arbuz-lakomstvo-iagoda-belyi-fon.jpg,0,Tasty mellon
 3,Dairy,Milk,2.00,https://i.pinimg.com/736x/9b/29/22/9b2922288ec6e3b7522bfbee422b3593.jpg,5,Creamy and fresh milk sourced from local farms
 4,Proteins,Chicken,5.00,https://c4.wallpaperflare.com/wallpaper/471/516/832/chicken-image.jpg,0,Lean chicken breast perfect for grilling

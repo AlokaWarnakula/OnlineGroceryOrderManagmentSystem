@@ -57,9 +57,15 @@ public class CartServlet extends HttpServlet {
         }
 
         ArrayList<GroceryItem> items = FileUtil.readItems(ITEMS_FILE);
+        if (items == null) {
+            items = new ArrayList<>();
+            System.out.println("Initialized empty items list for " + ITEMS_FILE + " (file not found or invalid)");
+        }
+        System.out.println("All loaded items: " + items);
         double totalPrice = cart.stream().mapToDouble(GroceryItem::getTotalPrice).sum();
 
         String action = request.getParameter("action");
+        System.out.println("doGet action: " + action);
         if ("getCart".equals(action)) {
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
@@ -71,14 +77,104 @@ public class CartServlet extends HttpServlet {
             out.flush();
         } else {
             String category = request.getParameter("category");
-            if (category != null && !category.isEmpty()) {
-                items = items.stream()
-                        .filter(item -> item.getProductCategory().equalsIgnoreCase(category))
-                        .collect(Collectors.toCollection(ArrayList::new));
+            String minPriceStr = request.getParameter("minPrice");
+            String maxPriceStr = request.getParameter("maxPrice");
+            String name = request.getParameter("name");
+
+            System.out.println("Parameters - category: " + category + ", minPrice: " + minPriceStr + ", maxPrice: " + maxPriceStr + ", name: " + name);
+
+            // Default category to null (show all) if not specified or "All"
+            if (category == null || category.trim().isEmpty() || category.equalsIgnoreCase("All")) {
+                category = null; // Show all categories
+                System.out.println("No specific category selected, showing all products");
             }
-            request.setAttribute("items", items);
+            final String finalCategory = category; // Create a final copy for lambda expression
+
+            ArrayList<GroceryItem> filteredItems = new ArrayList<>(items);
+            System.out.println("Initial items count: " + filteredItems.size());
+
+            // Step 1: Filter by category if specified
+            if (finalCategory != null && !finalCategory.trim().isEmpty()) {
+                filteredItems = filteredItems.stream()
+                        .filter(item -> {
+                            boolean matches = item.getProductCategory().equalsIgnoreCase(finalCategory);
+                            System.out.println("Checking category for item " + item.getProductName() + ": " + item.getProductCategory() + " == " + finalCategory + " -> " + matches);
+                            return matches;
+                        })
+                        .collect(Collectors.toCollection(ArrayList::new));
+                System.out.println("After category filter, result size: " + filteredItems.size());
+                System.out.println("Items after category filter: " + filteredItems);
+            }
+
+            // Step 2: Filter by name if specified
+            if (name != null && !name.trim().isEmpty()) {
+                filteredItems = filteredItems.stream()
+                        .filter(item -> {
+                            boolean matches = item.getProductName().toLowerCase().contains(name.toLowerCase());
+                            System.out.println("Checking name for item " + item.getProductName() + ": contains " + name + " -> " + matches);
+                            return matches;
+                        })
+                        .collect(Collectors.toCollection(ArrayList::new));
+                System.out.println("After name filter, result size: " + filteredItems.size());
+                System.out.println("Items after name filter: " + filteredItems);
+            }
+
+            // Step 3: Filter by price range
+            // Apply minPrice filter
+            if (minPriceStr != null && !minPriceStr.trim().isEmpty()) {
+                try {
+                    double minPrice = Double.parseDouble(minPriceStr);
+                    filteredItems = filteredItems.stream()
+                            .filter(item -> {
+                                boolean matches = item.getProductPrice() >= minPrice;
+                                System.out.println("Checking minPrice for item " + item.getProductName() + ": " + item.getProductPrice() + " >= " + minPrice + " -> " + matches);
+                                return matches;
+                            })
+                            .collect(Collectors.toCollection(ArrayList::new));
+                    System.out.println("After minPrice filter (" + minPrice + "), result size: " + filteredItems.size());
+                    System.out.println("Items after minPrice filter: " + filteredItems);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid minPrice: " + minPriceStr);
+                }
+            }
+
+            // Apply maxPrice filter
+            if (maxPriceStr != null && !maxPriceStr.trim().isEmpty()) {
+                try {
+                    double maxPrice = Double.parseDouble(maxPriceStr);
+                    filteredItems = filteredItems.stream()
+                            .filter(item -> {
+                                boolean matches = item.getProductPrice() <= maxPrice;
+                                System.out.println("Checking maxPrice for item " + item.getProductName() + ": " + item.getProductPrice() + " <= " + maxPrice + " -> " + matches);
+                                return matches;
+                            })
+                            .collect(Collectors.toCollection(ArrayList::new));
+                    System.out.println("After maxPrice filter (" + maxPrice + "), result size: " + filteredItems.size());
+                    System.out.println("Items after maxPrice filter: " + filteredItems);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid maxPrice: " + maxPriceStr);
+                }
+            }
+
+            // Merge sort start from here
+            // Sort by category first, then by price within each category
+            if (!filteredItems.isEmpty()) {
+                System.out.println("Applying Merge Sort to sort by category and price");
+                mergeSort(filteredItems, 0, filteredItems.size() - 1);
+                System.out.println("Items after Merge Sort: " + filteredItems);
+            }
+
+            // Determine if we're showing search results or a specific category
+            boolean isSearchResult = (name != null && !name.trim().isEmpty()) ||
+                    (minPriceStr != null && !minPriceStr.trim().isEmpty()) ||
+                    (maxPriceStr != null && !maxPriceStr.trim().isEmpty());
+
+            request.setAttribute("items", filteredItems);
             request.setAttribute("cart", cart);
             request.setAttribute("totalPrice", totalPrice);
+            request.setAttribute("category", category);
+            request.setAttribute("isSearchResult", isSearchResult);
+            System.out.println("Forwarding to cartIndex.jsp with items size: " + filteredItems.size() + ", isSearchResult: " + isSearchResult);
             request.getRequestDispatcher("/cartAndOrders/cartIndex.jsp").forward(request, response);
         }
     }
@@ -101,6 +197,10 @@ public class CartServlet extends HttpServlet {
 
         ArrayList<GroceryItem> cart;
         ArrayList<GroceryItem> items = FileUtil.readItems(ITEMS_FILE);
+        if (items == null) {
+            items = new ArrayList<>();
+            System.out.println("Initialized empty items list for " + ITEMS_FILE + " (file not found or invalid)");
+        }
         System.out.println("Loaded items from " + ITEMS_FILE + ": " + items);
 
         synchronized (this) {
@@ -241,6 +341,45 @@ public class CartServlet extends HttpServlet {
     }
 
     private String escapeJson(String str) {
-        return str.replace("\"", "\\\"").replace("\n", "\\n");
+        return str != null ? str.replace("\"", "\\\"").replace("\n", "\\n") : "";
+    }
+
+    // Merge sort start from here
+    private void mergeSort(ArrayList<GroceryItem> items, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(items, left, mid);
+            mergeSort(items, mid + 1, right);
+            merge(items, left, mid, right);
+        }
+    }
+
+    private void merge(ArrayList<GroceryItem> items, int left, int mid, int right) {
+        ArrayList<GroceryItem> temp = new ArrayList<>(items.subList(left, right + 1));
+        int i = 0, j = mid - left + 1, k = left;
+
+        while (i < mid - left + 1 && j < temp.size()) {
+            // Compare by category first
+            int categoryComparison = temp.get(i).getProductCategory().compareToIgnoreCase(temp.get(j).getProductCategory());
+            if (categoryComparison < 0) {
+                items.set(k++, temp.get(i++));
+            } else if (categoryComparison > 0) {
+                items.set(k++, temp.get(j++));
+            } else {
+                // If categories are the same, compare by price
+                if (temp.get(i).getProductPrice() <= temp.get(j).getProductPrice()) {
+                    items.set(k++, temp.get(i++));
+                } else {
+                    items.set(k++, temp.get(j++));
+                }
+            }
+        }
+
+        while (i < mid - left + 1) {
+            items.set(k++, temp.get(i++));
+        }
+        while (j < temp.size()) {
+            items.set(k++, temp.get(j++));
+        }
     }
 }
