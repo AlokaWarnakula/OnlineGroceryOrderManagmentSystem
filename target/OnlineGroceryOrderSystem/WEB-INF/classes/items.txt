@@ -4,7 +4,7 @@
 4,Produce,Potatoes,190.00,https://i.pinimg.com/736x/33/7e/fa/337efa818550fce97fa5991ea513c16b.jpg,10,Only 500g
 5,Produce,Carrot,425.00,https://t4.ftcdn.net/jpg/00/80/96/17/360_F_80961739_hep1UZaQRsy5WQOYU3jkOr5CB7A6xc3U.jpg,10,Only 500g
 6,Produce,Garlic,260.00,https://as2.ftcdn.net/v2/jpg/03/20/58/51/1000_F_320585105_SRCBaxOcZg6lmllMmtt6tKTu9eN4s30B.jpg,10,Only 250g
-7,Produce,Brinjal,67.00,https://static.vecteezy.com/system/resources/previews/004/158/962/non_2x/eggplant-isolated-on-a-white-background-photo.jpg,10,Only 350g
+7,Produce,Brinjal,67.00,https://static.vecteezy.com/system/resources/previews/004/158/962/non_2x/eggplant-isolated-on-a-white-background-photo.jpg,7,Only 350g
 8,Produce,Raw Ginger,278.00,https://static.vecteezy.com/system/resources/previews/030/668/174/non_2x/ginger-with-white-background-high-quality-ultra-hd-free-photo.jpg,10,Only 150g
 9,Produce,Cabbage,215.00,https://as2.ftcdn.net/jpg/02/96/54/63/1000_F_296546395_Tw3FfCAV6Ss6U0tufcgVE3Twf01LZutt.jpg,10,Only 500g
 10,Produce,Pumpkin,90.00,https://t4.ftcdn.net/jpg/00/69/19/07/360_F_69190757_a37tIJk6fq40BADf78ewXZyc0HIL3mBU.jpg,10,Only 500g
@@ -13,37 +13,36 @@
 13,Produce,Cauliflower,269.00,https://media.istockphoto.com/id/186828790/photo/cauliflower-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=oLL9OeCwhHolL-MqXb3CZEkL0NyE483_vEqm3Tj0Lzo=,10,Only 300g
 14,Produce,Cucumber,92.00,https://img.freepik.com/premium-photo/cucumber-vegetable-isolated-white-background_42033-135.jpg,10,Only 400g
 15,Produce,Broccoli,1458.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WtHcQiqLRmr827_jDvo_NlEceWQsQ7xRiw&s,10,Only 300g
-16,Produce,Kesel Muwa,60,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoKGxtMpNYFRMtMSzC8U4RtMz_qamZ-WNriw&s,10,Only 500g
-17,Produce,Bell Pepper Green,1200,https://media.istockphoto.com/id/922745944/photo/green-peppers-on-white-background.jpg?s=612x612&w=0&k=20&c=ANUMSGzCw2oEd44ZVOmlgjDd8gAhJN0gSg6dLqBai6I=,10,Only 500g
-18,Produce,Lettuce,24,https://thumbs.dreamstime.com/b/organic-vegetable-salad-green-frillice-iceberg-lettuce-isolated-white-background-151715371.jpg,10,Only 100g
-19,Pantry,Rice,260,https://media.istockphoto.com/id/483226970/photo/heap-of-raw-basmati-rice.jpg?s=612x612&w=0&k=20&c=aaNOxz6AvGftzj3pyJ7SWjXTXyz79mPB9hdphbOZDwc=,10,Only 1kg
-20,Produce,Pineapple,650,https://static5.depositphotos.com/1000188/481/i/950/depositphotos_4810705-stock-photo-fresh-slice-pineapple-on-white.jpg,10,Only 1.25kg
-21,Produce,Imported Red Grapes,1164,https://gabbarfarms.com/cdn/shop/products/ImportedGrpes_600x.jpg?v=1634633431,10,Only 500g
-22,Produce,Imported Mandarin,864,https://media.istockphoto.com/id/504384796/photo/fresh-ripe-tangerines.jpg?s=612x612&w=0&k=20&c=12Gp6Nkk_Vef64j29TDtXt3JZHY-jV9H3DMmuDHsRAE=,10,Only 600g
-23,Produce,Sweet Water Melon,400,https://thumbs.dreamstime.com/b/whole-ripe-watermelon-quarter-isolated-white-background-full-depth-field-whole-ripe-watermelon-quarter-isolated-156340918.jpg,10,Only 2kg
-24,Produce,Papaya,450,https://t3.ftcdn.net/jpg/05/13/26/84/360_F_513268409_H7YzF29YTUuJ4KvoC8VNxUM40m9PfIdx.jpg,10,Only 1.25kg
-25,Produce,Kolikuttu,140,https://spar2u.lk/cdn/shop/files/Kolikuttubanana.jpg?v=1739447092,10,Only 500g
-26,Produce,Imported Pomegranate,1530,https://media.istockphoto.com/id/940118920/photo/ripe-pomegranate-fruit-and-one-cut-in-half-with-leaf.jpg?s=612x612&w=0&k=20&c=iVTrJvW6rtFTlsWk5J3v1r1NeCgNtZMD4qDJIh3sfik=,10,Only 500g
-27,Produce,Apple,1337,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,10,Only 700g
-28,Produce,King Coconut,240,https://t4.ftcdn.net/jpg/05/24/15/17/360_F_524151797_uBpqhFFLGqSNHht2ORoWypI03yY5SGaN.jpg,10,Only 1Pcs
-29,Produce,Kiwi Fruit,1460,https://i.pinimg.com/736x/13/fe/74/13fe7434de9b4c36410744dbd843fdff.jpg,10,Only 500g
-30,Produce,Soursop,525,https://media.istockphoto.com/id/1369037177/photo/soursop-or-custard-apple-fruit-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=3iHof9sefP0PNUh4rnXM4hBuMS_YnOgOnNbDzap9DPU=,10,Only 1kg
-31,Pantry,Dahal,289,https://www.shutterstock.com/image-photo/red-lentils-isolated-on-white-600nw-2332458631.jpg,10,Only 1kg
-32,Produce,Strawberry,1290,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9KZF0L6SWyX0c6SRYlltKJZuWeHfcbbDiTw&s,10,Only 250g
-33,Proteins,Large prawns,1875,https://media.istockphoto.com/id/1255181693/photo/banana-prawn-or-shrimp-isolated-on-white-background-white-shrimp-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=X_sO0D9U1J98JcubDdEuR6kGOxbHZVc-OxVKeqzjXtY=,10,Only 1kg
-34,Proteins,Lobster,4375,https://meatmart.lk/wp-content/uploads/2023/06/Lobster-KG.webp,10,Only 1kg
-35,Proteins,Cuttle Fish,2250,https://meatmart.lk/wp-content/uploads/2023/06/frozen-squid-fish-500x500-1-768x768.webp.webp,10,Only 1kg
-36,Proteins,Gar fish (Habarali),3500,https://tropicalshellfish.com/wp-content/uploads/2021/09/habaralli.jpg,10,Only 1kg
-37,Proteins,Big Crab,4375,https://media.istockphoto.com/id/453209605/photo/isolated-whole-dungeness-crab.jpg?s=612x612&w=0&k=20&c=OINq23e6m6kOS20psfnnkGN-RU33L__34IH-7rG8F7Y=,10,Only 1kg
-38,Proteins,Big Anchovy,1500,https://www.shutterstock.com/image-photo/close-anchovies-gray-anchovy-isolated-260nw-2324973519.jpg,10,Only 1kg
-39,Proteins,Tuna,3422,https://media.istockphoto.com/id/473827068/photo/bluefin-tuna-really-fresh-isolated-on-white.jpg?s=612x612&w=0&k=20&c=AK8XBCRAc50bDQ5YFFSayT8TbujkZPEhk5xzGHrkSIk=,10,Only 1kg
-40,Proteins,Turkey S/L,4999,https://img.freepik.com/premium-photo/natural-fresh-raw-turkey-meat-isolated-white-background_787273-69566.jpg,10,Only 1kg
-41,Proteins,Chicken Breast Bone,1500,https://growstar.in/wp-content/uploads/2021/06/146653_Shamarie84_0980102c-8cb0-43de-b35a-b49e32ad5114-min.jpeg,10,Only 1kg
-42,Proteins,Chicken boneless,3450,https://static.vecteezy.com/system/resources/previews/050/024/853/large_2x/a-pile-of-boneless-skinless-chicken-breasts-on-a-white-background-free-photo.jpg,10,Only 1kg
-43,Proteins,Chicken Whole Leg,2450,https://spar2u.lk/cdn/shop/files/Chickenwholelegskinon_458x595.jpg?v=1739447117,10,ONly 500g
-44,Proteins,Thalapath Fish,2242,https://ican-mall.oss-ap-southeast-1.aliyuncs.com/2024/05/c0c5fb6126924c28bd13355baaaaf32f.webp,10,Only 600g
-45,Proteins,Squid,1525,https://thumbs.dreamstime.com/b/fresh-squid-isolated-white-background-44144491.jpg,10,Only 500g
-46,Proteins,Brown Egg,55,https://img.freepik.com/premium-photo/chicken-egg-white-background_55716-1235.jpg,10,Only 1Pcs
-47,Proteins,White Egg,40,https://media.istockphoto.com/id/467061077/photo/eggs-isolated-on-a-white-background.jpg?s=612x612&w=0&k=20&c=K6RZK8UR5hzHy4auNEKHV0EdkBVnVlyLlfBflpUXP-g=,10,Only 1Pcs
-48,Proteins,Sausage,690,https://static.vecteezy.com/system/resources/previews/026/978/295/large_2x/grilled-pork-sausages-with-lettuce-isolated-on-white-background-photo.jpg,10,Only 500g
-49,Snacks,Coca Cola Pet,480,https://essstr.blob.core.windows.net/essimg/ItemAsset/Pic110297.jpg,10,Only 2l
+16,Produce,Kesel Muwa,60.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoKGxtMpNYFRMtMSzC8U4RtMz_qamZ-WNriw&s,7,Only 500g
+17,Produce,Bell Pepper Green,1200.00,https://media.istockphoto.com/id/922745944/photo/green-peppers-on-white-background.jpg?s=612x612&w=0&k=20&c=ANUMSGzCw2oEd44ZVOmlgjDd8gAhJN0gSg6dLqBai6I=,10,Only 500g
+18,Produce,Lettuce,24.00,https://thumbs.dreamstime.com/b/organic-vegetable-salad-green-frillice-iceberg-lettuce-isolated-white-background-151715371.jpg,9,Only 100g
+19,Pantry,Rice,260.00,https://media.istockphoto.com/id/483226970/photo/heap-of-raw-basmati-rice.jpg?s=612x612&w=0&k=20&c=aaNOxz6AvGftzj3pyJ7SWjXTXyz79mPB9hdphbOZDwc=,10,Only 1kg
+20,Produce,Pineapple,650.00,https://static5.depositphotos.com/1000188/481/i/950/depositphotos_4810705-stock-photo-fresh-slice-pineapple-on-white.jpg,10,Only 1.25kg
+21,Produce,Imported Red Grapes,1164.00,https://gabbarfarms.com/cdn/shop/products/ImportedGrpes_600x.jpg?v=1634633431,10,Only 500g
+22,Produce,Imported Mandarin,864.00,https://media.istockphoto.com/id/504384796/photo/fresh-ripe-tangerines.jpg?s=612x612&w=0&k=20&c=12Gp6Nkk_Vef64j29TDtXt3JZHY-jV9H3DMmuDHsRAE=,10,Only 600g
+23,Produce,Sweet Water Melon,400.00,https://thumbs.dreamstime.com/b/whole-ripe-watermelon-quarter-isolated-white-background-full-depth-field-whole-ripe-watermelon-quarter-isolated-156340918.jpg,10,Only 2kg
+24,Produce,Papaya,450.00,https://t3.ftcdn.net/jpg/05/13/26/84/360_F_513268409_H7YzF29YTUuJ4KvoC8VNxUM40m9PfIdx.jpg,10,Only 1.25kg
+25,Produce,Kolikuttu,140.00,https://spar2u.lk/cdn/shop/files/Kolikuttubanana.jpg?v=1739447092,10,Only 500g
+26,Produce,Imported Pomegranate,1530.00,https://media.istockphoto.com/id/940118920/photo/ripe-pomegranate-fruit-and-one-cut-in-half-with-leaf.jpg?s=612x612&w=0&k=20&c=iVTrJvW6rtFTlsWk5J3v1r1NeCgNtZMD4qDJIh3sfik=,10,Only 500g
+27,Produce,Apple,1337.00,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,10,Only 700g
+28,Produce,King Coconut,240.00,https://t4.ftcdn.net/jpg/05/24/15/17/360_F_524151797_uBpqhFFLGqSNHht2ORoWypI03yY5SGaN.jpg,10,Only 1Pcs
+29,Produce,Kiwi Fruit,1460.00,https://i.pinimg.com/736x/13/fe/74/13fe7434de9b4c36410744dbd843fdff.jpg,10,Only 500g
+30,Produce,Soursop,525.00,https://media.istockphoto.com/id/1369037177/photo/soursop-or-custard-apple-fruit-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=3iHof9sefP0PNUh4rnXM4hBuMS_YnOgOnNbDzap9DPU=,10,Only 1kg
+31,Pantry,Dahal,289.00,https://www.shutterstock.com/image-photo/red-lentils-isolated-on-white-600nw-2332458631.jpg,10,Only 1kg
+32,Produce,Strawberry,1290.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9KZF0L6SWyX0c6SRYlltKJZuWeHfcbbDiTw&s,10,Only 250g
+33,Proteins,Large prawns,1875.00,https://media.istockphoto.com/id/1255181693/photo/banana-prawn-or-shrimp-isolated-on-white-background-white-shrimp-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=X_sO0D9U1J98JcubDdEuR6kGOxbHZVc-OxVKeqzjXtY=,10,Only 1kg
+34,Proteins,Lobster,4375.00,https://meatmart.lk/wp-content/uploads/2023/06/Lobster-KG.webp,10,Only 1kg
+35,Proteins,Cuttle Fish,2250.00,https://meatmart.lk/wp-content/uploads/2023/06/frozen-squid-fish-500x500-1-768x768.webp.webp,10,Only 1kg
+36,Proteins,Gar fish (Habarali),3500.00,https://tropicalshellfish.com/wp-content/uploads/2021/09/habaralli.jpg,10,Only 1kg
+37,Proteins,Big Crab,4375.00,https://media.istockphoto.com/id/453209605/photo/isolated-whole-dungeness-crab.jpg?s=612x612&w=0&k=20&c=OINq23e6m6kOS20psfnnkGN-RU33L__34IH-7rG8F7Y=,10,Only 1kg
+38,Proteins,Big Anchovy,1500.00,https://www.shutterstock.com/image-photo/close-anchovies-gray-anchovy-isolated-260nw-2324973519.jpg,10,Only 1kg
+39,Proteins,Tuna,3422.00,https://media.istockphoto.com/id/473827068/photo/bluefin-tuna-really-fresh-isolated-on-white.jpg?s=612x612&w=0&k=20&c=AK8XBCRAc50bDQ5YFFSayT8TbujkZPEhk5xzGHrkSIk=,10,Only 1kg
+40,Proteins,Turkey S/L,4999.00,https://img.freepik.com/premium-photo/natural-fresh-raw-turkey-meat-isolated-white-background_787273-69566.jpg,10,Only 1kg
+41,Proteins,Chicken Breast Bone,1500.00,https://growstar.in/wp-content/uploads/2021/06/146653_Shamarie84_0980102c-8cb0-43de-b35a-b49e32ad5114-min.jpeg,10,Only 1kg
+42,Proteins,Chicken boneless,3450.00,https://static.vecteezy.com/system/resources/previews/050/024/853/large_2x/a-pile-of-boneless-skinless-chicken-breasts-on-a-white-background-free-photo.jpg,10,Only 1kg
+43,Proteins,Chicken Whole Leg,2450.00,https://spar2u.lk/cdn/shop/files/Chickenwholelegskinon_458x595.jpg?v=1739447117,10,ONly 500g
+44,Proteins,Thalapath Fish,2242.00,https://ican-mall.oss-ap-southeast-1.aliyuncs.com/2024/05/c0c5fb6126924c28bd13355baaaaf32f.webp,10,Only 600g
+45,Proteins,Squid,1525.00,https://thumbs.dreamstime.com/b/fresh-squid-isolated-white-background-44144491.jpg,10,Only 500g
+46,Proteins,Brown Egg,55.00,https://img.freepik.com/premium-photo/chicken-egg-white-background_55716-1235.jpg,10,Only 1Pcs
+47,Proteins,White Egg,40.00,https://media.istockphoto.com/id/467061077/photo/eggs-isolated-on-a-white-background.jpg?s=612x612&w=0&k=20&c=K6RZK8UR5hzHy4auNEKHV0EdkBVnVlyLlfBflpUXP-g=,10,Only 1Pcs
+48,Proteins,Sausage,690.00,https://static.vecteezy.com/system/resources/previews/026/978/295/large_2x/grilled-pork-sausages-with-lettuce-isolated-on-white-background-photo.jpg,10,Only 500g

@@ -1,10 +1,9 @@
 package model;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class FileUtil {
     // Read GroceryItem list from a file (unchanged)
@@ -122,10 +121,12 @@ public class FileUtil {
         return isUnique;
     }
 
-    // Write an order to a file (updated for vertical format)
+    // Write an order to a file (updated for deliveredDate)
     public static void writeOrder(String filePath, String orderNumber, String userNumber, String fullName,
                                   String phoneNumber, String address, String deliveryMethod,
-                                  String paymentMethod, String deliveryDate, ArrayList<GroceryItem> cartItems,
+                                  String paymentMethod, String deliveryDate, String confirmationDate,
+                                  String paymentStatus, String deliveryStatus, String orderStatus,
+                                  String deliveredDate, ArrayList<GroceryItem> cartItems,
                                   double totalPrice) throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -144,6 +145,11 @@ public class FileUtil {
             writer.write("deliveryMethod=" + (deliveryMethod != null ? deliveryMethod : "") + "\n");
             writer.write("paymentMethod=" + (paymentMethod != null ? paymentMethod : "") + "\n");
             writer.write("deliveryDate=" + (deliveryDate != null ? deliveryDate : "") + "\n");
+            writer.write("confirmationDate=" + (confirmationDate != null ? confirmationDate : "") + "\n");
+            writer.write("paymentStatus=" + (paymentStatus != null ? paymentStatus : "") + "\n");
+            writer.write("deliveryStatus=" + (deliveryStatus != null ? deliveryStatus : "") + "\n");
+            writer.write("orderStatus=" + (orderStatus != null ? orderStatus : "") + "\n");
+            writer.write("deliveredDate=" + (deliveredDate != null ? deliveredDate : "") + "\n");
             writer.write("[products]\n");
             for (GroceryItem item : cartItems) {
                 writer.write("productID=" + item.getProductID() + ", quantity=" + item.getQuantity() + "\n");
@@ -159,7 +165,7 @@ public class FileUtil {
         }
     }
 
-    // Read all orders from a file (updated for vertical format)
+    // Read all orders from a file (updated for deliveredDate)
     public static List<Order> readAllOrders(String ordersFilePath) {
         List<Order> orders = new ArrayList<>();
         File file = new File(ordersFilePath);
@@ -234,6 +240,9 @@ public class FileUtil {
                             case "orderStatus":
                                 order.setOrderStatus(value);
                                 break;
+                            case "deliveredDate":
+                                order.setDeliveredDate(value);
+                                break;
                             case "totalPrice":
                                 if ("total".equals(currentSection)) {
                                     order.setTotalPrice(Double.parseDouble(value));
@@ -260,7 +269,150 @@ public class FileUtil {
         return orders;
     }
 
-    // Read all users from users.txt (updated for vertical format)
+    // Read all delivered orders from deliveredOrders.txt (same format as orders.txt)
+    public static List<Order> readAllDeliveredOrders(String deliveredOrdersFilePath) {
+        List<Order> orders = new ArrayList<>();
+        File file = new File(deliveredOrdersFilePath);
+        if (!file.exists()) {
+            System.out.println("Delivered orders file not found: " + deliveredOrdersFilePath);
+            return orders;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            Order order = null;
+            List<String[]> products = null;
+            String currentSection = null;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+
+                if (line.startsWith("--- Order Start:")) {
+                    order = new Order();
+                    products = new ArrayList<>();
+                } else if (line.startsWith("--- Order End ---")) {
+                    if (order != null) {
+                        order.setProducts(products);
+                        orders.add(order);
+                    }
+                    order = null;
+                    products = null;
+                    currentSection = null;
+                } else if (line.startsWith("[") && line.endsWith("]")) {
+                    currentSection = line.substring(1, line.length() - 1);
+                } else if (order != null) {
+                    String[] parts = line.split("=", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+
+                        switch (key) {
+                            case "orderNumber":
+                                order.setOrderNumber(value);
+                                break;
+                            case "userNumber":
+                                order.setUserNumber(value);
+                                break;
+                            case "name":
+                                order.setFullName(value);
+                                break;
+                            case "phoneNum":
+                                order.setPhoneNum(value);
+                                break;
+                            case "address":
+                                order.setAddress(value);
+                                break;
+                            case "deliveryMethod":
+                                order.setDeliveryMethod(value);
+                                break;
+                            case "paymentMethod":
+                                order.setPaymentMethod(value);
+                                break;
+                            case "deliveryDate":
+                                order.setDeliveryDate(value.isEmpty() ? null : value);
+                                break;
+                            case "confirmationDate":
+                                order.setConfirmationDate(value);
+                                break;
+                            case "paymentStatus":
+                                order.setPaymentStatus(value);
+                                break;
+                            case "deliveryStatus":
+                                order.setDeliveryStatus(value);
+                                break;
+                            case "orderStatus":
+                                order.setOrderStatus(value);
+                                break;
+                            case "deliveredDate":
+                                order.setDeliveredDate(value);
+                                break;
+                            case "totalPrice":
+                                if ("total".equals(currentSection)) {
+                                    order.setTotalPrice(Double.parseDouble(value));
+                                }
+                                break;
+                            case "productID":
+                                if ("products".equals(currentSection)) {
+                                    String[] productParts = line.split(", quantity=");
+                                    if (productParts.length == 2) {
+                                        products.add(new String[]{productParts[0].split("=")[1].trim(), productParts[1].trim()});
+                                    }
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading delivered orders file " + deliveredOrdersFilePath + ": " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid number format in file " + deliveredOrdersFilePath + ": " + e.getMessage());
+        }
+        System.out.println("Read " + orders.size() + " delivered orders from " + deliveredOrdersFilePath);
+        return orders;
+    }
+
+    // Write a delivered order to deliveredOrders.txt
+    public static void writeDeliveredOrder(String filePath, Order order) throws IOException {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            System.out.println("Created new delivered orders file at: " + file.getAbsolutePath());
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            writer.write("--- Order Start: " + order.getOrderNumber() + " ---\n");
+            writer.write("orderNumber=" + order.getOrderNumber() + "\n");
+            writer.write("userNumber=" + order.getUserNumber() + "\n");
+            writer.write("name=" + (order.getFullName() != null ? order.getFullName() : "") + "\n");
+            writer.write("phoneNum=" + (order.getPhoneNum() != null ? order.getPhoneNum() : "") + "\n");
+            writer.write("address=" + (order.getAddress() != null ? order.getAddress() : "") + "\n");
+            writer.write("deliveryMethod=" + (order.getDeliveryMethod() != null ? order.getDeliveryMethod() : "") + "\n");
+            writer.write("paymentMethod=" + (order.getPaymentMethod() != null ? order.getPaymentMethod() : "") + "\n");
+            writer.write("deliveryDate=" + (order.getDeliveryDate() != null ? order.getDeliveryDate() : "") + "\n");
+            writer.write("confirmationDate=" + (order.getConfirmationDate() != null ? order.getConfirmationDate() : "") + "\n");
+            writer.write("paymentStatus=" + (order.getPaymentStatus() != null ? order.getPaymentStatus() : "") + "\n");
+            writer.write("deliveryStatus=" + (order.getDeliveryStatus() != null ? order.getDeliveryStatus() : "") + "\n");
+            writer.write("orderStatus=" + (order.getOrderStatus() != null ? order.getOrderStatus() : "") + "\n");
+            writer.write("deliveredDate=" + (order.getDeliveredDate() != null ? order.getDeliveredDate() : "") + "\n");
+            writer.write("[products]\n");
+            for (String[] product : order.getProducts()) {
+                writer.write("productID=" + product[0] + ", quantity=" + product[1] + "\n");
+            }
+            writer.write("[total]\n");
+            writer.write("totalPrice=" + String.format("%.2f", order.getTotalPrice()) + "\n");
+            writer.write("--- Order End ---\n");
+            writer.write("\n");
+            System.out.println("Wrote delivered order " + order.getOrderNumber() + " to " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error writing delivered order to file " + filePath + ": " + e.getMessage());
+            throw e;
+        }
+    }
+
+    // Read all users from users.txt (unchanged)
     public static List<User> readUsers(String filePath) {
         List<User> users = new ArrayList<>();
         File file = new File(filePath);
@@ -330,7 +482,7 @@ public class FileUtil {
         return users;
     }
 
-    // Write all users to users.txt (updated for vertical format)
+    // Write all users to users.txt (unchanged)
     public static void writeUsers(String filePath, List<User> users) throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -371,7 +523,7 @@ public class FileUtil {
         return isUnique;
     }
 
-    // Write logged-in user to loggedInUser.txt (updated for vertical format, synchronized)
+    // Write logged-in user to loggedInUser.txt (unchanged)
     public static synchronized void writeLoggedInUser(String filePath, User user) {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -405,7 +557,7 @@ public class FileUtil {
         }
     }
 
-    // Read logged-in user from loggedInUser.txt (updated for vertical format)
+    // Read logged-in user from loggedInUser.txt (unchanged)
     public static User readLoggedInUser(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -468,7 +620,7 @@ public class FileUtil {
         return null;
     }
 
-    // Clear loggedInUser.txt on logout (synchronized)
+    // Clear loggedInUser.txt on logout (unchanged)
     public static synchronized void clearLoggedInUser(String filePath) {
         File file = new File(filePath);
         if (file.exists()) {
@@ -483,7 +635,7 @@ public class FileUtil {
         }
     }
 
-    // Order class for reading orders (updated with additional fields)
+    // Order class for reading orders (updated with deliveredDate)
     public static class Order {
         private String orderNumber;
         private String userNumber;
@@ -497,6 +649,7 @@ public class FileUtil {
         private String paymentStatus;
         private String deliveryStatus;
         private String orderStatus;
+        private String deliveredDate;
         private List<String[]> products; // [productID, quantity]
         private double totalPrice;
 
@@ -524,6 +677,8 @@ public class FileUtil {
         public void setDeliveryStatus(String deliveryStatus) { this.deliveryStatus = deliveryStatus; }
         public String getOrderStatus() { return orderStatus; }
         public void setOrderStatus(String orderStatus) { this.orderStatus = orderStatus; }
+        public String getDeliveredDate() { return deliveredDate; }
+        public void setDeliveredDate(String deliveredDate) { this.deliveredDate = deliveredDate; }
         public List<String[]> getProducts() { return products; }
         public void setProducts(List<String[]> products) { this.products = products; }
         public double getTotalPrice() { return totalPrice; }

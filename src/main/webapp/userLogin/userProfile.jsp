@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
+<%@ page import="model.FileUtil.Order" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,7 @@
 <header>
   <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
   <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fas fa-shopping-basket"></i> GROCERY</a>
+  <!-- Removed search bar from header -->
 </header>
 
 <div class="content">
@@ -78,36 +81,50 @@
   <div class="profile-container">
     <div class="activity-section">
       <div class="activity-tabs">
-        <span class="tab active">Activity</span>
-        <span class="tab">Friends</span>
-        <span class="tab">Chat</span>
+        <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Active" class="tab <%= "Active".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Active</a>
+        <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Delivered" class="tab <%= "Delivered".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Delivered</a>
+        <!-- Removed Chat tab -->
+        <div class="search-bar">
+          <form action="${pageContext.request.contextPath}/UserProfileSearchServlet" method="get">
+            <input type="hidden" name="tab" value="${activeTab != null ? activeTab : 'Active'}">
+            <input type="text" name="searchQuery" placeholder="Search OrderID" value="${param.searchQuery}">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
       </div>
       <div class="activity-list">
+        <%
+          List<Order> orders = (List<Order>) request.getAttribute("orders");
+          if (orders == null || orders.isEmpty()) {
+        %>
         <div class="activity-item">
-          <i class="fas fa-comment"></i>
-          <p><%= loggedInUser.getFullName() %> posted a comment in Avengers Initiative project.</p>
-          <span class="timestamp">2014/08/08 12:08</span>
+          <p>No orders found.</p>
         </div>
+        <%
+        } else {
+          for (Order order : orders) {
+            String statusClass = "pending";
+            if ("Delivered".equalsIgnoreCase(order.getDeliveryStatus())) {
+              statusClass = "completed";
+            } else if ("Cancelled".equalsIgnoreCase(order.getOrderStatus())) {
+              statusClass = "disabled";
+            }
+        %>
         <div class="activity-item">
-          <i class="fas fa-check-circle"></i>
-          <p><%= loggedInUser.getFullName() %> changed order status from <span class="status pending">Pending</span> to <span class="status completed">Completed</span>.</p>
-          <span class="timestamp">2014/08/08 12:08</span>
+          <i class="fas fa-shopping-cart"></i>
+          <p>
+            Order <%= order.getOrderNumber() %> placed on <%= order.getConfirmationDate() %>
+            (Status: <span class="status <%= statusClass %>"><%= order.getDeliveryStatus() %></span>)
+            <% if ("Active".equals(request.getAttribute("activeTab")) && !"Cancelled".equalsIgnoreCase(order.getOrderStatus())) { %>
+            <a href="${pageContext.request.contextPath}/UserProfileServlet?action=cancelOrder&orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Cancel</a>
+            <% } %>
+          </p>
+          <span class="timestamp"><%= order.getConfirmationDate() %></span>
         </div>
-        <div class="activity-item">
-          <i class="fas fa-comment"></i>
-          <p><%= loggedInUser.getFullName() %> posted a comment in Lost In Translation opening scene discussion.</p>
-          <span class="timestamp">2014/08/08 12:08</span>
-        </div>
-        <div class="activity-item">
-          <i class="fas fa-heart"></i>
-          <p><%= loggedInUser.getFullName() %> changed order status from <span class="status on-hold">On Hold</span> to <span class="status disabled">Disabled</span>.</p>
-          <span class="timestamp">2014/08/08 12:08</span>
-        </div>
-        <div class="activity-item">
-          <i class="fas fa-comment"></i>
-          <p><%= loggedInUser.getFullName() %> posted a comment in Avengers Initiative project.</p>
-          <span class="timestamp">2014/08/08 12:08</span>
-        </div>
+        <%
+            }
+          }
+        %>
       </div>
     </div>
   </div>

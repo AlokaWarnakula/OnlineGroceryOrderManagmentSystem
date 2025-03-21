@@ -86,6 +86,15 @@
     <url-pattern>/UserProfileServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>UserProfileSearchServlet</servlet-name>
+    <servlet-class>servlet.UserProfileSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserProfileSearchServlet</servlet-name>
+    <url-pattern>/UserProfileSearchServlet</url-pattern>
+  </servlet-mapping>
+
 
   <!-- Optional: Welcome file list -->
   <welcome-file-list>

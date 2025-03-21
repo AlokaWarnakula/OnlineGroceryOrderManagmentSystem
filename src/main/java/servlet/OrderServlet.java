@@ -117,6 +117,7 @@ public class OrderServlet extends HttpServlet {
             String paymentStatus = "online card".equals(paymentMethod) ? "Paid" : "Pending";
             String deliveryStatus = "Pending";
             String orderStatus = "active";
+            String deliveredDate = ""; // Initialize as empty for now
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDERS_FILE, true))) {
                 writer.write("--- Order Start: " + orderNumber + " ---\n");
@@ -132,6 +133,7 @@ public class OrderServlet extends HttpServlet {
                 writer.write("paymentStatus=" + paymentStatus + "\n");
                 writer.write("deliveryStatus=" + deliveryStatus + "\n");
                 writer.write("orderStatus=" + orderStatus + "\n");
+                writer.write("deliveredDate=" + deliveredDate + "\n"); // Add deliveredDate field
                 writer.write("[products]\n");
                 for (GroceryItem item : cart) {
                     writer.write("productID=" + item.getProductID() + ", quantity=" + item.getQuantity() + "\n");
@@ -166,6 +168,7 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("paymentStatus", "online card".equals(request.getParameter("paymentMethod")) ? "Paid" : "Pending");
         request.setAttribute("deliveryStatus", "Pending");
         request.setAttribute("orderStatus", "active");
+        request.setAttribute("deliveredDate", ""); // Add to request attributes for consistency
 
         // Debug log to confirm userNumber before forwarding
         System.out.println("Setting userNumber in request attribute: " + userNumber);
