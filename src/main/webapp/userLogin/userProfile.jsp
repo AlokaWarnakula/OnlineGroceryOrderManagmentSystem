@@ -116,7 +116,7 @@
             Order <%= order.getOrderNumber() %> placed on <%= order.getConfirmationDate() %>
             (Status: <span class="status <%= statusClass %>"><%= order.getDeliveryStatus() %></span>)
             <% if ("Active".equals(request.getAttribute("activeTab")) && !"Cancelled".equalsIgnoreCase(order.getOrderStatus())) { %>
-            <a href="${pageContext.request.contextPath}/UserProfileServlet?action=cancelOrder&orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Cancel</a>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCancel.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Cancel</a>
             <% } %>
           </p>
           <span class="timestamp"><%= order.getConfirmationDate() %></span>

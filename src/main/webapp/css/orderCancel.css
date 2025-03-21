@@ -1,0 +1,189 @@
+/* orderCancel.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg'); /* Adjust the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 9%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Space between back-link and logo */
+    align-items: center;
+    z-index: 99;
+}
+
+.back-link {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+.back-link:hover {
+    color: #27ae60;
+}
+
+.logo {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: absolute; /* Center the logo */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+.logo i {
+    color: #27ae60;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.cancel-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 120px 9% 30px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.order-section, .cancel-form {
+    flex: 1;
+    padding: 20px;
+}
+
+.order-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.cancel-form {
+    background: #6a5acd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 30px;
+}
+
+.cancel-form .section-title {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.order-items {
+    margin-bottom: 20px;
+    max-height: 400px; /* Limit the height to enable scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.order-item-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.order-item-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.order-product-title {
+    font-size: 16px;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.order-price {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.order-total {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.total-info {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.total-info span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 12px;
+    background: #e74c3c; /* Red color for cancel button */
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #c0392b; /* Darker red on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .cancel-container {
+        flex-direction: column;
+    }
+    .order-section {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
