@@ -294,7 +294,7 @@ header {
 .activity-item .cancel-link {
     display: inline-block; /* Makes it behave like a button */
     padding: 2px 8px; /* Same padding as the status */
-    background-color: #e74c3c; /* Red background */
+    background-color: #00CED1; /* Red background */
     color: #FFF; /* White text */
     border-radius: 10px; /* Rounded corners */
     font-size: 12px; /* Same font size as the status */
@@ -304,7 +304,7 @@ header {
 }
 
 .activity-item .cancel-link:hover {
-    background-color: #c0392b; /* Darker red on hover */
+    background-color: #00B7B9; /* Darker red on hover */
 }
 
 .form-group {
