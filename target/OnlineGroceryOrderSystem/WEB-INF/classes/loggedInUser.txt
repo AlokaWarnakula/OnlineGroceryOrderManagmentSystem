@@ -1,0 +1,9 @@
+--- User Start: US021583101081 ---
+username=alokawarnakula77@gmail.com
+password=123456
+userNumber=US021583101081
+fullName=aloka warnakula nethara
+email=alokawarnakula77@gmail.com
+phoneNumber=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+--- User End ---
