@@ -222,6 +222,28 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 300px; /* Set a fixed height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to avoid content being hidden under scrollbar */
+}
+
+/* Webkit Scrollbar Styling */
+.activity-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: #8bc34a; /* Match the theme color */
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: #689f38; /* Darker shade on hover */
 }
 
 .activity-item {
@@ -331,7 +353,6 @@ header {
     font-size: 14px;
     text-align: center;
 }
-
 
 .save-btn {
     background-color: #8bc34a;

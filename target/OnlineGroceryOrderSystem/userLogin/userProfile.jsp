@@ -15,7 +15,6 @@
 <header>
   <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
   <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fas fa-shopping-basket"></i> GROCERY</a>
-  <!-- Removed search bar from header -->
 </header>
 
 <div class="content">
@@ -83,7 +82,6 @@
       <div class="activity-tabs">
         <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Active" class="tab <%= "Active".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Active</a>
         <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Delivered" class="tab <%= "Delivered".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Delivered</a>
-        <!-- Removed Chat tab -->
         <div class="search-bar">
           <form action="${pageContext.request.contextPath}/UserProfileSearchServlet" method="get">
             <input type="hidden" name="tab" value="${activeTab != null ? activeTab : 'Active'}">

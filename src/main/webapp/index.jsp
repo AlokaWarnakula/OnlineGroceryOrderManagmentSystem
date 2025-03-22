@@ -27,30 +27,47 @@
             if (loggedInUser != null) {
         %>
         <a href="${pageContext.request.contextPath}/UserProfileServlet" class="icon-link">
-            <i class="fa-solid fa-user profile-icon"></i> <!-- Added profile-icon class -->
+            <i class="fa-solid fa-user profile-icon"></i>
         </a>
         <a href="${pageContext.request.contextPath}/LogoutServlet" class="icon-link">
-            <i class="fa-solid fa-sign-out-alt logout-icon"></i> <!-- Added logout-icon class -->
+            <i class="fa-solid fa-sign-out-alt logout-icon"></i>
         </a>
         <% } else { %>
         <a href="${pageContext.request.contextPath}/userLogin/login.jsp" class="icon-link">
-            <i class="fa-solid fa-user login-icon"></i> <!-- Added login-icon class -->
+            <i class="fa-solid fa-user login-icon"></i>
         </a>
         <% } %>
     </div>
 </header>
 
-<section class="home" id="home">
-    <div class="content">
-        <h3>Fresh and <span>Organic</span> Product For You</h3>
-        <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
-        <%
-            String success = request.getParameter("success");
-            if (success != null && !success.trim().isEmpty()) {
-        %>
-        <p style="color: green;"><%= success %></p>
-        <% } %>
-        <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
+<!-- Home Banners -->
+<section class="Banner" id="Banner">
+    <div class="swiper home-slider">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <h3>Fresh <span>Vegetables</span></h3>
+                    <p>Discover the best organic produce for your healthy lifestyle.</p>
+<%--                    <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>--%>
+                    <a href="#categories" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <h3>Exclusive <span>Deals</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+<%--                    <a href="${pageContext.request.contextPath}/CartServlet?category=Deals" class="btn">Shop Now</a>--%>
+                    <a href="#categories" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </section>
 

@@ -20,3 +20,25 @@ var swiper = new Swiper(".product-slider", {
         },
     },
 });
+
+// Initialize Swiper for the home section
+const homeSwiper = new Swiper('.home-slider', {
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    speed: 800, // Smooth transition speed
+    effect: 'fade', // Add a fade effect for smoother transitions
+    fadeEffect: {
+        crossFade: true,
+    },
+});

@@ -82,8 +82,9 @@ public class CartServlet extends HttpServlet {
             String minPriceStr = request.getParameter("minPrice");
             String maxPriceStr = request.getParameter("maxPrice");
             String name = request.getParameter("name");
+            String sortBy = request.getParameter("sortBy"); // Primary sorting criterion
 
-            System.out.println("Parameters - category: " + category + ", minPrice: " + minPriceStr + ", maxPrice: " + maxPriceStr + ", name: " + name);
+            System.out.println("Parameters - category: " + category + ", minPrice: " + minPriceStr + ", maxPrice: " + maxPriceStr + ", name: " + name + ", sortBy: " + sortBy);
 
             // Default category to null (show all) if not specified or "All"
             if (category == null || category.trim().isEmpty() || category.equalsIgnoreCase("All")) {
@@ -158,9 +159,26 @@ public class CartServlet extends HttpServlet {
                 }
             }
 
-            // Call MergeServlet to sort the filtered items
+            // Step 4: Sort the filtered items using MergeServlet
             if (!filteredItems.isEmpty()) {
-                mergeServlet.sortItems(filteredItems);
+                MergeServlet.SortCriterion sortCriterion = MergeServlet.SortCriterion.NAME; // Default to name
+
+                // Map sortBy parameter to SortCriterion
+                if (sortBy != null) {
+                    switch (sortBy.toLowerCase()) {
+                        case "name":
+                            sortCriterion = MergeServlet.SortCriterion.NAME;
+                            break;
+                        case "price":
+                            sortCriterion = MergeServlet.SortCriterion.PRICE;
+                            break;
+                        default:
+                            System.out.println("Invalid sortBy parameter: " + sortBy + ", defaulting to NAME");
+                    }
+                }
+
+                System.out.println("Sorting items with sortCriterion=" + sortCriterion);
+                mergeServlet.sortItems(filteredItems, sortCriterion);
             }
 
             // Determine if we're showing search results or a specific category

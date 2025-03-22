@@ -228,10 +228,10 @@ public class UserProfileServlet extends HttpServlet {
                 });
             }
 
-            // Limit to 5 orders
-            if (orders.size() > 5) {
-                orders = orders.subList(0, 5);
-            }
+            // Removed the 5-order limit
+            // if (orders.size() > 5) {
+            //     orders = orders.subList(0, 5);
+            // }
 
             // Set the orders and active tab as request attributes
             request.setAttribute("orders", orders);
