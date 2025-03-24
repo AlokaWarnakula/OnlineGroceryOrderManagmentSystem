@@ -19,14 +19,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class OrderServlet extends HttpServlet {
-    private static final String ITEMS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/items.txt";
-    private static final String CART_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/cart.txt";
-    private static final String ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/orders.txt";
-    private static final String LOGGED_IN_USER_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/loggedInUser.txt";
+    private static final String ITEMS_FILE = "C:\\Users\\Nimesh\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\items.txt";
+    private static final String CART_FILE = "C:\\Users\\Nimesh\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\cart.txt";
+    private static final String ORDERS_FILE = "C:\\Users\\Nimesh\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\orders.txt";
+    private static final String LOGGED_IN_USER_FILE = "C:\\Users\\Nimesh\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data\\loggedInUser.txt";
 
     @Override
     public void init() throws ServletException {
-        File ordersDir = new File("/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data");
+        File ordersDir = new File("C:\\Users\\Nimesh\\IdeaProjects\\OnlineGroceryOrderManagmentSystem\\src\\main\\webapp\\data");
         if (!ordersDir.exists()) {
             ordersDir.mkdirs();
             System.out.println("Created directory: " + ordersDir.getAbsolutePath());
