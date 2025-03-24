@@ -209,6 +209,14 @@ body {
     background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/slide1.jpg') no-repeat center/cover;
 }
 
+.home-slider .swiper-slide:nth-child(3) {
+    background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/slide1.jpg') no-repeat center/cover;
+}
+
+
+
+
+
 /* Overlay for better text readability */
 .home-slider .swiper-slide::before {
     content: '';

@@ -9,7 +9,7 @@
 9,Produce,Cabbage,215.00,https://as2.ftcdn.net/jpg/02/96/54/63/1000_F_296546395_Tw3FfCAV6Ss6U0tufcgVE3Twf01LZutt.jpg,9,Only 500g
 10,Produce,Pumpkin,90.00,https://t4.ftcdn.net/jpg/00/69/19/07/360_F_69190757_a37tIJk6fq40BADf78ewXZyc0HIL3mBU.jpg,8,Only 500g
 11,Produce,Bitter Gourd,118.00,https://t4.ftcdn.net/jpg/03/89/85/85/360_F_389858598_TSNp6HysawjDuyAtRrJdru6Kf8LEZXbt.jpg,7,Only 250g
-12,Produce,Sweet Potatoes,139.00,https://img.freepik.com/premium-photo/sweet-potato-isolated-white-background_316968-712.jpg,9,Only 500g
+12,Produce,Sweet Potatoes,139.00,https://img.freepik.com/premium-photo/sweet-potato-isolated-white-background_316968-712.jpg,8,Only 500g
 13,Produce,Cauliflower,269.00,https://media.istockphoto.com/id/186828790/photo/cauliflower-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=oLL9OeCwhHolL-MqXb3CZEkL0NyE483_vEqm3Tj0Lzo=,7,Only 300g
 14,Produce,Cucumber,92.00,https://img.freepik.com/premium-photo/cucumber-vegetable-isolated-white-background_42033-135.jpg,8,Only 400g
 15,Produce,Broccoli,1458.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WtHcQiqLRmr827_jDvo_NlEceWQsQ7xRiw&s,9,Only 300g

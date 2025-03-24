@@ -115,6 +115,8 @@
             (Status: <span class="status <%= statusClass %>"><%= order.getDeliveryStatus() %></span>)
             <% if ("Active".equals(request.getAttribute("activeTab")) && !"Cancelled".equalsIgnoreCase(order.getOrderStatus())) { %>
             <a href="${pageContext.request.contextPath}/userLogin/orderCancel.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
+            <% } else if ("Delivered".equals(request.getAttribute("activeTab"))) { %>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCheck.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
             <% } %>
           </p>
           <span class="timestamp">

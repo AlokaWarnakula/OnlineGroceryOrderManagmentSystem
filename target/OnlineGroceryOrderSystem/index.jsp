@@ -62,6 +62,17 @@
                     <a href="#categories" class="btn">Shop Now</a>
                 </div>
             </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <h3>Exclusive <span>Deals</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+<%--                    <a href="${pageContext.request.contextPath}/CartServlet?category=Deals" class="btn">Shop Now</a>--%>
+                    <a href="#categories" class="btn">Shop Now</a>
+                </div>
+            </div>
+
         </div>
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
