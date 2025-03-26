@@ -24,11 +24,16 @@ public class LogoutServlet extends HttpServlet {
         // Invalidate session
         HttpSession session = request.getSession(false);
         if (session != null) {
+            // Clear admin-specific session attributes
+            session.removeAttribute("adminEmail");
+            session.removeAttribute("adminRole");
+            // Clear user-specific session attributes
+            session.removeAttribute("user");
             session.invalidate();
             System.out.println("Session invalidated during logout.");
         }
 
-        // Clear loggedInUser.txt
+        // Clear loggedInUser.txt (only used for regular users)
         try {
             FileUtil.clearLoggedInUser(LOGGED_IN_USER_FILE);
             System.out.println("Cleared loggedInUser.txt during logout.");

@@ -12,9 +12,19 @@ address=21/6/6A, somanada mawatha, pitumpe, padukka
 username=user@gmail.com
 password=123
 userNumber=US181627987900
-fullName=user 
+fullName=user
 email=user@gmail.com
 phoneNumber=0000000000
 address=xxxxxxxyyyyyyyzzzzzzzz
+--- User End ---
+
+--- User Start: US030548082274 ---
+username=jguruge2021@gmail.com
+password=123456
+userNumber=US030548082274
+fullName=jayashan guruge
+email=jguruge2021@gmail.com
+phoneNumber=0764350677
+address="Sampatha"
 --- User End ---
 

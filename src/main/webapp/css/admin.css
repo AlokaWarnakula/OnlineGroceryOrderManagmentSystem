@@ -1,0 +1,146 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally to prevent padding issues */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5F5; /* Light white background */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly brighter white for header */
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+.logo {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a; /* Green toolbox icon */
+    margin-right: 5px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover i {
+    color: #689f38; /* Darker green on hover */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #8bc34a;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-icons a {
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.header-icons .logout-icon {
+    background-color: #e74c3c; /* Red logout icon */
+    color: #fff;
+}
+
+.header-icons .logout-icon:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Profile container styling */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.user-info {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly brighter white for container */
+    border-radius: 30px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-info-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+}
+
+.user-details-left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.user-icon {
+    font-size: 60px;
+    color: #333;
+    margin-right: 20px;
+}
+
+.user-details-text p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.user-details-text p strong {
+    color: #333;
+}

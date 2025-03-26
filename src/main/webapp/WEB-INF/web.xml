@@ -96,6 +96,17 @@
   </servlet-mapping>
 
 
+  <!-- Add AdminServlet mapping -->
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Optional: Welcome file list -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

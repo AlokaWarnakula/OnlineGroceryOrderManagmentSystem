@@ -1,9 +1,0 @@
---- User Start: US181627987900 ---
-username=user@gmail.com
-password=123
-userNumber=US181627987900
-fullName=user
-email=user@gmail.com
-phoneNumber=0000000000
-address=xxxxxxxyyyyyyyzzzzzzzz
---- User End ---

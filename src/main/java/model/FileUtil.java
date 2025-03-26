@@ -523,6 +523,64 @@ public class FileUtil {
         return isUnique;
     }
 
+    // Read all admins from admins.txt (updated to remove role parsing)
+    public static List<Admin> readAdmins(String filePath) {
+        List<Admin> admins = new ArrayList<>();
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+                System.out.println("Created admins file: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println("Error creating admins file " + filePath + ": " + e.getMessage());
+                return admins;
+            }
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            Admin admin = null;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+
+                if (line.startsWith("--- User Start:")) {
+                    admin = new Admin(null, null, null);
+                } else if (line.startsWith("--- User End ---")) {
+                    if (admin != null && admin.getUsername() != null && admin.getPassword() != null) {
+                        admins.add(admin);
+                    } else {
+                        System.err.println("Incomplete admin data in " + filePath + ": " + admin);
+                    }
+                    admin = null;
+                } else if (admin != null) {
+                    String[] parts = line.split("=", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+                        switch (key) {
+                            case "username":
+                                admin.setUsername(value);
+                                break;
+                            case "password":
+                                admin.setPassword(value);
+                                break;
+                            case "userNumber":
+                                admin.setUserNumber(value);
+                                break;
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading admins file " + filePath + ": " + e.getMessage());
+            return null;
+        }
+        System.out.println("Read " + admins.size() + " admins from " + filePath);
+        return admins;
+    }
+
     // Write logged-in user to loggedInUser.txt (unchanged)
     public static synchronized void writeLoggedInUser(String filePath, User user) {
         File file = new File(filePath);

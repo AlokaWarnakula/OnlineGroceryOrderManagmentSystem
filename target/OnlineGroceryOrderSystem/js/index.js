@@ -25,7 +25,7 @@ var swiper = new Swiper(".product-slider", {
 const homeSwiper = new Swiper('.home-slider', {
     loop: true,
     autoplay: {
-        delay: 5000,
+        delay: 3500,
         disableOnInteraction: false,
     },
     pagination: {
