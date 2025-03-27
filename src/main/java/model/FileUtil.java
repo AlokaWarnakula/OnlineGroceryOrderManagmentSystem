@@ -96,7 +96,7 @@ public class FileUtil {
         }
     }
 
-    // Check if an order number is unique in the orders file
+    // Check if an order number is unique in the orders file (unchanged, already uses British spelling)
     public static boolean isOrderNumberUnique(String orderNumber, String filePath) {
         Set<String> orderNumbers = new HashSet<>();
         File file = new File(filePath);
@@ -121,7 +121,7 @@ public class FileUtil {
         return isUnique;
     }
 
-    // Write an order to a file (updated for deliveredDate)
+    // Write an order to a file (unchanged, already uses British spelling)
     public static void writeOrder(String filePath, String orderNumber, String userNumber, String fullName,
                                   String phoneNumber, String address, String deliveryMethod,
                                   String paymentMethod, String deliveryDate, String confirmationDate,
@@ -165,7 +165,7 @@ public class FileUtil {
         }
     }
 
-    // Read all orders from a file (updated for deliveredDate)
+    // Read all orders from a file (unchanged, already uses British spelling)
     public static List<Order> readAllOrders(String ordersFilePath) {
         List<Order> orders = new ArrayList<>();
         File file = new File(ordersFilePath);
@@ -269,7 +269,7 @@ public class FileUtil {
         return orders;
     }
 
-    // Read all delivered orders from deliveredOrders.txt (same format as orders.txt)
+    // Read all delivered orders from deliveredOrders.txt (unchanged, already uses British spelling)
     public static List<Order> readAllDeliveredOrders(String deliveredOrdersFilePath) {
         List<Order> orders = new ArrayList<>();
         File file = new File(deliveredOrdersFilePath);
@@ -373,7 +373,7 @@ public class FileUtil {
         return orders;
     }
 
-    // Write a delivered order to deliveredOrders.txt
+    // Write a delivered order to deliveredOrders.txt (unchanged, already uses British spelling)
     public static void writeDeliveredOrder(String filePath, Order order) throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -512,7 +512,7 @@ public class FileUtil {
         }
     }
 
-    // Check if a user number is unique in users.txt
+    // Check if a user number is unique in users.txt (unchanged)
     public static boolean isUserNumberUnique(String userNumber, String filePath) {
         List<User> users = readUsers(filePath);
         if (users == null) {
@@ -523,7 +523,7 @@ public class FileUtil {
         return isUnique;
     }
 
-    // Read all admins from admins.txt (updated to remove role parsing)
+    // Read all admins from admins.txt (updated to parse both User Start and Admin Start)
     public static List<Admin> readAdmins(String filePath) {
         List<Admin> admins = new ArrayList<>();
         File file = new File(filePath);
@@ -545,10 +545,10 @@ public class FileUtil {
                 line = line.trim();
                 if (line.isEmpty()) continue;
 
-                if (line.startsWith("--- User Start:")) {
-                    admin = new Admin(null, null, null);
-                } else if (line.startsWith("--- User End ---")) {
-                    if (admin != null && admin.getUsername() != null && admin.getPassword() != null) {
+                if (line.startsWith("--- Admin Start:") || line.startsWith("--- User Start:")) {
+                    admin = new Admin(null, null, null, null);
+                } else if (line.startsWith("--- Admin End ---") || line.startsWith("--- User End ---")) {
+                    if (admin != null && admin.getEmail() != null && admin.getPassword() != null) {
                         admins.add(admin);
                     } else {
                         System.err.println("Incomplete admin data in " + filePath + ": " + admin);
@@ -560,14 +560,19 @@ public class FileUtil {
                         String key = parts[0].trim();
                         String value = parts[1].trim();
                         switch (key) {
-                            case "username":
-                                admin.setUsername(value);
+                            case "adminNumber":
+                            case "userNumber": // Map userNumber to adminNumber for backward compatibility
+                                admin.setAdminNumber(value);
+                                break;
+                            case "email":
+                            case "username": // Map username to email for backward compatibility
+                                admin.setEmail(value);
                                 break;
                             case "password":
                                 admin.setPassword(value);
                                 break;
-                            case "userNumber":
-                                admin.setUserNumber(value);
+                            case "role":
+                                admin.setRole(value);
                                 break;
                         }
                     }
@@ -579,6 +584,39 @@ public class FileUtil {
         }
         System.out.println("Read " + admins.size() + " admins from " + filePath);
         return admins;
+    }
+
+    // Read an admin by email from admins.txt (updated to parse both User Start and Admin Start)
+    public static Admin readAdminByEmail(String email, String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            Admin admin = null;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("--- Admin Start:") || line.startsWith("--- User Start:")) {
+                    String adminNumber = null, adminEmail = null, password = null, role = null;
+                    while ((line = reader.readLine()) != null &&
+                            !(line.startsWith("--- Admin End ---") || line.startsWith("--- User End ---"))) {
+                        if (line.startsWith("adminNumber=") || line.startsWith("userNumber=")) {
+                            adminNumber = line.split("=", 2)[1];
+                        } else if (line.startsWith("email=") || line.startsWith("username=")) {
+                            adminEmail = line.split("=", 2)[1];
+                        } else if (line.startsWith("password=")) {
+                            password = line.split("=", 2)[1];
+                        } else if (line.startsWith("role=")) {
+                            role = line.split("=", 2)[1];
+                        }
+                    }
+                    if (adminEmail != null && adminEmail.equals(email)) {
+                        admin = new Admin(adminNumber, adminEmail, password, role);
+                        break;
+                    }
+                }
+            }
+            return admin;
+        } catch (IOException e) {
+            System.out.println("Error reading admin from file: " + e.getMessage());
+            return null;
+        }
     }
 
     // Write logged-in user to loggedInUser.txt (unchanged)
@@ -693,7 +731,7 @@ public class FileUtil {
         }
     }
 
-    // Order class for reading orders (updated with deliveredDate)
+    // Order class for reading orders (unchanged, already uses British spelling)
     public static class Order {
         private String orderNumber;
         private String userNumber;

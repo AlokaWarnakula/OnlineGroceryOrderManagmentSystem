@@ -1,22 +1,34 @@
 package model;
 
 public class Admin {
-    private String username;
+    private String adminNumber;
+    private String email;
     private String password;
-    private String userNumber;
+    private String role; // Added role field
 
-    public Admin(String username, String password, String userNumber) {
-        this.username = username;
+    // Constructor
+    public Admin(String adminNumber, String email, String password, String role) {
+        this.adminNumber = adminNumber;
+        this.email = email;
         this.password = password;
-        this.userNumber = userNumber;
+        this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    // Getters and Setters
+    public String getAdminNumber() {
+        return adminNumber;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminNumber(String adminNumber) {
+        this.adminNumber = adminNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -27,20 +39,16 @@ public class Admin {
         this.password = password;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "Admin{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userNumber='" + userNumber + '\'' +
-                '}';
+        return "Admin [adminNumber=" + adminNumber + ", email=" + email + ", role=" + role + "]";
     }
 }

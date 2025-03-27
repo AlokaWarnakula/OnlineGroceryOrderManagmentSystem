@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
+  <title>Admin Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
   <script src="${pageContext.request.contextPath}/js/admin.js"></script>
@@ -27,13 +27,17 @@
           // Debug: Log the session attributes
           System.out.println("adminPage.jsp - adminNumber: " + session.getAttribute("adminNumber"));
           System.out.println("adminPage.jsp - adminEmail: " + session.getAttribute("adminEmail"));
+          System.out.println("adminPage.jsp - adminRole: " + session.getAttribute("adminRole"));
         %>
         <p><strong>Admin Number:</strong> <%= session.getAttribute("adminNumber") != null ? session.getAttribute("adminNumber") : "Not available" %></p>
         <p><strong>Email:</strong> <%= session.getAttribute("adminEmail") != null ? session.getAttribute("adminEmail") : "Unknown" %></p>
+        <p><strong>Role:</strong> <%= session.getAttribute("adminRole") != null ? session.getAttribute("adminRole") : "Unknown" %></p>
       </div>
     </div>
   </div>
 </div>
+
+<h1 class="heading">Our <span>Features</span></h1>
 
 <div class="stats-container">
   <div class="stat-box">
@@ -60,6 +64,27 @@
       <%= request.getAttribute("cancelledOrders") != null ? request.getAttribute("cancelledOrders") : "0" %>
     </div>
   </div>
+</div>
+
+<!-- New Admin Dashboards Section -->
+<h1 class="heading">Admin <span>Dashboards</span></h1>
+
+<div class="dashboard-container">
+  <a href="${pageContext.request.contextPath}/adminPages/orderDashboard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Order</h2>
+    </div>
+  </a>
+  <a href="${pageContext.request.contextPath}/adminPages/stockDashboard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Stock</h2>
+    </div>
+  </a>
+  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Product</h2>
+    </div>
+  </a>
 </div>
 
 </body>

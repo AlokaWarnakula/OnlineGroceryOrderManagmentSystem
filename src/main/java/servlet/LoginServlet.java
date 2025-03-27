@@ -54,14 +54,16 @@ public class LoginServlet extends HttpServlet {
             }
 
             for (Admin admin : admins) {
-                if (admin.getUsername().equals(email) && admin.getPassword().equals(password)) {
+                if (admin.getEmail().equals(email) && admin.getPassword().equals(password)) {
                     System.out.println("Admin authenticated: " + admin.toString());
                     // Log the admin details to verify
-                    System.out.println("Setting adminNumber in session: " + admin.getUserNumber());
-                    System.out.println("Setting adminEmail in session: " + admin.getUsername());
+                    System.out.println("Setting adminNumber in session: " + admin.getAdminNumber());
+                    System.out.println("Setting adminEmail in session: " + admin.getEmail());
+                    System.out.println("Setting adminRole in session: " + admin.getRole());
                     // Store admin details in session
-                    session.setAttribute("adminEmail", admin.getUsername());
-                    session.setAttribute("adminNumber", admin.getUserNumber());
+                    session.setAttribute("adminEmail", admin.getEmail());
+                    session.setAttribute("adminNumber", admin.getAdminNumber());
+                    session.setAttribute("adminRole", admin.getRole()); // Added role to session
                     // Redirect to adminSuccessful.jsp with type=login
                     response.sendRedirect(request.getContextPath() + "/adminPages/adminSuccessful.jsp?type=login");
                     return;

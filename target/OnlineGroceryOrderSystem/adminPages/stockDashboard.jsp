@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Order Dashboard</h1>
 
 </body>
 </html>

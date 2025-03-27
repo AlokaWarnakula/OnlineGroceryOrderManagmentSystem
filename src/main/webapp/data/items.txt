@@ -35,7 +35,7 @@
 35,Proteins,Cuttle Fish,2250.00,https://meatmart.lk/wp-content/uploads/2023/06/frozen-squid-fish-500x500-1-768x768.webp.webp,10,Only 1kg
 36,Proteins,Gar fish (Habarali),3500.00,https://tropicalshellfish.com/wp-content/uploads/2021/09/habaralli.jpg,6,Only 1kg
 37,Proteins,Big Crab,4375.00,https://media.istockphoto.com/id/453209605/photo/isolated-whole-dungeness-crab.jpg?s=612x612&w=0&k=20&c=OINq23e6m6kOS20psfnnkGN-RU33L__34IH-7rG8F7Y=,9,Only 1kg
-38,Proteins,Big Anchovy,1500.00,https://www.shutterstock.com/image-photo/close-anchovies-gray-anchovy-isolated-260nw-2324973519.jpg,10,Only 1kg
+38,Proteins,Big Anchovy,1500.00,https://www.shutterstock.com/image-photo/close-anchovies-gray-anchovy-isolated-260nw-2324973519.jpg,9,Only 1kg
 39,Proteins,Tuna,3422.00,https://media.istockphoto.com/id/473827068/photo/bluefin-tuna-really-fresh-isolated-on-white.jpg?s=612x612&w=0&k=20&c=AK8XBCRAc50bDQ5YFFSayT8TbujkZPEhk5xzGHrkSIk=,10,Only 1kg
 40,Proteins,Turkey S/L,4999.00,https://img.freepik.com/premium-photo/natural-fresh-raw-turkey-meat-isolated-white-background_787273-69566.jpg,8,Only 1kg
 41,Proteins,Chicken Breast Bone,1500.00,https://growstar.in/wp-content/uploads/2021/06/146653_Shamarie84_0980102c-8cb0-43de-b35a-b49e32ad5114-min.jpeg,10,Only 1kg

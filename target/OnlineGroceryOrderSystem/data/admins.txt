@@ -2,10 +2,19 @@
 username=admin1@gmail.admin
 password=admin123
 userNumber=AD181627987901
+role=order
 --- User End ---
 
 --- User Start: AD181627987902 ---
 username=admin2@gmail.admin
 password=admin456
 userNumber=AD181627987902
+role=stock
 --- User End ---
+
+--- Admin Start: AD181627987903 ---
+adminNumber=AD181627987903
+email=admin3@gmail.admin
+password=admin789
+role=SuperAdmin
+--- Admin End ---
