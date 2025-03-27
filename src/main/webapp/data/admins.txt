@@ -1,20 +1,27 @@
---- User Start: AD181627987901 ---
-username=admin1@gmail.admin
+--- Admin Start: AD181627987901 ---
+adminNumber=AD181627987901
+email=admin1@gmail.admin
 password=admin123
-userNumber=AD181627987901
 role=order
---- User End ---
+--- Admin End ---
 
---- User Start: AD181627987902 ---
-username=admin2@gmail.admin
+--- Admin Start: AD181627987902 ---
+adminNumber=AD181627987902
+email=admin2@gmail.admin
 password=admin456
-userNumber=AD181627987902
 role=stock
---- User End ---
+--- Admin End ---
 
 --- Admin Start: AD181627987903 ---
 adminNumber=AD181627987903
 email=admin3@gmail.admin
 password=admin789
-role=SuperAdmin
+role=super
+--- Admin End ---
+
+--- Admin Start: AD181627987904 ---
+adminNumber=AD181627987904
+email=admin4@gmail.admin
+password=admin012
+role=product
 --- Admin End ---

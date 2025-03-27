@@ -153,8 +153,12 @@ header {
     border-radius: 30px;
     padding: 20px;
     width: 300px;
+    min-height: 150px; /* Ensure consistent height */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
 }
 
 .stat-header h2 {
@@ -200,21 +204,29 @@ header {
     border-radius: 30px;
     padding: 20px;
     width: 300px;
+    min-height: 150px; /* Match stat-box height */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     text-decoration: none; /* Remove underline from link */
     color: inherit; /* Inherit text color */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
 }
 
 .dashboard-box:hover {
     transform: translateY(-5px); /* Slight lift on hover */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
-    color: #8bc34a;
+}
+
+.dashboard-box:hover .dashboard-header h2 {
+    color: #8bc34a; /* Change text color to green on hover */
 }
 
 .dashboard-header h2 {
     margin: 0;
     font-size: 20px;
     color: #333;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
 }

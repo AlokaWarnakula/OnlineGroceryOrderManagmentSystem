@@ -9,6 +9,20 @@
   <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
 <body>
+<%
+  // Check if session attributes are set; if not, redirect to admin login
+  if (session.getAttribute("adminNumber") == null || session.getAttribute("adminEmail") == null) {
+    response.sendRedirect(request.getContextPath() + "/adminLogin/login.jsp?error=sessionExpired");
+    return;
+  }
+
+  // Check if statistics are set; if not, redirect to AdminServlet
+  if (request.getAttribute("totalOrders") == null || request.getAttribute("deliveredOrders") == null || request.getAttribute("cancelledOrders") == null) {
+    System.out.println("adminPage.jsp - Statistics not set, redirecting to AdminServlet");
+    response.sendRedirect(request.getContextPath() + "/AdminServlet");
+    return;
+  }
+%>
 <header>
   <div class="nav-links"></div>
   <span class="logo"><i class="fa-solid fa-toolbox"></i> Admin Dashboard</span>
@@ -45,7 +59,19 @@
       <h2>Orders</h2>
     </div>
     <div class="stat-number">
-      <%= request.getAttribute("totalOrders") != null ? request.getAttribute("totalOrders") : "0" %>
+      <%
+        Object totalOrders = request.getAttribute("totalOrders");
+        if (totalOrders == null) {
+          System.out.println("adminPage.jsp - totalOrders attribute is null");
+      %>
+      0
+      <%
+      } else {
+      %>
+      <%= totalOrders %>
+      <%
+        }
+      %>
     </div>
   </div>
   <div class="stat-box">
@@ -53,7 +79,19 @@
       <h2>Delivered</h2>
     </div>
     <div class="stat-number">
-      <%= request.getAttribute("deliveredOrders") != null ? request.getAttribute("deliveredOrders") : "0" %>
+      <%
+        Object deliveredOrders = request.getAttribute("deliveredOrders");
+        if (deliveredOrders == null) {
+          System.out.println("adminPage.jsp - deliveredOrders attribute is null");
+      %>
+      0
+      <%
+      } else {
+      %>
+      <%= deliveredOrders %>
+      <%
+        }
+      %>
     </div>
   </div>
   <div class="stat-box">
@@ -61,15 +99,37 @@
       <h2>Cancelled</h2>
     </div>
     <div class="stat-number">
-      <%= request.getAttribute("cancelledOrders") != null ? request.getAttribute("cancelledOrders") : "0" %>
+      <%
+        Object cancelledOrders = request.getAttribute("cancelledOrders");
+        if (cancelledOrders == null) {
+          System.out.println("adminPage.jsp - cancelledOrders attribute is null");
+      %>
+      0
+      <%
+      } else {
+      %>
+      <%= cancelledOrders %>
+      <%
+        }
+      %>
     </div>
   </div>
 </div>
 
-<!-- New Admin Dashboards Section -->
+<!-- Admin Dashboards Section with Role-Based Access -->
 <h1 class="heading">Admin <span>Dashboards</span></h1>
 
 <div class="dashboard-container">
+  <%
+    String adminRole = (String) session.getAttribute("adminRole");
+    if (adminRole == null) {
+      adminRole = "unknown"; // Fallback if role is not set
+      System.out.println("adminPage.jsp - adminRole is null, setting to 'unknown'");
+    }
+
+    // Super Admin can access all dashboards
+    if ("super".equalsIgnoreCase(adminRole)) {
+  %>
   <a href="${pageContext.request.contextPath}/adminPages/orderDashboard.jsp" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Order</h2>
@@ -80,11 +140,46 @@
       <h2>Stock</h2>
     </div>
   </a>
-  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/adminPages/productDashBoard.jsp" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Product</h2>
     </div>
   </a>
+  <%
+    // Order Admin can only access Order dashboard
+  } else if ("order".equalsIgnoreCase(adminRole)) {
+  %>
+  <a href="${pageContext.request.contextPath}/adminPages/orderDashboard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Order</h2>
+    </div>
+  </a>
+  <%
+    // Stock Admin can only access Stock dashboard
+  } else if ("stock".equalsIgnoreCase(adminRole)) {
+  %>
+  <a href="${pageContext.request.contextPath}/adminPages/stockDashboard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Stock</h2>
+    </div>
+  </a>
+  <%
+    // Product Admin can only access Product dashboard
+  } else if ("product".equalsIgnoreCase(adminRole)) {
+  %>
+  <a href="${pageContext.request.contextPath}/adminPages/productDashBoard.jsp" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>Product</h2>
+    </div>
+  </a>
+  <%
+  } else {
+    // If role is unknown or invalid, show a message
+  %>
+  <p>You do not have access to any dashboards.</p>
+  <%
+    }
+  %>
 </div>
 
 </body>

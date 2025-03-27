@@ -94,6 +94,13 @@
   </style>
 </head>
 <body>
+<%
+  // Check if session attributes are set; if not, redirect to login
+  if (session.getAttribute("adminNumber") == null || session.getAttribute("adminEmail") == null) {
+    response.sendRedirect(request.getContextPath() + "/adminLogin/login.jsp?error=sessionExpired");
+    return;
+  }
+%>
 <div id='card'>
   <div id='upper-side'>
     <svg version="1.1" id="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
@@ -127,15 +134,18 @@
               case "stock":
                 welcomeMessage = "Welcome, Stock Admin";
                 break;
-              case "superadmin":
-                welcomeMessage = "Welcome, SuperAdmin";
+              case "super":
+                welcomeMessage = "Welcome, Super Admin";
+                break;
+              case "product":
+                welcomeMessage = "Welcome, Product Admin";
                 break;
               default:
-                welcomeMessage = "Welcome, Admin";
+                welcomeMessage = "Welcome, Admin (Unknown Role: " + adminRole + ")";
                 break;
             }
           } else {
-            welcomeMessage = "Welcome, Admin (Role Unknown)";
+            welcomeMessage = "Welcome, Admin (Role Not Set)";
           }
       %>
       Login successful! <%= welcomeMessage %>.
@@ -144,7 +154,11 @@
       <% }
       %>
     </p>
-    <a href="${pageContext.request.contextPath}/AdminServlet" id="contBtn">Go to Admin Dashboard</a>
+    <%
+      String adminServletUrl = request.getContextPath() + "/AdminServlet";
+      System.out.println("adminSuccessful.jsp - Navigating to AdminServlet: " + adminServletUrl);
+    %>
+    <a href="<%= adminServletUrl %>" id="contBtn">Go to Admin Dashboard</a>
   </div>
 </div>
 </body>

@@ -107,3 +107,23 @@ productID=38, quantity=1
 totalPrice=1500.00
 --- Order End ---
 
+--- Order Start: OD700301789054 ---
+orderNumber=OD700301789054
+userNumber=US021583101081
+name=aloka warnakula nethara
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=cash on delivery
+deliveryDate=2025-03-27
+confirmationDate=2025-03-27 12:49:09
+paymentStatus=Pending
+deliveryStatus=Pending
+orderStatus=active
+deliveredDate=
+[products]
+productID=17, quantity=5
+[total]
+totalPrice=6000.00
+--- Order End ---
+

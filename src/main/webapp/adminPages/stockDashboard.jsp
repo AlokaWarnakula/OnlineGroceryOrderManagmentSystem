@@ -1,16 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alokawarnakula
-  Date: 2025-03-26
-  Time: 5:35 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Stock Dashboard</title>
 </head>
 <body>
-
+<%
+    String adminRole = (String) session.getAttribute("adminRole");
+    if (adminRole == null || !("super".equalsIgnoreCase(adminRole) || "stock".equalsIgnoreCase(adminRole))) {
+        response.sendRedirect(request.getContextPath() + "/AdminServlet?error=unauthorized");
+        return;
+    }
+%>
+<h1>Stock Dashboard</h1>
+<p>This is the Stock Dashboard.</p>
+<%
+    String adminServletUrl = request.getContextPath() + "/AdminServlet";
+    System.out.println("stockDashboard.jsp - Navigating back to AdminServlet: " + adminServletUrl);
+%>
+<a href="<%= adminServletUrl %>">Back to Admin Page</a>
 </body>
 </html>
