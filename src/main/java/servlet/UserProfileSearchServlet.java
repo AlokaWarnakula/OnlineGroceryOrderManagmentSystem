@@ -84,10 +84,6 @@ public class UserProfileSearchServlet extends HttpServlet {
             });
         }
 
-        // Removed the 5-order limit
-        // if (orders.size() > 5) {
-        //     orders = orders.subList(0, 5);
-        // }
 
         // Set attributes and forward to JSP
         request.setAttribute("orders", orders);

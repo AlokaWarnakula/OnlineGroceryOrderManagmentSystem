@@ -107,6 +107,19 @@
   </servlet-mapping>
 
 
+  <!-- Define the OrderAdminServlet -->
+  <servlet>
+    <servlet-name>OrderAdminServlet</servlet-name>
+    <servlet-class>servlet.OrderAdminServlet</servlet-class>
+  </servlet>
+
+  <!-- Map the OrderAdminServlet to /OrderAdminServlet URL pattern -->
+  <servlet-mapping>
+    <servlet-name>OrderAdminServlet</servlet-name>
+    <url-pattern>/OrderAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Optional: Welcome file list -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

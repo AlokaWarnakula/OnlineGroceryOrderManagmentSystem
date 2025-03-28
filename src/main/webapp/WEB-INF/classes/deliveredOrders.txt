@@ -11,7 +11,7 @@ confirmationDate=2025-03-21 13:23:38
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-21 13:23:38
+deliveredDate=2025-03-21 13:24:01
 [products]
 productID=7, quantity=1
 [total]
@@ -30,8 +30,8 @@ deliveryDate=2025-03-21
 confirmationDate=2025-03-21 13:23:29
 paymentStatus=Pending
 deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-21 16:23:29
+orderStatus=Cancelled
+deliveredDate=2025-03-21 13:24:08
 [products]
 productID=16, quantity=1
 [total]
@@ -50,8 +50,8 @@ deliveryDate=2025-03-21
 confirmationDate=2025-03-21 13:27:28
 paymentStatus=Pending
 deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-21 16:27:28
+orderStatus=Cancelled
+deliveredDate=2025-03-21 18:03:35
 [products]
 productID=22, quantity=1
 [total]
@@ -70,8 +70,8 @@ deliveryDate=2025-03-21
 confirmationDate=2025-03-21 13:27:16
 paymentStatus=Paid
 deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-21 16:27:16
+orderStatus=Cancelled
+deliveredDate=2025-03-21 18:14:11
 [products]
 productID=16, quantity=1
 [total]
@@ -90,8 +90,8 @@ deliveryDate=2025-03-21
 confirmationDate=2025-03-21 18:45:46
 paymentStatus=Pending
 deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-21 21:45:46
+orderStatus=Cancelled
+deliveredDate=2025-03-22 19:30:28
 [products]
 productID=10, quantity=1
 productID=14, quantity=1
@@ -136,8 +136,8 @@ deliveryDate=2025-03-21
 confirmationDate=2025-03-21 18:43:30
 paymentStatus=Pending
 deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-21 21:43:30
+orderStatus=Cancelled
+deliveredDate=2025-03-22 19:30:30
 [products]
 productID=16, quantity=1
 productID=18, quantity=1
@@ -160,7 +160,7 @@ confirmationDate=2025-03-22 19:31:04
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:31:04
+deliveredDate=2025-03-22 19:31:42
 [products]
 productID=13, quantity=1
 productID=8, quantity=1
@@ -181,7 +181,7 @@ confirmationDate=2025-03-22 19:31:15
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:31:15
+deliveredDate=2025-03-22 19:31:44
 [products]
 productID=20, quantity=1
 productID=22, quantity=1
@@ -202,7 +202,7 @@ confirmationDate=2025-03-22 19:33:41
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:33:41
+deliveredDate=2025-03-22 19:34:00
 [products]
 productID=31, quantity=1
 [total]
@@ -222,7 +222,7 @@ confirmationDate=2025-03-22 19:31:28
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:31:28
+deliveredDate=2025-03-22 19:34:02
 [products]
 productID=40, quantity=1
 [total]
@@ -242,7 +242,7 @@ confirmationDate=2025-03-22 19:32:53
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:32:53
+deliveredDate=2025-03-22 19:34:04
 [products]
 productID=47, quantity=1
 [total]
@@ -262,7 +262,7 @@ confirmationDate=2025-03-22 19:33:07
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:33:07
+deliveredDate=2025-03-22 19:34:06
 [products]
 productID=37, quantity=1
 [total]
@@ -282,7 +282,7 @@ confirmationDate=2025-03-22 21:45:01
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 21:45:01
+deliveredDate=2025-03-22 21:45:53
 [products]
 productID=18, quantity=1
 productID=11, quantity=1
@@ -303,7 +303,7 @@ confirmationDate=2025-03-22 21:45:25
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 21:45:25
+deliveredDate=2025-03-22 21:48:02
 [products]
 productID=44, quantity=1
 [total]
@@ -323,7 +323,7 @@ confirmationDate=2025-03-22 21:59:12
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 21:59:12
+deliveredDate=2025-03-22 22:07:46
 [products]
 productID=36, quantity=1
 [total]
@@ -343,7 +343,7 @@ confirmationDate=2025-03-22 19:33:26
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-22 19:33:26
+deliveredDate=2025-03-22 22:28:23
 [products]
 productID=34, quantity=1
 productID=36, quantity=3
@@ -364,7 +364,7 @@ confirmationDate=2025-03-26 17:26:42
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-26 17:26:42
+deliveredDate=2025-03-26 17:26:55
 [products]
 productID=17, quantity=1
 [total]
@@ -384,7 +384,7 @@ confirmationDate=2025-03-26 17:46:40
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-26 17:46:40
+deliveredDate=2025-03-26 18:03:59
 [products]
 productID=17, quantity=1
 [total]
@@ -404,15 +404,13 @@ confirmationDate=2025-03-25 16:06:12
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-25 16:06:12
+deliveredDate=2025-03-26 18:04:02
 [products]
 productID=27, quantity=8
 productID=17, quantity=1
 [total]
 totalPrice=11896.00
---- Order End ---
-
---- Order Start: OD850214594981 ---
+--- Order End ------ Order Start: OD850214594981 ---
 orderNumber=OD850214594981
 userNumber=US021583101081
 name=aloka warnakula
@@ -425,7 +423,7 @@ confirmationDate=2025-03-26 18:53:56
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-26 18:53:56
+deliveredDate=2025-03-26 18:54:29
 [products]
 productID=11, quantity=1
 [total]
@@ -445,7 +443,7 @@ confirmationDate=2025-03-26 18:58:49
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-26 18:58:49
+deliveredDate=2025-03-26 18:59:47
 [products]
 productID=6, quantity=1
 [total]
@@ -465,7 +463,7 @@ confirmationDate=2025-03-24 21:32:24
 paymentStatus=Pending
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-24 21:32:24
+deliveredDate=2025-03-27 12:17:03
 [products]
 productID=12, quantity=1
 [total]
@@ -485,49 +483,10 @@ confirmationDate=2025-03-27 13:38:56
 paymentStatus=Paid
 deliveryStatus=Cancelled
 orderStatus=Cancelled
-deliveredDate=2025-03-27 13:38:56
+deliveredDate=2025-03-27 13:39:16
 [products]
 productID=11, quantity=6
 [total]
 totalPrice=708.00
 --- Order End ---
 
---- Order Start: OD999111222333 ---
-orderNumber=OD999111222333
-userNumber=US021583101081
-name=aloka warnakula
-phoneNum=0711641638
-address=21/6/6A, somanada mawatha, pitumpe, padukka
-deliveryMethod=scheduled
-paymentMethod=online card
-deliveryDate=2025-03-27
-confirmationDate=2025-03-24 10:00:00
-paymentStatus=Paid
-deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-27 14:00:00
-[products]
-productID=5, quantity=2
-[total]
-totalPrice=300.00
---- Order End ---
-
---- Order Start: OD444555666777 ---
-orderNumber=OD444555666777
-userNumber=US181627987900
-name=user
-phoneNum=0000000000
-address=xxxxxxxyyyyyyyzzzzzzzz
-deliveryMethod=same-day
-paymentMethod=cash on delivery
-deliveryDate=2025-03-25
-confirmationDate=2025-03-25 09:30:00
-paymentStatus=Pending
-deliveryStatus=Delivered
-orderStatus=Done
-deliveredDate=2025-03-25 12:30:00
-[products]
-productID=8, quantity=1
-[total]
-totalPrice=275.00
---- Order End ---
