@@ -5,8 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Admin Dashboard</title>
+    <!-- Import Poppins font to match adminPage.css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderDashboard.css">
+    <!-- Add cache-busting query parameter to force CSS reload -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderDashboard.css?v=<%= System.currentTimeMillis() %>">
     <script src="${pageContext.request.contextPath}/js/orderDashboard.js"></script>
 </head>
 <body>
@@ -32,14 +35,14 @@
     }
 %>
 <header>
-    <div class="nav-bar">
-        <div class="nav-links">
-            <a href="${pageContext.request.contextPath}/AdminServlet" class="back-icon"><i class="fa fa-arrow-left"></i></a>
-            <a href="#" class="nav-link active" onclick="showSection('active')">Active</a>
-            <a href="#" class="nav-link" onclick="showSection('cancelled')">Cancelled</a>
-            <a href="#" class="nav-link" onclick="showSection('delivered')">Delivered</a>
-            <span class="logo"><i class="fa-solid fa-toolbox"></i> Order Admin Dashboard</span>
-        </div>
+    <div class="nav-links">
+        <a href="${pageContext.request.contextPath}/AdminServlet" class="back-icon"><i class="fa fa-arrow-left"></i></a>
+        <a href="#" class="nav-link active" onclick="showSection('active')">Active</a>
+        <a href="#" class="nav-link" onclick="showSection('delivered')">Delivered</a>
+        <a href="#" class="nav-link" onclick="showSection('cancelled')">Cancelled</a>
+    </div>
+    <div class="logo">
+        <i class="fa-solid fa-gift"></i> Order Admin Dashboard
     </div>
 </header>
 

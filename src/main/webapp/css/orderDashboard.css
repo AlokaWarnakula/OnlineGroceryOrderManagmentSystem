@@ -1,62 +1,90 @@
+/* Import Poppins font to match adminPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally to prevent padding issues */
+* {
+    box-sizing: border-box;
+}
+
 body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5F5; /* Match adminPage.css background */
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    overflow-x: hidden;
 }
 
+/* Header styling to match adminPage.css */
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav-bar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95); /* White background */
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .nav-link {
-    color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    color: #333;
     font-size: 16px;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 20px; /* Rounded edges for Active, Delivered, Cancelled buttons */
 }
 
 .nav-link:hover {
-    background-color: #555;
+    color: #8bc34a;
+    background-color: #e9ecef; /* Light gray background on hover */
 }
 
 .nav-link.active {
-    background-color: #007bff;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 20px;
+    background-color: #8bc34a; /* Green background for active tab */
+    color: white;
 }
 
 .back-icon {
-    color: white;
+    color: #333;
     text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
+    width: 40px; /* Fixed width to ensure circular shape */
+    height: 40px; /* Fixed height to ensure circular shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Apply border-radius at all times */
+    transition: background-color 0.3s ease;
 }
 
 .back-icon:hover {
-    background-color: #555;
-    border-radius: 5px;
+    background-color: #e9ecef;
 }
 
+.logo {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a; /* Green toolbox icon */
+    margin-right: 5px;
+}
+
+/* Order Section Styling */
 .order-section {
     padding: 20px;
 }
@@ -71,6 +99,7 @@ header {
 .section-header h2 {
     margin: 0;
     font-size: 24px;
+    color: #333; /* Match adminPage.css text color */
 }
 
 .search-bar {
@@ -85,6 +114,7 @@ header {
     border: 1px solid #ccc;
     border-radius: 20px;
     outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .search-bar i {
@@ -94,31 +124,41 @@ header {
 }
 
 .order-list {
-    background-color: white;
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.95); /* Match adminPage.css container background */
+    border-radius: 10px; /* Slightly larger radius for a softer look */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 15px;
 }
 
 .order-row {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 12px;
+    margin-bottom: 10px; /* Add gap between rows */
+    border-radius: 8px; /* Round the corners of each order row */
+    background-color: #fff; /* White background for each row to make rounded corners visible */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.order-row:hover {
+    /*background-color: #f8f9fa; !* Light gray background on hover *!*/
+    background-color:#dddddd ;
 }
 
 .order-row:last-child {
-    border-bottom: none;
+    margin-bottom: 0; /* Remove margin-bottom for the last row to avoid extra space */
 }
 
 .order-row i {
     margin-right: 10px;
     color: #666;
+    font-size: 18px; /* Slightly larger icon for better visibility */
 }
 
 .order-id {
     font-weight: bold;
     margin-right: 5px;
+    color: #333; /* Match adminPage.css text color */
 }
 
 .status {
@@ -145,13 +185,14 @@ header {
 
 .info-btn {
     margin-left: auto;
-    padding: 5px 10px;
+    padding: 6px 12px;
     background-color: #17a2b8;
     color: white;
     border: none;
     border-radius: 15px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .info-btn:hover {
