@@ -59,7 +59,7 @@ public class OrderServlet extends HttpServlet {
             System.out.println("Loaded cart from " + CART_FILE + ": " + cart);
         }
 
-        //// Declare variables at method scope
+        // Declare variables at method scope
         double totalPrice;
         String orderNumber;
         String deliveryDate;
