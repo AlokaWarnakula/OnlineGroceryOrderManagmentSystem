@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<h1 class="heading">Our <span>Features</span></h1>
+<h1 class="heading">Current <span> statics</span></h1>
 
 <div class="stats-container">
   <div class="stat-box">

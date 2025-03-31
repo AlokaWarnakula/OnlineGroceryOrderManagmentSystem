@@ -62,7 +62,6 @@ public class OrderServlet extends HttpServlet {
         // Declare variables at method scope
         double totalPrice;
         String orderNumber;
-        String deliveryDate;
         String userNumber;
 
         ArrayList<GroceryItem> items = FileUtil.readItems(ITEMS_FILE);
@@ -88,15 +87,8 @@ public class OrderServlet extends HttpServlet {
             String deliveryMethod = request.getParameter("deliveryMethod");
             String paymentMethod = request.getParameter("paymentMethod");
 
-            if ("same-day".equals(deliveryMethod)) {
-                deliveryDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
-            } else {
-                deliveryDate = request.getParameter("deliveryDate");
-            }
-
             if (fullName == null || phoneNumber == null || address == null ||
-                    deliveryMethod == null || paymentMethod == null ||
-                    (("scheduled".equals(deliveryMethod) || "store pickup".equals(deliveryMethod)) && (deliveryDate == null || deliveryDate.isEmpty()))) {
+                    deliveryMethod == null || paymentMethod == null) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing required fields");
                 return;
             }
@@ -116,8 +108,7 @@ public class OrderServlet extends HttpServlet {
             String confirmationDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
             String paymentStatus = "online card".equals(paymentMethod) ? "Paid" : "Pending";
             String deliveryStatus = "Pending";
-            String orderStatus = "active";
-            String deliveredDate = ""; // Initialize as empty for now
+            String orderStatus = "Pending";
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDERS_FILE, true))) {
                 writer.write("--- Order Start: " + orderNumber + " ---\n");
@@ -128,12 +119,11 @@ public class OrderServlet extends HttpServlet {
                 writer.write("address=" + (address != null ? address : "") + "\n");
                 writer.write("deliveryMethod=" + (deliveryMethod != null ? deliveryMethod : "") + "\n");
                 writer.write("paymentMethod=" + (paymentMethod != null ? paymentMethod : "") + "\n");
-                writer.write("deliveryDate=" + (deliveryDate != null ? deliveryDate : "") + "\n");
                 writer.write("confirmationDate=" + confirmationDate + "\n");
                 writer.write("paymentStatus=" + paymentStatus + "\n");
                 writer.write("deliveryStatus=" + deliveryStatus + "\n");
                 writer.write("orderStatus=" + orderStatus + "\n");
-                writer.write("deliveredDate=" + deliveredDate + "\n"); // Add deliveredDate field
+                writer.write("deliveredDate=\n"); // Add placeholder for deliveredDate
                 writer.write("[products]\n");
                 for (GroceryItem item : cart) {
                     writer.write("productID=" + item.getProductID() + ", quantity=" + item.getQuantity() + "\n");
@@ -161,14 +151,12 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("phoneNumber", request.getParameter("phoneNumber"));
         request.setAttribute("address", request.getParameter("address"));
         request.setAttribute("deliveryMethod", request.getParameter("deliveryMethod"));
-        request.setAttribute("deliveryDate", deliveryDate);
         request.setAttribute("paymentMethod", request.getParameter("paymentMethod"));
         request.setAttribute("totalPrice", String.format("%.2f", totalPrice));
         request.setAttribute("confirmationDate", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         request.setAttribute("paymentStatus", "online card".equals(request.getParameter("paymentMethod")) ? "Paid" : "Pending");
         request.setAttribute("deliveryStatus", "Pending");
-        request.setAttribute("orderStatus", "active");
-        request.setAttribute("deliveredDate", ""); // Add to request attributes for consistency
+        request.setAttribute("orderStatus", "Pending");
 
         // Debug log to confirm userNumber before forwarding
         System.out.println("Setting userNumber in request attribute: " + userNumber);

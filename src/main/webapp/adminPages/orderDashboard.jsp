@@ -33,13 +33,19 @@
         response.sendRedirect(request.getContextPath() + "/OrderAdminServlet");
         return;
     }
+
+    // Get the tab parameter from the request attribute
+    String tab = (String) request.getAttribute("tab");
+    if (tab == null || tab.trim().isEmpty()) {
+        tab = "active"; // Default to "active" if no tab is specified
+    }
 %>
 <header>
     <div class="nav-links">
         <a href="${pageContext.request.contextPath}/AdminServlet" class="back-icon"><i class="fa fa-arrow-left"></i></a>
-        <a href="#" class="nav-link active" onclick="showSection('active')">Active</a>
-        <a href="#" class="nav-link" onclick="showSection('delivered')">Delivered</a>
-        <a href="#" class="nav-link" onclick="showSection('cancelled')">Cancelled</a>
+        <a href="#" class="nav-link <%= "active".equalsIgnoreCase(tab) ? "active" : "" %>" onclick="navigateToTab('active')">Active</a>
+        <a href="#" class="nav-link <%= "delivered".equalsIgnoreCase(tab) ? "active" : "" %>" onclick="navigateToTab('delivered')">Delivered</a>
+        <a href="#" class="nav-link <%= "cancelled".equalsIgnoreCase(tab) ? "active" : "" %>" onclick="navigateToTab('cancelled')">Cancelled</a>
     </div>
     <div class="logo">
         <i class="fa-solid fa-gift"></i> Order Admin Dashboard
@@ -47,7 +53,7 @@
 </header>
 
 <!-- Active Orders Section -->
-<div id="active-section" class="order-section">
+<div id="active-section" class="order-section" style="display: <%= "active".equalsIgnoreCase(tab) ? "block" : "none" %>;">
     <div class="section-header">
         <h2>Active Orders</h2>
         <div class="search-bar">
@@ -65,7 +71,7 @@
             <i class="fa fa-shopping-cart"></i>
             <span class="order-id">Order <%= order.getOrderNumber() %></span> placed on <%= order.getConfirmationDate() != null ? order.getConfirmationDate() : "N/A" %>
             (Status: <span class="status pending">Pending</span>)
-            <button class="info-btn" onclick="showOrderDetails('<%= order.getOrderNumber() %>', 'active')">Info</button>
+            <a href="${pageContext.request.contextPath}/OrderAdminServlet?action=info&orderNumber=<%= order.getOrderNumber() %>&tab=active" class="info-btn">Info</a>
             <div class="order-details" id="details-<%= order.getOrderNumber() %>-active" style="display: none;">
                 <!-- Order details will be populated here -->
             </div>
@@ -82,7 +88,7 @@
 </div>
 
 <!-- Cancelled Orders Section -->
-<div id="cancelled-section" class="order-section" style="display: none;">
+<div id="cancelled-section" class="order-section" style="display: <%= "cancelled".equalsIgnoreCase(tab) ? "block" : "none" %>;">
     <div class="section-header">
         <h2>Cancelled Orders</h2>
         <div class="search-bar">
@@ -100,7 +106,7 @@
             <i class="fa fa-shopping-cart"></i>
             <span class="order-id">Order <%= order.getOrderNumber() %></span> cancelled on <%= order.getConfirmationDate() != null ? order.getConfirmationDate() : "N/A" %>
             (Status: <span class="status cancelled">Cancelled</span>)
-            <button class="info-btn" onclick="showOrderDetails('<%= order.getOrderNumber() %>', 'cancelled')">Info</button>
+            <a href="${pageContext.request.contextPath}/OrderAdminServlet?action=info&orderNumber=<%= order.getOrderNumber() %>&tab=cancelled" class="info-btn">Info</a>
             <div class="order-details" id="details-<%= order.getOrderNumber() %>-cancelled" style="display: none;">
                 <!-- Order details will be populated here -->
             </div>
@@ -117,7 +123,7 @@
 </div>
 
 <!-- Delivered Orders Section -->
-<div id="delivered-section" class="order-section" style="display: none;">
+<div id="delivered-section" class="order-section" style="display: <%= "delivered".equalsIgnoreCase(tab) ? "block" : "none" %>;">
     <div class="section-header">
         <h2>Delivered Orders</h2>
         <div class="search-bar">
@@ -135,7 +141,7 @@
             <i class="fa fa-shopping-cart"></i>
             <span class="order-id">Order <%= order.getOrderNumber() %></span> delivered on <%= order.getDeliveredDate() != null ? order.getDeliveredDate() : "N/A" %>
             (Status: <span class="status delivered">Delivered</span>)
-            <button class="info-btn" onclick="showOrderDetails('<%= order.getOrderNumber() %>', 'delivered')">Info</button>
+            <a href="${pageContext.request.contextPath}/OrderAdminServlet?action=info&orderNumber=<%= order.getOrderNumber() %>&tab=delivered" class="info-btn">Info</a>
             <div class="order-details" id="details-<%= order.getOrderNumber() %>-delivered" style="display: none;">
                 <!-- Order details will be populated here -->
             </div>

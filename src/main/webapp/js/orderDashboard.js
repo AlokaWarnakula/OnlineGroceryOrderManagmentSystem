@@ -1,3 +1,5 @@
+// orderDashboard.js
+
 function showSection(section) {
     // Hide all sections
     document.getElementById('active-section').style.display = 'none';
@@ -12,13 +14,13 @@ function showSection(section) {
     // Show the selected section and set the active class
     if (section === 'active') {
         document.getElementById('active-section').style.display = 'block';
-        document.querySelector('a[onclick="showSection(\'active\')"]').classList.add('active');
+        document.querySelector('a[onclick="navigateToTab(\'active\')"]').classList.add('active');
     } else if (section === 'cancelled') {
         document.getElementById('cancelled-section').style.display = 'block';
-        document.querySelector('a[onclick="showSection(\'cancelled\')"]').classList.add('active');
+        document.querySelector('a[onclick="navigateToTab(\'cancelled\')"]').classList.add('active');
     } else if (section === 'delivered') {
         document.getElementById('delivered-section').style.display = 'block';
-        document.querySelector('a[onclick="showSection(\'delivered\')"]').classList.add('active');
+        document.querySelector('a[onclick="navigateToTab(\'delivered\')"]').classList.add('active');
     }
 }
 
@@ -45,7 +47,16 @@ function showOrderDetails(orderId, section) {
     }
 }
 
-// Show the Active section by default on page load
+function navigateToTab(tab) {
+    // Update the URL with the new tab parameter and reload the page
+    window.location.href = `${window.location.pathname}?tab=${tab}`;
+}
+
+// Initialize the correct tab on page load based on the URL parameter
 document.addEventListener('DOMContentLoaded', function() {
-    showSection('active');
+    // Get the tab parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab') || 'active'; // Default to 'active' if no tab is specified
+    console.log("Initial tab from URL: " + tab);
+    showSection(tab);
 });
