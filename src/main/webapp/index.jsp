@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
-<%@ page import="model.FileUtil" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,36 +23,98 @@
     <div class="icons">
         <div class="fa-solid fa-bars" id="menu-btn"></div>
         <%
-            String basePath = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/";
-            String loggedInUserFile = basePath + "loggedInUser.txt";
             User loggedInUser = (User) session.getAttribute("user");
-            User fileUser = FileUtil.readLoggedInUser(loggedInUserFile);
-            if (loggedInUser != null || fileUser != null) {
-                if (loggedInUser == null) {
-                    loggedInUser = fileUser; // Fallback to file if session expired
-                    session.setAttribute("user", loggedInUser); // Restore session
-                }
-                FileUtil.writeLoggedInUser(loggedInUserFile, loggedInUser); // Ensure file is updated
+            if (loggedInUser != null) {
         %>
-        <a href="${pageContext.request.contextPath}/userLogin/userProfile.jsp" class="icon-link">
-            <i class="fa-solid fa-user profile-icon"></i> <!-- Added profile-icon class -->
+        <a href="${pageContext.request.contextPath}/UserProfileServlet" class="icon-link">
+            <i class="fa-solid fa-user profile-icon"></i>
         </a>
         <a href="${pageContext.request.contextPath}/LogoutServlet" class="icon-link">
-            <i class="fa-solid fa-sign-out-alt logout-icon"></i> <!-- Added logout-icon class -->
+            <i class="fa-solid fa-sign-out-alt logout-icon"></i>
         </a>
         <% } else { %>
         <a href="${pageContext.request.contextPath}/userLogin/login.jsp" class="icon-link">
-            <i class="fa-solid fa-user login-icon"></i> <!-- Added login-icon class -->
+            <i class="fa-solid fa-user login-icon"></i>
         </a>
         <% } %>
     </div>
 </header>
 
-<section class="home" id="home">
-    <div class="content">
-        <h3>Fresh and <span>Organic</span> Product For You</h3>
-        <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
-        <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
+<!-- Home Banners -->
+<section class="Banner" id="Banner">
+    <div class="swiper home-slider">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide slide" style="background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/FreshVegetables/FreshVegetablesWebBanner.png') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Vegetables</span></h3>
+                    <p>Discover the best organic produce for your healthy lifestyle.</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide slide" style="background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/slide1.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Exclusive <span>Deals</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+<%--                    <a href="${pageContext.request.contextPath}/CartServlet?category=Deals" class="btn">Shop Now</a>--%>
+                    <a href="#categories" class="btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide slide" style="background: url('https://t3.ftcdn.net/jpg/06/14/08/90/360_F_614089075_9zP2Ybcr5fwsnHCzGsPNLLkpThUru9Zq.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Proteins</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Proteins" class="btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1471438213/photo/dairy-products-bottles-of-milk-cheese-cottage-cheese-yogurt-butter-on-meadow-of-cows.jpg?s=612x612&w=0&k=20&c=hIUSgarP7-7h1KDF4AuPzzMNCPbJ5h5ofPF30G0rGhc=') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Dairy</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Dairy" class="btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide slide" style="background: url('https://t4.ftcdn.net/jpg/06/27/46/27/360_F_627462785_DyaFl6hi7cAmpmB4obBFewgFrM6A488N.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Bakery</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Bakery" class="btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1227210244/photo/flat-lay-view-at-kitchen-table-full-with-non-perishable-foods-spase-for-text.jpg?s=612x612&w=0&k=20&c=yoKYTbSTaHdBtRjgOUsDYBSB_0B10QxrR6lKH_36Hps=') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Pantry</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Pantry" class="btn">Shop Now</a>
+
+                </div>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="swiper-slide slide" style="background: url('https://as1.ftcdn.net/jpg/03/68/66/94/1000_F_368669476_Cl7gGRuBWRYnPLwwY8pBgmeH1lGvpQ1r.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Tasty <span>Snacks</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                  <a href="${pageContext.request.contextPath}/CartServlet?category=Snacks" class="btn">Shop Now</a>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </section>
 
@@ -276,4 +337,4 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/index.js"></script>
 </body>
-</html> ///
+</html>
