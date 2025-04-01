@@ -1,0 +1,216 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styling (same as orderDashboard.css) */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-icon {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-icon:hover {
+    background-color: #e9ecef;
+}
+
+.logo {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a;
+    margin-right: 5px;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px 16px 8px 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #8bc34a;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 12px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Stock Section */
+.stock-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.stock-list {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.stock-row {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.stock-row:hover {
+    background-color: #f8f9fa;
+}
+
+.stock-row:last-child {
+    margin-bottom: 0;
+}
+
+.product-id {
+    width: 10%;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-image {
+    width: 10%;
+}
+
+.item-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.product-name {
+    width: 20%;
+    color: #333;
+}
+
+.product-category {
+    width: 15%;
+    color: #666;
+}
+
+.stock-count {
+    width: 15%;
+    color: #dc3545; /* Red color for low stock */
+    font-weight: 500;
+}
+
+.stock-update-form {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stock-input {
+    width: 60%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    height: 40px;
+}
+
+.stock-input:focus {
+    border-color: #8bc34a;
+}
+
+.save-btn {
+    padding: 8px 16px;
+    background-color: #8bc34a;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #6b9e38;
+}
+
+/* Message styling for no items */
+.stock-list p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 20px 0;
+}

@@ -1,25 +1,3 @@
---- Order Start: OD405726526801 ---
-orderNumber=OD405726526801
-userNumber=US021583101081
-name=aloka warnakula
-phoneNum=0711641638
-address=21/6/6A, somanada mawatha, pitumpe, padukka
-deliveryMethod=store pickup
-paymentMethod=cash on delivery
-deliveryDate=
-confirmationDate=2025-03-30 19:47:00
-paymentStatus=Pending
-deliveryStatus=Pending
-orderStatus=Pending
-deliveredDate=
-[products]
-productID=26, quantity=1
-productID=21, quantity=1
-productID=16, quantity=3
-[total]
-totalPrice=2874.00
---- Order End ---
-
 --- Order Start: OD929166235954 ---
 orderNumber=OD929166235954
 userNumber=US021583101081
@@ -59,5 +37,45 @@ deliveredDate=
 productID=29, quantity=1
 [total]
 totalPrice=1460.00
+--- Order End ---
+
+--- Order Start: OD543785297309 ---
+orderNumber=OD543785297309
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=online card
+deliveryDate=
+confirmationDate=2025-04-01 10:24:30
+paymentStatus=Paid
+deliveryStatus=Pending
+orderStatus=Pending
+deliveredDate=
+[products]
+productID=18, quantity=4
+[total]
+totalPrice=96.00
+--- Order End ---
+
+--- Order Start: OD261952394242 ---
+orderNumber=OD261952394242
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=cash on delivery
+deliveryDate=
+confirmationDate=2025-04-01 11:28:45
+paymentStatus=Pending
+deliveryStatus=Pending
+orderStatus=Pending
+deliveredDate=
+[products]
+productID=15, quantity=1
+[total]
+totalPrice=1458.00
 --- Order End ---
 

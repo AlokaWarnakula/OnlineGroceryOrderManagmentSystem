@@ -14,16 +14,13 @@ import java.util.List;
 import java.util.Set;
 
 public class AdminServlet extends HttpServlet {
-    private String ORDERS_FILE;
-    private String DELIVERED_ORDERS_FILE;
-    private String ADMINS_FILE;
+    private static final String ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/orders.txt";
+    private static final String DELIVERED_ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/deliveredOrders.txt";
+    private static final String ADMINS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/admins.txt";
 
     @Override
     public void init() throws ServletException {
-        String basePath = getServletContext().getRealPath("/data/");
-        ORDERS_FILE = basePath + "orders.txt";
-        DELIVERED_ORDERS_FILE = basePath + "deliveredOrders.txt";
-        ADMINS_FILE = basePath + "admins.txt";
+        // Log the file paths for debugging
         System.out.println("AdminServlet initialized with ORDERS_FILE path: " + ORDERS_FILE);
         System.out.println("AdminServlet initialized with DELIVERED_ORDERS_FILE path: " + DELIVERED_ORDERS_FILE);
         System.out.println("AdminServlet initialized with ADMINS_FILE path: " + ADMINS_FILE);

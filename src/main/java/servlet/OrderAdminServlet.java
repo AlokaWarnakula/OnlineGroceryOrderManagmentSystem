@@ -20,18 +20,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderAdminServlet extends HttpServlet {
-    private String ORDERS_FILE;
-    private String DELIVERED_ORDERS_FILE;
-    private String USERS_FILE;
+    private static final String ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/orders.txt";
+    private static final String DELIVERED_ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/deliveredOrders.txt";
+    private static final String USERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/users.txt";
     private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Override
     public void init() throws ServletException {
-        String basePath = getServletContext().getRealPath("/data/");
-        ORDERS_FILE = basePath + "orders.txt";
-        DELIVERED_ORDERS_FILE = basePath + "deliveredOrders.txt";
-        USERS_FILE = basePath + "users.txt";
+        // Log the file paths for debugging
         System.out.println("OrderAdminServlet initialized with ORDERS_FILE path: " + ORDERS_FILE);
         System.out.println("OrderAdminServlet initialized with DELIVERED_ORDERS_FILE path: " + DELIVERED_ORDERS_FILE);
         System.out.println("OrderAdminServlet initialized with USERS_FILE path: " + USERS_FILE);

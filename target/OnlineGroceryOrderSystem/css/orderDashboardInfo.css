@@ -1,0 +1,375 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styling (same as orderDashboard.css) */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 20px;
+}
+
+.nav-link:hover {
+    color: #8bc34a;
+    background-color: #e9ecef;
+}
+
+.nav-link.active {
+    background-color: #8bc34a;
+    color: white;
+}
+
+.back-icon {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-icon:hover {
+    background-color: #e9ecef;
+}
+
+.logo {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a;
+    margin-right: 5px;
+}
+
+/* Info Container */
+.info-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* User Info Section */
+.user-info {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.user-info h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 60px 20px;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.user-details i {
+    font-size: 80px;
+    color: #333;
+    margin-right: 20px;
+}
+
+.user-details .details {
+    text-align: left;
+}
+
+.user-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.user-details p strong {
+    font-weight: 500;
+}
+
+/* Order Info Section */
+.order-info {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.order-items {
+    margin-bottom: 20px;
+    max-height: 300px; /* Set a maximum height for the order items container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to prevent content from touching the scrollbar */
+}
+
+/* Custom Scrollbar Styling */
+.order-items::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.order-items::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px;
+}
+
+.order-items::-webkit-scrollbar-thumb {
+    background: #8bc34a; /* Color of the scrollbar thumb */
+    border-radius: 10px;
+}
+
+.order-items::-webkit-scrollbar-thumb:hover {
+    background: #6b9e38; /* Darker color on hover */
+}
+
+/* For Firefox and other browsers that support standard scrollbar properties */
+.order-items {
+    scrollbar-width: thin; /* Make the scrollbar thinner */
+    scrollbar-color: #8bc34a #f1f1f1; /* Thumb color and track color */
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.order-item:hover {
+    background-color: #f8f9fa;
+}
+
+.order-item:last-child {
+    margin-bottom: 0;
+}
+
+.order-item-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.order-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-product-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.order-price {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.order-total {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    align-self: flex-end;
+}
+
+.total-info {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Status Update Section */
+.status-update {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.status-update h3 {
+    margin: 0 0 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+.status-update form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+.status-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-field label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.status-update select {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    color: #333;
+    transition: border-color 0.3s ease;
+    min-width: 150px; /* Ensure dropdowns have a minimum width */
+}
+
+.status-update select:focus {
+    border-color: #8bc34a;
+}
+
+.save-btn {
+    padding: 8px 16px;
+    background-color: #8bc34a;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #6b9e38;
+}
+
+/* Order Stats Section */
+.order-stats {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.order-stats h3 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stat-box {
+    flex: 1 1 150px; /* Allow boxes to grow/shrink, minimum width 150px */
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    min-width: 150px; /* Ensure boxes don't get too small */
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px; /* Slightly smaller font for label */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 16px; /* Smaller font for value to fit more boxes */
+    font-weight: 500;
+    color: #8bc34a;
+    word-wrap: break-word; /* Ensure long text wraps */
+}
+
+.stat-value.pending {
+    color: #ffcc00;
+}
+
+.stat-value.completed {
+    color: #28a745;
+}
+
+.stat-value.cancelled {
+    color: #dc3545;
+}
+
+.stat-value.delivered {
+    color: #28a745;
+}
