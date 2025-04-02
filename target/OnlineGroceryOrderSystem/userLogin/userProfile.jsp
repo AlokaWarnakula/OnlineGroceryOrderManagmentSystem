@@ -14,7 +14,8 @@
 <body>
 <header>
   <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
-  <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fas fa-shopping-basket"></i> GROCERY</a>
+  <a  class="logo"><i class="fa-solid fa-user"></i> User Profile</a>
+<%--  <a href="${pageContext.request.contextPath}/index.jsp"></a>--%>
 </header>
 
 <div class="content">
@@ -114,10 +115,18 @@
             Order <%= order.getOrderNumber() %> placed on <%= order.getConfirmationDate() %>
             (Status: <span class="status <%= statusClass %>"><%= order.getDeliveryStatus() %></span>)
             <% if ("Active".equals(request.getAttribute("activeTab")) && !"Cancelled".equalsIgnoreCase(order.getOrderStatus())) { %>
-            <a href="${pageContext.request.contextPath}/userLogin/orderCancel.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Cancel</a>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCancel.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
+            <% } else if ("Delivered".equals(request.getAttribute("activeTab"))) { %>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCheck.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
             <% } %>
           </p>
-          <span class="timestamp"><%= order.getConfirmationDate() %></span>
+          <span class="timestamp">
+            <% if ("Delivered".equals(request.getAttribute("activeTab"))) { %>
+              <%= order.getDeliveredDate() != null && !order.getDeliveredDate().isEmpty() ? order.getDeliveredDate() : "N/A" %>
+            <% } else { %>
+              <%= order.getConfirmationDate() %>
+            <% } %>
+          </span>
         </div>
         <%
             }

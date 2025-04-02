@@ -1,21 +1,81 @@
---- Order Start: OD196538863027 ---
-orderNumber=OD196538863027
+--- Order Start: OD929166235954 ---
+orderNumber=OD929166235954
 userNumber=US021583101081
 name=aloka warnakula
 phoneNum=0711641638
 address=21/6/6A, somanada mawatha, pitumpe, padukka
-deliveryMethod=scheduled
+deliveryMethod=same-day
 paymentMethod=online card
-deliveryDate=2025-03-30
-confirmationDate=2025-03-22 19:33:26
+deliveryDate=
+confirmationDate=2025-03-31 09:41:28
 paymentStatus=Paid
 deliveryStatus=Pending
-orderStatus=active
+orderStatus=Pending
 deliveredDate=
 [products]
-productID=34, quantity=1
-productID=36, quantity=3
+productID=15, quantity=1
+productID=9, quantity=1
 [total]
-totalPrice=14875.00
+totalPrice=1673.00
+--- Order End ---
+
+--- Order Start: OD092021244402 ---
+orderNumber=OD092021244402
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=online card
+deliveryDate=
+confirmationDate=2025-03-31 09:48:55
+paymentStatus=Paid
+deliveryStatus=Pending
+orderStatus=Pending
+deliveredDate=
+[products]
+productID=29, quantity=1
+[total]
+totalPrice=1460.00
+--- Order End ---
+
+--- Order Start: OD543785297309 ---
+orderNumber=OD543785297309
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=online card
+deliveryDate=
+confirmationDate=2025-04-01 10:24:30
+paymentStatus=Paid
+deliveryStatus=Pending
+orderStatus=Pending
+deliveredDate=
+[products]
+productID=18, quantity=4
+[total]
+totalPrice=96.00
+--- Order End ---
+
+--- Order Start: OD261952394242 ---
+orderNumber=OD261952394242
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=cash on delivery
+deliveryDate=
+confirmationDate=2025-04-01 11:28:45
+paymentStatus=Pending
+deliveryStatus=Pending
+orderStatus=Pending
+deliveredDate=
+[products]
+productID=15, quantity=1
+[total]
+totalPrice=1458.00
 --- Order End ---
 
