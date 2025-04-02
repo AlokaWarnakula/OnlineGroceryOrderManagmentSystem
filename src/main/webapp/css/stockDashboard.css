@@ -129,7 +129,8 @@ header {
 }
 
 .stock-row:hover {
-    background-color: #f8f9fa;
+    /*background-color: #f8f9fa;*/
+    background-color: #dddddd;
 }
 
 .stock-row:last-child {

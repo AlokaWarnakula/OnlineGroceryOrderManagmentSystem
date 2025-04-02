@@ -200,15 +200,6 @@ body {
     position: relative;
 }
 
-/* Background images for each slide */
-.home-slider .swiper-slide:nth-child(1) {
-    background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/FreshVegetables/FreshVegetablesWebBanner.png') no-repeat center/cover;
-}
-
-.home-slider .swiper-slide:nth-child(2) {
-    background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/slide1.jpg') no-repeat center/cover;
-}
-
 /* Overlay for better text readability */
 .home-slider .swiper-slide::before {
     content: '';

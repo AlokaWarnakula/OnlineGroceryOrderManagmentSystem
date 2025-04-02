@@ -140,7 +140,7 @@
       <h2>Stock</h2>
     </div>
   </a>
-  <a href="${pageContext.request.contextPath}/adminPages/productDashBoard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Product</h2>
     </div>
@@ -167,7 +167,7 @@
     // Product Admin can only access Product dashboard
   } else if ("product".equalsIgnoreCase(adminRole)) {
   %>
-  <a href="${pageContext.request.contextPath}/adminPages/productDashBoard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Product</h2>
     </div>

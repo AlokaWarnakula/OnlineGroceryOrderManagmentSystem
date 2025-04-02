@@ -131,6 +131,17 @@
   </servlet-mapping>
 
 
+  <!-- Servlet Definition for ProductAdminServlet -->
+  <servlet>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <servlet-class>servlet.ProductAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <url-pattern>/ProductAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Optional: Welcome file list -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
