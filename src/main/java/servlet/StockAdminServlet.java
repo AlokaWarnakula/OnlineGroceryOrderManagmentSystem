@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class StockServlet extends HttpServlet {
+public class StockAdminServlet extends HttpServlet {
     private static final int LOW_STOCK_THRESHOLD = 100; // Define the threshold for low stock
     private static final String ITEMS_FILE_PATH = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/items.txt";
 
@@ -83,7 +83,7 @@ public class StockServlet extends HttpServlet {
 
             // Validate input
             if (productID == null || stockCountStr == null || productID.trim().isEmpty() || stockCountStr.trim().isEmpty()) {
-                response.sendRedirect(request.getContextPath() + "/StockServlet?error=invalidInput");
+                response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=invalidInput");
                 return;
             }
 
@@ -91,11 +91,11 @@ public class StockServlet extends HttpServlet {
             try {
                 newStockCount = Integer.parseInt(stockCountStr);
                 if (newStockCount < 0) {
-                    response.sendRedirect(request.getContextPath() + "/StockServlet?error=invalidStockCount");
+                    response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=invalidStockCount");
                     return;
                 }
             } catch (NumberFormatException e) {
-                response.sendRedirect(request.getContextPath() + "/StockServlet?error=invalidStockCount");
+                response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=invalidStockCount");
                 return;
             }
 
@@ -106,7 +106,7 @@ public class StockServlet extends HttpServlet {
                 allItems = FileUtil.readItems(ITEMS_FILE_PATH);
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect(request.getContextPath() + "/StockServlet?error=readError");
+                response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=readError");
                 return;
             }
 
@@ -121,7 +121,7 @@ public class StockServlet extends HttpServlet {
             }
 
             if (!itemFound) {
-                response.sendRedirect(request.getContextPath() + "/StockServlet?error=itemNotFound");
+                response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=itemNotFound");
                 return;
             }
 
@@ -131,14 +131,14 @@ public class StockServlet extends HttpServlet {
                 FileUtil.writeItems(ITEMS_FILE_PATH, allItems);
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect(request.getContextPath() + "/StockServlet?error=writeError");
+                response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=writeError");
                 return;
             }
 
             // Redirect back to StockServlet to refresh the dashboard
-            response.sendRedirect(request.getContextPath() + "/StockServlet?success=stockUpdated");
+            response.sendRedirect(request.getContextPath() + "/StockAdminServlet?success=stockUpdated");
         } else {
-            response.sendRedirect(request.getContextPath() + "/StockServlet?error=invalidAction");
+            response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=invalidAction");
         }
     }
 }

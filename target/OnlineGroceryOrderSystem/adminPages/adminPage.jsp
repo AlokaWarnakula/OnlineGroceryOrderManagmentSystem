@@ -130,26 +130,31 @@
     // Super Admin can access all dashboards
     if ("super".equalsIgnoreCase(adminRole)) {
   %>
-  <a href="${pageContext.request.contextPath}/adminPages/orderDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/OrderAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Order</h2>
     </div>
   </a>
-  <a href="${pageContext.request.contextPath}/adminPages/stockDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/StockAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Stock</h2>
     </div>
   </a>
-  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/ProductAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Product</h2>
+    </div>
+  </a>
+  <a href="${pageContext.request.contextPath}/UserAdminServlet" class="dashboard-box">
+    <div class="dashboard-header">
+      <h2>User</h2>
     </div>
   </a>
   <%
     // Order Admin can only access Order dashboard
   } else if ("order".equalsIgnoreCase(adminRole)) {
   %>
-  <a href="${pageContext.request.contextPath}/adminPages/orderDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/OrderAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Order</h2>
     </div>
@@ -158,7 +163,7 @@
     // Stock Admin can only access Stock dashboard
   } else if ("stock".equalsIgnoreCase(adminRole)) {
   %>
-  <a href="${pageContext.request.contextPath}/adminPages/stockDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/StockAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Stock</h2>
     </div>
@@ -167,7 +172,7 @@
     // Product Admin can only access Product dashboard
   } else if ("product".equalsIgnoreCase(adminRole)) {
   %>
-  <a href="${pageContext.request.contextPath}/adminPages/productDashboard.jsp" class="dashboard-box">
+  <a href="${pageContext.request.contextPath}/ProductAdminServlet" class="dashboard-box">
     <div class="dashboard-header">
       <h2>Product</h2>
     </div>

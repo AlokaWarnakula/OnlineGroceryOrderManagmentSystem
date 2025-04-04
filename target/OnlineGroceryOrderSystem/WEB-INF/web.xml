@@ -119,15 +119,14 @@
     <url-pattern>/OrderAdminServlet</url-pattern>
   </servlet-mapping>
 
-
-  <!-- Servlet Definition for StockServlet -->
+  <!-- Servlet Definition for StockAdminServlet -->
   <servlet>
-    <servlet-name>StockServlet</servlet-name>
-    <servlet-class>servlet.StockServlet</servlet-class>
+    <servlet-name>StockAdminServlet</servlet-name>
+    <servlet-class>servlet.StockAdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StockServlet</servlet-name>
-    <url-pattern>/StockServlet</url-pattern>
+    <servlet-name>StockAdminServlet</servlet-name>
+    <url-pattern>/StockAdminServlet</url-pattern>
   </servlet-mapping>
 
 
@@ -139,6 +138,19 @@
   <servlet-mapping>
     <servlet-name>ProductAdminServlet</servlet-name>
     <url-pattern>/ProductAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Servlet Definition for UserAdminServlet -->
+  <servlet>
+    <servlet-name>UserAdminServlet</servlet-name>
+    <servlet-class>servlet.UserAdminServlet</servlet-class>
+  </servlet>
+
+  <!-- Servlet Mapping for UserAdminServlet -->
+  <servlet-mapping>
+    <servlet-name>UserAdminServlet</servlet-name>
+    <url-pattern>/UserAdminServlet</url-pattern>
   </servlet-mapping>
 
 

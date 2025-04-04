@@ -28,7 +28,7 @@
     // Get the low stock items from the request attribute
     List<GroceryItem> lowStockItems = (List<GroceryItem>) request.getAttribute("lowStockItems");
     if (lowStockItems == null) {
-        response.sendRedirect(request.getContextPath() + "/StockServlet?error=missingData");
+        response.sendRedirect(request.getContextPath() + "/StockAdminServlet?error=missingData");
         return;
     }
 %>
@@ -67,7 +67,7 @@
             <span class="product-name"><%= item.getProductName() %></span>
             <span class="product-category"><%= item.getProductCategory() %></span>
             <span class="stock-count">Stock: <%= item.getQuantity() %></span>
-            <form action="${pageContext.request.contextPath}/StockServlet" method="post" class="stock-update-form">
+            <form action="${pageContext.request.contextPath}/StockAdminServlet" method="post" class="stock-update-form">
                 <input type="hidden" name="action" value="updateStock">
                 <input type="hidden" name="productID" value="<%= item.getProductID() %>">
                 <textarea name="stockCount" placeholder="Enter new stock count" class="stock-input" required></textarea>

@@ -1,4 +1,4 @@
-1,Produce,Red Onions,250.00,https://www.shutterstock.com/image-photo/isolated-red-big-onions-white-600nw-1782386771.jpg,80,Fresh Big Onions 1kg
+1,Produce,Red Onions,250.00,https://www.shutterstock.com/image-photo/isolated-red-big-onions-white-600nw-1782386771.jpg,50,Fresh Big Onions 1kg a
 2,Produce,Coconut,230.00,https://img.freepik.com/premium-photo/coconut-isolated-white-background_252965-356.jpg,17,Fresh Coconut Price of One Unit
 3,Produce,Tomato,160.00,https://t4.ftcdn.net/jpg/00/29/78/85/360_F_29788505_PbGEDPBhQIxW2soJMOpLlYOybLrvPt2e.jpg,50,Only 500g
 4,Produce,Potatoes,190.00,https://i.pinimg.com/736x/33/7e/fa/337efa818550fce97fa5991ea513c16b.jpg,500,Only 500g
@@ -24,12 +24,12 @@
 24,Produce,Papaya,450.00,https://t3.ftcdn.net/jpg/05/13/26/84/360_F_513268409_H7YzF29YTUuJ4KvoC8VNxUM40m9PfIdx.jpg,8,Only 1.25kg
 25,Produce,Kolikuttu,140.00,https://spar2u.lk/cdn/shop/files/Kolikuttubanana.jpg?v=1739447092,8,Only 500g
 26,Produce,Imported Pomegranate,1530.00,https://media.istockphoto.com/id/940118920/photo/ripe-pomegranate-fruit-and-one-cut-in-half-with-leaf.jpg?s=612x612&w=0&k=20&c=iVTrJvW6rtFTlsWk5J3v1r1NeCgNtZMD4qDJIh3sfik=,7,Only 500g
-27,Produce,Apple,1337.00,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,0,Only 700g
+27,Produce,Apple,1337.00,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,50,Only 700g
 28,Produce,King Coconut,240.00,https://t4.ftcdn.net/jpg/05/24/15/17/360_F_524151797_uBpqhFFLGqSNHht2ORoWypI03yY5SGaN.jpg,8,Only 1Pcs
 29,Produce,Kiwi Fruit,1460.00,https://i.pinimg.com/736x/13/fe/74/13fe7434de9b4c36410744dbd843fdff.jpg,7,Only 500g
 30,Produce,Soursop,525.00,https://media.istockphoto.com/id/1369037177/photo/soursop-or-custard-apple-fruit-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=3iHof9sefP0PNUh4rnXM4hBuMS_YnOgOnNbDzap9DPU=,9,Only 1kg
 31,Pantry,Dahal,289.00,https://www.shutterstock.com/image-photo/red-lentils-isolated-on-white-600nw-2332458631.jpg,9,Only 1kg
-32,Produce,Strawberry,1290.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9KZF0L6SWyX0c6SRYlltKJZuWeHfcbbDiTw&s,0,Only 250g
+32,Produce,Strawberry,1290.00,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9KZF0L6SWyX0c6SRYlltKJZuWeHfcbbDiTw&s,32,Only 250g
 33,Proteins,Large prawns,1875.00,https://media.istockphoto.com/id/1255181693/photo/banana-prawn-or-shrimp-isolated-on-white-background-white-shrimp-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=X_sO0D9U1J98JcubDdEuR6kGOxbHZVc-OxVKeqzjXtY=,10,Only 1kg
 34,Proteins,Lobster,4375.00,https://meatmart.lk/wp-content/uploads/2023/06/Lobster-KG.webp,9,Only 1kg
 35,Proteins,Cuttle Fish,2250.00,https://meatmart.lk/wp-content/uploads/2023/06/frozen-squid-fish-500x500-1-768x768.webp.webp,9,Only 1kg
