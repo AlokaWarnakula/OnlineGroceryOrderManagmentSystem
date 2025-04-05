@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userDashboard.css?v=<%= System.currentTimeMillis() %>">
     <script src="${pageContext.request.contextPath}/js/userDashboard.js"></script>
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <header>
     <%
         String userNumber = request.getParameter("userNumber");
@@ -24,7 +27,7 @@
                 "/UserAdminServlet?action=info&userNumber=" + userNumber + "&tab=" + ("active".equalsIgnoreCase(source) ? "Active" : "Delivered") :
                 "/UserAdminServlet";
     %>
-    <a href="${pageContext.request.contextPath}<%= backLink %>" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+    <a href="${pageContext.request.contextPath}<%= backLink %>" class="back-link"><i class="fas fa-arrow-left"></i></a>
     <a class="logo"><i class="fa-solid fa-basket-shopping"></i> Order Details - Admin</a>
 </header>
 

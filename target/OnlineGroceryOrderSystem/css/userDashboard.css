@@ -8,11 +8,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -31,19 +31,21 @@ header {
 }
 
 .back-link, .nav-links .back-icon {
-    text-decoration: none;
     color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
-.back-link i, .nav-links .back-icon i {
-    margin-right: 5px;
-}
 
 .back-link:hover, .nav-links .back-icon:hover {
-    color: #8bc34a;
+    background-color: #e9ecef;
 }
 
 .logo {
@@ -256,15 +258,17 @@ header {
     color: #666; /* Placeholder text color */
 }
 
-.activity-tabs .search-bar i {
-    padding: 8px 10px; /* Reduced padding to make the button narrower */
+.activity-tabs .search-bar button {
+    padding: 2px 7px; /* Reduced padding to make the button narrower */
     background-color: #8bc34a; /* Full green background */
     color: #FFF; /* White icon */
     border: none;
     border-radius: 0 20px 20px 0; /* Rounded on the right side */
     cursor: pointer;
+    outline: none; /* Remove default outline */
     transition: background-color 0.3s ease;
 }
+
 
 .activity-tabs .search-bar i:hover {
     background-color: #689f38; /* Darker green on hover */

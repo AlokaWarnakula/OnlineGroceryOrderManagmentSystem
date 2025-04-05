@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <%
   User loggedInUser = (User) session.getAttribute("user");
   if (loggedInUser == null) {

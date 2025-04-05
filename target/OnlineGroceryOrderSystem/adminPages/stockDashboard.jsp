@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/stockDashboard.css?v=<%= System.currentTimeMillis() %>">
     <script src="${pageContext.request.contextPath}/js/stockDashboard.js"></script>
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <%
     // Check if session attributes are set; if not, redirect to admin login
     if (session.getAttribute("adminNumber") == null || session.getAttribute("adminEmail") == null) {

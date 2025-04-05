@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userDashboard.css?v=<%= System.currentTimeMillis() %>">
     <script src="${pageContext.request.contextPath}/js/userDashboard.js"></script>
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <header>
     <%
         String userNumber = request.getParameter("userNumber");

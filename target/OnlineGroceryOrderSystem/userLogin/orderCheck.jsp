@@ -29,7 +29,10 @@
         }
     </style>
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <header>
     <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Delivered" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
     <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fa-solid fa-basket-shopping"></i> Grocery</a>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,14 @@
   <title>Admin Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <%
   // Check if session attributes are set; if not, redirect to admin login
   if (session.getAttribute("adminNumber") == null || session.getAttribute("adminEmail") == null) {
@@ -51,7 +57,7 @@
   </div>
 </div>
 
-<h1 class="heading">Current <span> statics</span></h1>
+<h1 class="heading">Current <span>Statistics</span></h1>
 
 <div class="stats-container">
   <div class="stat-box">
@@ -114,6 +120,12 @@
       %>
     </div>
   </div>
+</div>
+
+<!-- Chart Section -->
+<h1 class="heading">Order <span>Trends</span></h1>
+<div class="chart-container">
+  <canvas id="ordersChart"></canvas>
 </div>
 
 <!-- Admin Dashboards Section with Role-Based Access -->
@@ -186,6 +198,101 @@
     }
   %>
 </div>
+
+<!-- JavaScript to Render the Chart -->
+<script>
+  // Dynamic data from JSP
+  const labels = [
+    <%
+        List<String> chartLabels = (List<String>) request.getAttribute("chartLabels");
+        if (chartLabels != null) {
+            for (int i = 0; i < chartLabels.size(); i++) {
+                out.print("'" + chartLabels.get(i) + "'");
+                if (i < chartLabels.size() - 1) out.print(",");
+            }
+        }
+    %>
+  ];
+  const deliveredData = [
+    <%
+        List<Integer> deliveredData = (List<Integer>) request.getAttribute("deliveredData");
+        if (deliveredData != null) {
+            for (int i = 0; i < deliveredData.size(); i++) {
+                out.print(deliveredData.get(i));
+                if (i < deliveredData.size() - 1) out.print(",");
+            }
+        }
+    %>
+  ];
+  const cancelledData = [
+    <%
+        List<Integer> cancelledData = (List<Integer>) request.getAttribute("cancelledData");
+        if (cancelledData != null) {
+            for (int i = 0; i < cancelledData.size(); i++) {
+                out.print(cancelledData.get(i));
+                if (i < cancelledData.size() - 1) out.print(",");
+            }
+        }
+    %>
+  ];
+
+  const ctx = document.getElementById('ordersChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar', // Line chart
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Delivered Orders',
+          data: deliveredData,
+          borderColor: '#2ECC71', // Darker green for the line
+          backgroundColor: 'rgba(46, 204, 113, 0.2)', // Semi-transparent fill under the line
+          fill: true, // Fill the area under the line
+          borderWidth: 2, // Thickness of the line
+          pointRadius: 4, // Size of the data points
+          pointBackgroundColor: '#2ECC71' // Color of the data points
+        },
+        {
+          label: 'Cancelled Orders',
+          data: cancelledData,
+          borderColor: '#E74C3C', // Darker red for the line
+          backgroundColor: 'rgba(231, 76, 60, 0.2)', // Semi-transparent fill under the line
+          fill: true, // Fill the area under the line
+          borderWidth: 2, // Thickness of the line
+          pointRadius: 4, // Size of the data points
+          pointBackgroundColor: '#E74C3C' // Color of the data points
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Delivered vs Cancelled Orders Over Time'
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Month'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Number of Orders'
+          },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 
 </body>
 </html>

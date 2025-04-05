@@ -9,9 +9,9 @@ import model.FileUtil;
 import model.Admin;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class AdminServlet extends HttpServlet {
     private static final String ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/orders.txt";
@@ -118,15 +118,82 @@ public class AdminServlet extends HttpServlet {
         cancelledOrders = cancelledOrderNumbers.size();
         System.out.println("AdminServlet - Unique Cancelled Orders (orderStatus=cancelled in both files): " + cancelledOrders);
 
-        // Log the counts for debugging
-        System.out.println("AdminServlet - Total Orders (non-cancelled orders in orders.txt): " + totalOrders);
-        System.out.println("AdminServlet - Delivered Orders (deliveryStatus=delivered in deliveredOrders.txt): " + deliveredCount);
-        System.out.println("AdminServlet - Cancelled Orders (unique count): " + cancelledOrders);
+        // Group delivered and cancelled orders by month for the chart
+        Map<String, Integer> deliveredByMonth = new TreeMap<>(); // TreeMap to sort by month
+        Map<String, Integer> cancelledByMonth = new TreeMap<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MMM yyyy");
 
-        // Set counts as request attributes
+        // Process delivered orders
+        if (deliveredOrders != null) {
+            for (FileUtil.Order order : deliveredOrders) {
+                String deliveryStatus = order.getDeliveryStatus() != null ? order.getDeliveryStatus().trim().toLowerCase() : null;
+                String orderStatus = order.getOrderStatus() != null ? order.getOrderStatus().trim().toLowerCase() : null;
+
+                // Use deliveredDate for delivered orders, confirmationDate for cancelled orders
+                String dateStr = "delivered".equalsIgnoreCase(deliveryStatus) ? order.getDeliveredDate() : order.getConfirmationDate();
+
+                if (dateStr != null && !dateStr.isEmpty()) {
+                    try {
+                        LocalDate date = LocalDate.parse(dateStr, formatter);
+                        String monthKey = date.format(monthFormatter); // e.g., "Jan 2025"
+
+                        if ("delivered".equalsIgnoreCase(deliveryStatus)) {
+                            deliveredByMonth.put(monthKey, deliveredByMonth.getOrDefault(monthKey, 0) + 1);
+                        } else if ("cancelled".equalsIgnoreCase(orderStatus)) {
+                            cancelledByMonth.put(monthKey, cancelledByMonth.getOrDefault(monthKey, 0) + 1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("AdminServlet - Error parsing date: " + dateStr + ", error: " + e.getMessage());
+                    }
+                }
+            }
+        }
+
+        // Process cancelled orders from orders.txt (if not already counted in deliveredOrders.txt)
+        if (orders != null) {
+            for (FileUtil.Order order : orders) {
+                String orderStatus = order.getOrderStatus() != null ? order.getOrderStatus().trim().toLowerCase() : null;
+                String dateStr = order.getConfirmationDate();
+
+                if (orderStatus != null && orderStatus.equals("cancelled") && !cancelledOrderNumbers.contains(order.getOrderNumber())) {
+                    if (dateStr != null && !dateStr.isEmpty()) {
+                        try {
+                            LocalDate date = LocalDate.parse(dateStr, formatter);
+                            String monthKey = date.format(monthFormatter); // e.g., "Jan 2025"
+                            cancelledByMonth.put(monthKey, cancelledByMonth.getOrDefault(monthKey, 0) + 1);
+                        } catch (Exception e) {
+                            System.out.println("AdminServlet - Error parsing confirmationDate: " + dateStr + ", error: " + e.getMessage());
+                        }
+                    }
+                }
+            }
+        }
+
+        // Prepare lists for the chart
+        List<String> chartLabels = new ArrayList<>(deliveredByMonth.keySet());
+        chartLabels.addAll(cancelledByMonth.keySet());
+        chartLabels = new ArrayList<>(new TreeSet<>(chartLabels)); // Remove duplicates and sort
+
+        List<Integer> deliveredData = new ArrayList<>();
+        List<Integer> cancelledData = new ArrayList<>();
+        for (String month : chartLabels) {
+            deliveredData.add(deliveredByMonth.getOrDefault(month, 0));
+            cancelledData.add(cancelledByMonth.getOrDefault(month, 0));
+        }
+
+        // Log the chart data for debugging
+        System.out.println("AdminServlet - Chart Labels: " + chartLabels);
+        System.out.println("AdminServlet - Delivered Data: " + deliveredData);
+        System.out.println("AdminServlet - Cancelled Data: " + cancelledData);
+
+        // Set counts and chart data as request attributes
         request.setAttribute("totalOrders", totalOrders);
         request.setAttribute("deliveredOrders", deliveredCount);
         request.setAttribute("cancelledOrders", cancelledOrders);
+        request.setAttribute("chartLabels", chartLabels);
+        request.setAttribute("deliveredData", deliveredData);
+        request.setAttribute("cancelledData", cancelledData);
 
         // Forward to adminPage.jsp
         System.out.println("AdminServlet - Forwarding to /adminPages/adminPage.jsp");

@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userProfile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <header>
   <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
   <a  class="logo"><i class="fa-solid fa-user"></i> User Profile</a>

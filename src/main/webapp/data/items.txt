@@ -24,7 +24,7 @@
 24,Produce,Papaya,450.00,https://t3.ftcdn.net/jpg/05/13/26/84/360_F_513268409_H7YzF29YTUuJ4KvoC8VNxUM40m9PfIdx.jpg,8,Only 1.25kg
 25,Produce,Kolikuttu,140.00,https://spar2u.lk/cdn/shop/files/Kolikuttubanana.jpg?v=1739447092,8,Only 500g
 26,Produce,Imported Pomegranate,1530.00,https://media.istockphoto.com/id/940118920/photo/ripe-pomegranate-fruit-and-one-cut-in-half-with-leaf.jpg?s=612x612&w=0&k=20&c=iVTrJvW6rtFTlsWk5J3v1r1NeCgNtZMD4qDJIh3sfik=,7,Only 500g
-27,Produce,Apple,1337.00,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,50,Only 700g
+27,Produce,Apple,1337.00,https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-red-fresh-apple-white-background-png-image_12643725.png,34,Only 700g
 28,Produce,King Coconut,240.00,https://t4.ftcdn.net/jpg/05/24/15/17/360_F_524151797_uBpqhFFLGqSNHht2ORoWypI03yY5SGaN.jpg,8,Only 1Pcs
 29,Produce,Kiwi Fruit,1460.00,https://i.pinimg.com/736x/13/fe/74/13fe7434de9b4c36410744dbd843fdff.jpg,7,Only 500g
 30,Produce,Soursop,525.00,https://media.istockphoto.com/id/1369037177/photo/soursop-or-custard-apple-fruit-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=3iHof9sefP0PNUh4rnXM4hBuMS_YnOgOnNbDzap9DPU=,9,Only 1kg
@@ -45,4 +45,5 @@
 46,Proteins,Brown Egg,55.00,https://img.freepik.com/premium-photo/chicken-egg-white-background_55716-1235.jpg,10,Only 1Pcs
 47,Proteins,White Egg,40.00,https://media.istockphoto.com/id/467061077/photo/eggs-isolated-on-a-white-background.jpg?s=612x612&w=0&k=20&c=K6RZK8UR5hzHy4auNEKHV0EdkBVnVlyLlfBflpUXP-g=,20,Only 1Pcs
 48,Proteins,Sausage,690.00,https://static.vecteezy.com/system/resources/previews/026/978/295/large_2x/grilled-pork-sausages-with-lettuce-isolated-on-white-background-photo.jpg,10,Only 500g
-41,Produce,anime,456.00,https://uchi.imgix.net/properties/anime2.png?crop=focalpoint&domain=uchi.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=558&ixlib=php-3.3.1&q=82&usm=20&w=992,20,anime watch and enjoy it.
+41,Produce,anime,456.00,https://uchi.imgix.net/properties/anime2.png?crop=focalpoint&domain=uchi.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=558&ixlib=php-3.3.1&q=82&usm=20&w=992,18,anime watch and enjoy it.
+49,Bakery,Tiara Rollo Cake,70.00,https://essstr.blob.core.windows.net/essimg/ItemAsset/Pic12171.jpg,40,25.00g Rollo Cake
