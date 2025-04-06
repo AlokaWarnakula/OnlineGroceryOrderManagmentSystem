@@ -127,19 +127,19 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
         <div class="box">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMUypuoJ7jxCE6Ltc7o0v9mHbWFLyHj55VA&s">
             <h3>Fresh And Organic</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
+            <p>Enjoy nutrient-rich, organic produce sourced from local farmers for a healthier, sustainable lifestyle.</p>
             <a href="${pageContext.request.contextPath}/ourFeatures/freshAndOrganic.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://png.pngtree.com/png-clipart/20230211/original/pngtree-free-delivery-truck-icon-png-image_8951758.png">
             <h3>Free Delivery</h3>
-            <p>"Enjoy hassle-free shopping with our free delivery service, bringing your groceries straight to your door."</p>
+            <p>Get your groceries delivered to your door for free on orders above a minimum amount.</p>
             <a href="${pageContext.request.contextPath}/ourFeatures/freeDelivery.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://img.freepik.com/free-vector/hands-holding-credit-card-mobile-phone-with-banking-app-person-paying-with-bank-card-transferring-money-shopping-online-flat-vector-illustration-payment-finance-concept_74855-24760.jpg">
             <h3>Easy Payment</h3>
-            <p>"Shop with ease using our secure and convenient payment options, designed for a seamless checkout experience."</p>
+            <p>Checkout effortlessly with secure, flexible payment options tailored for your convenience.</p>
             <a href="${pageContext.request.contextPath}/ourFeatures/easyPayment.jsp" class="btn">Read More</a>
         </div>
     </div>
@@ -295,7 +295,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
 <section class="home" id="home">
     <div class="content">
         <h3>Fresh and <span>Organic</span> Product For You</h3>
-        <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
+        <p>Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle.</p>
         <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
     </div>
 </section>
@@ -304,7 +304,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
     <div class="box-container">
         <div class="box">
             <h3><i class="fa-solid fa-basket-shopping"></i> Grocery</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium lacus porttitor placerat malesuada.</p>
+            <p>Your one-stop shop for fresh, affordable, organic groceries delivered fast.</p>
             <div class="share">
                 <a href="#" class="fa-brands fa-facebook-f"></a>
                 <a href="#" class="fa-brands fa-x-twitter"></a>
