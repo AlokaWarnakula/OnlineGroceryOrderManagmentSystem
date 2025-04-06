@@ -1,0 +1,455 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Define CSS variables */
+:root {
+    --green: green;
+    --red: #e74c3c;
+    --black: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 .1rem 1.5rem rgba(0,0,0,0.1);
+}
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Modern font, fallback to Arial */
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize; /* Match index.css global style */
+    transition: all .2s linear; /* Match index.css global transition */
+}
+
+/* Set base font size to match index.css (1rem = 10px) */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header Styles */
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 9%; /* Match index.css */
+    background-color: #fff;
+    box-shadow: var(--box-shadow); /* Match index.css */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 80px; /* Match index.css */
+}
+
+.Header .logo {
+    font-size: 2.5rem; /* Match index.css */
+    font-weight: 600;
+    color: var(--black); /* Match index.css */
+    text-decoration: none;
+}
+
+.Header .logo i {
+    margin-right: 0.5rem;
+    color: var(--green); /* Match index.css */
+}
+
+.Header .navbar {
+    display: flex;
+    gap: 2rem; /* Match index.css */
+}
+
+.Header .navbar a {
+    font-size: 1.7rem; /* Match index.css */
+    font-weight: 500;
+    color: var(--black); /* Match index.css */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.Header .navbar a:hover {
+    color: #27ae60; /* Match index.css hover color */
+}
+
+.Header .icons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem; /* Match index.css */
+    align-items: center;
+}
+
+.Header .icons .icon-link {
+    display: inline-block;
+    margin-left: 0.3rem; /* Match index.css */
+    text-decoration: none;
+    height: 4.5rem; /* Match index.css */
+    width: 4.5rem; /* Match index.css */
+    position: relative;
+}
+
+.Header .icons .icon-link i {
+    font-size: 2rem; /* Match index.css */
+    width: 4.5rem; /* Match index.css */
+    height: 4.5rem; /* Match index.css */
+    line-height: 4.5rem; /* Match index.css */
+    border-radius: 50%; /* Match index.css */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Match index.css */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Header .icons .icon-link .login-icon {
+    background-color: var(--red); /* Match index.css */
+    color: white;
+}
+
+.Header .icons .icon-link:hover .login-icon {
+    background-color: #ff7061; /* Match index.css */
+}
+
+.Header .icons .icon-link .profile-icon {
+    background-color: var(--green); /* Match index.css */
+    color: white;
+}
+
+.Header .icons .icon-link:hover .profile-icon {
+    background-color: #2ecc71; /* Match index.css */
+}
+
+.Header .icons .icon-link .logout-icon {
+    background-color: var(--red); /* Match index.css */
+    color: white;
+}
+
+.Header .icons .icon-link:hover .logout-icon {
+    background-color: #ff7061; /* Match index.css */
+}
+
+.Header .icons #menu-btn {
+    font-size: 2rem; /* Match index.css */
+    color: var(--black);
+    cursor: pointer;
+    display: none; /* Hidden by default, shown on mobile */
+    height: 4.5rem; /* Match icon size */
+    width: 4.5rem; /* Match icon size */
+    line-height: 4.5rem; /* Center icon */
+    text-align: center;
+}
+
+.Header .icons #menu-btn:hover {
+    color: var(--green); /* Match index.css hover behavior */
+}
+
+/* Responsive Header for Mobile */
+@media (max-width: 768px) {
+    .Header .icons #menu-btn {
+        display: inline-block; /* Match index.css */
+    }
+
+    .Header .navbar {
+        position: absolute;
+        top: 110%; /* Match index.css */
+        right: -110%; /* Match index.css */
+        width: 30rem; /* Match index.css */
+        background-color: #fff;
+        padding: 1rem;
+        box-shadow: var(--box-shadow); /* Match index.css */
+        border-radius: .5rem; /* Match index.css */
+        display: none;
+    }
+
+    .Header .navbar.active {
+        right: 2rem; /* Match index.css */
+        display: block; /* Match index.css */
+        transition: .4s linear; /* Match index.css */
+    }
+
+    .Header .navbar a {
+        font-size: 2rem; /* Match index.css */
+        margin: 2rem 2.5rem; /* Match index.css */
+        display: block;
+        text-align: left; /* Better alignment for mobile */
+    }
+}
+
+/* Feature Detail Section */
+.feature-detail {
+    padding: 150px 10% 80px; /* Increased padding for more space */
+    text-align: center;
+    min-height: calc(100vh - 300px); /* Adjusted to give more vertical space */
+}
+
+.feature-detail .heading {
+    font-size: 4rem; /* Increased from 2.8rem (28px) to 4rem (40px) */
+    color: #333;
+    margin-bottom: 3rem; /* Increased for better spacing */
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.feature-detail .heading span {
+    color: var(--green); /* Match index.css theme */
+}
+
+.feature-detail .content {
+    max-width: 1000px; /* Increased from 700px to 900px for a wider text area */
+    margin: 0 auto;
+    padding: 2rem; /* Added padding for internal spacing */
+    /*background: #fff; !* Added background for contrast *!*/
+    /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); !* Subtle shadow for depth *!*/
+    border-radius: 10px; /* Rounded corners for a modern look */
+}
+
+.feature-detail .content p {
+    font-size: 1.6rem; /* Increased from 1.1rem (11px) to 1.6rem (16px) */
+    color: #555;
+    margin-bottom: 2rem; /* Increased for better spacing */
+    line-height: 2; /* Increased for better readability */
+    text-align: left; /* Left-align text for better readability */
+    font-weight: 400;
+}
+
+.feature-detail .content .back-btn {
+    border: 2px solid var(--black); /* Match index.css .btn */
+    margin-top: 3rem; /* Increased for better spacing */
+    display: inline-block;
+    padding: 1rem 3.5rem; /* Slightly increased padding */
+    font-size: 1.8rem; /* Increased from 1.7rem (17px) to 1.8rem (18px) */
+    border-radius: .5rem; /* Match index.css .btn */
+    color: var(--black); /* Match index.css .btn */
+    cursor: pointer;
+    background: none; /* Match index.css .btn */
+    text-transform: capitalize; /* Already set globally */
+}
+
+.feature-detail .content .back-btn:hover {
+    background: var(--green); /* Match index.css .btn */
+    color: white; /* Match index.css .btn */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #f8f9fa;
+    padding: 3rem 5%;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.footer .box {
+    flex: 1;
+    min-width: 220px;
+    margin-bottom: 2rem;
+}
+
+.footer .box h3 {
+    font-size: 2.5rem; /* Match index.css */
+    color: var(--black); /* Match index.css */
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.footer .box h3 i {
+    margin-right: 0.5rem;
+    color: var(--green); /* Match index.css */
+}
+
+.footer .box p {
+    font-size: 1.5rem; /* Match index.css */
+    color: var(--light-color); /* Match index.css */
+    margin-bottom: 1rem;
+    line-height: 1.8; /* Match index.css */
+}
+
+.footer .box .share a {
+    font-size: 2rem; /* Match index.css */
+    color: var(--black); /* Match index.css */
+    margin-right: 1rem;
+    height: 4rem; /* Match index.css */
+    width: 4rem; /* Match index.css */
+    line-height: 4rem; /* Match index.css */
+    border-radius: .5rem; /* Match index.css */
+    background: #eee; /* Match index.css */
+    text-align: center;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.footer .box .share a:hover {
+    background: var(--green); /* Match index.css */
+    color: #fff; /* Match index.css */
+}
+
+.footer .box .links {
+    display: block;
+    font-size: 1.5rem; /* Match index.css */
+    color: var(--light-color); /* Match index.css */
+    text-decoration: none;
+    margin-bottom: 0.8rem;
+    padding: 1rem 0; /* Match index.css */
+    transition: color 0.3s ease, padding-right 0.3s ease;
+}
+
+.footer .box .links i {
+    margin-right: 0.5rem;
+    color: var(--green); /* Match index.css */
+}
+
+.footer .box .links:hover {
+    color: var(--green); /* Match index.css */
+}
+
+.footer .box .links:hover i {
+    padding-right: 2rem; /* Match index.css */
+}
+
+.footer .box .email {
+    width: 100%;
+    padding: 1rem; /* Match index.css */
+    margin: .7rem 0; /* Match index.css */
+    border-radius: .5rem; /* Match index.css */
+    background: #eee; /* Match index.css */
+    font-size: 1.6rem; /* Match index.css */
+    color: var(--black); /* Match index.css */
+}
+
+.footer .box .email::placeholder {
+    color: #999;
+}
+
+.footer .box .btn {
+    border: 2px solid var(--black); /* Match index.css .btn */
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .8rem 3rem; /* Match index.css .btn */
+    font-size: 1.7rem; /* Match index.css .btn */
+    border-radius: .5rem; /* Match index.css .btn */
+    color: var(--black); /* Match index.css .btn */
+    cursor: pointer;
+    background: none; /* Match index.css .btn */
+    text-transform: capitalize; /* Already set globally */
+}
+
+.footer .box .btn:hover {
+    background: var(--green); /* Match index.css .btn */
+    color: white; /* Match index.css .btn */
+}
+
+.footer .box .payment-img {
+    margin: 2rem; /* Match index.css */
+    height: 3rem; /* Match index.css */
+}
+
+.footer .credit {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 2rem; /* Match index.css */
+    color: var(--black); /* Match index.css */
+    border-top: 0.2rem solid rgba(0,0,0,0.1); /* Match index.css */
+    margin-top: 2rem;
+}
+
+.footer .credit span {
+    color: var(--green); /* Match index.css */
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    html {
+        font-size: 55%; /* Match index.css */
+    }
+
+    .Header {
+        padding: 2rem; /* Match index.css */
+    }
+
+    .feature-detail {
+        padding: 120px 5% 60px; /* Adjusted for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-detail {
+        padding: 100px 5% 40px; /* Further adjusted */
+    }
+
+    .feature-detail .heading {
+        font-size: 3rem; /* Adjusted from 2.2rem (22px) to 3rem (30px) */
+    }
+
+    .feature-detail .content {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 1.5rem; /* Reduced padding */
+    }
+
+    .feature-detail .content p {
+        font-size: 1.4rem; /* Adjusted from 1rem (10px) to 1.4rem (14px) */
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-detail .content .back-btn {
+        padding: .8rem 2.5rem;
+        font-size: 1.6rem; /* Adjusted from 1.5rem (15px) to 1.6rem (16px) */
+        margin-top: 2rem;
+    }
+
+    .footer .box h3 {
+        font-size: 2rem;
+    }
+
+    .footer .box p,
+    .footer .box .links {
+        font-size: 1.4rem;
+    }
+
+    .footer .box .email,
+    .footer .box .btn {
+        font-size: 1.4rem;
+        padding: .7rem 2rem;
+    }
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%; /* Match index.css */
+    }
+
+    .feature-detail .heading {
+        font-size: 2.4rem; /* Adjusted from 1.8rem (18px) to 2.4rem (24px) */
+    }
+
+    .feature-detail .content {
+        padding: 1rem;
+    }
+
+    .feature-detail .content p {
+        font-size: 1.2rem; /* Adjusted from 0.9rem (9px) to 1.2rem (12px) */
+        margin-bottom: 1.2rem;
+    }
+
+    .feature-detail .content .back-btn {
+        padding: .7rem 2rem;
+        font-size: 1.4rem; /* Adjusted from 1.4rem (14px) to 1.4rem (14px) */
+        margin-top: 1.5rem;
+    }
+
+    .footer .box .btn {
+        padding: .6rem 1.5rem;
+        font-size: 1.3rem;
+    }
+}

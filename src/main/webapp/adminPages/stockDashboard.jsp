@@ -51,7 +51,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
 <!-- Refill Stock Section -->
 <div id="stock-section" class="stock-section">
     <div class="section-header">
-        <h2>Refill Stock</h2>
+        <h2>Refill Stock - 250 Minimum</h2>
     </div>
     <div class="stock-list" id="stock-items">
         <%

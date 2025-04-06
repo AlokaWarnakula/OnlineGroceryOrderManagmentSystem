@@ -18,7 +18,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
 <header class="Header">
     <a href="#" class="logo"><i class="fa-solid fa-basket-shopping"></i> Grocery</a>
     <nav class="navbar">
-        <a href="#home">Home</a>
+        <a href="#Banner">Home</a>
         <a href="#features">Features</a>
         <a href="#Deals">Deals</a>
         <a href="#categories">Categories</a>
@@ -128,19 +128,19 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMUypuoJ7jxCE6Ltc7o0v9mHbWFLyHj55VA&s">
             <h3>Fresh And Organic</h3>
             <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <a href="${pageContext.request.contextPath}/ourFeatures/freshAndOrganic.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://png.pngtree.com/png-clipart/20230211/original/pngtree-free-delivery-truck-icon-png-image_8951758.png">
             <h3>Free Delivery</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <p>"Enjoy hassle-free shopping with our free delivery service, bringing your groceries straight to your door."</p>
+            <a href="${pageContext.request.contextPath}/ourFeatures/freeDelivery.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://img.freepik.com/free-vector/hands-holding-credit-card-mobile-phone-with-banking-app-person-paying-with-bank-card-transferring-money-shopping-online-flat-vector-illustration-payment-finance-concept_74855-24760.jpg">
             <h3>Easy Payment</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <p>"Shop with ease using our secure and convenient payment options, designed for a seamless checkout experience."</p>
+            <a href="${pageContext.request.contextPath}/ourFeatures/easyPayment.jsp" class="btn">Read More</a>
         </div>
     </div>
 </section>
