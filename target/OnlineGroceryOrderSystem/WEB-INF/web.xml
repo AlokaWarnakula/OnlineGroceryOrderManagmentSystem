@@ -154,6 +154,19 @@
   </servlet-mapping>
 
 
+  <!-- Servlet Definition for DealServlet -->
+  <servlet>
+    <servlet-name>DealServlet</servlet-name>
+    <servlet-class>servlet.DealServlet</servlet-class>
+  </servlet>
+
+  <!-- Servlet Mapping for DealServlet -->
+  <servlet-mapping>
+    <servlet-name>DealServlet</servlet-name>
+    <url-pattern>/DealServlet</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Optional: Welcome file list -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
+<%@ page import="model.GroceryItem" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,12 @@
 background: rgb(255,255,255);
 background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
 ">
+<!-- Invoke DealServlet to fetch deal products -->
+<%
+    // Call DealServlet to set the dealProducts attribute
+    request.getRequestDispatcher("/DealServlet").include(request, response);
+%>
+
 <header class="Header">
     <a href="#" class="logo"><i class="fa-solid fa-basket-shopping"></i> Grocery</a>
     <nav class="navbar">
@@ -60,11 +68,9 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
                 <div class="content">
                     <h3>Exclusive <span>Deals</span></h3>
                     <p>Save big on your favorite grocery items this week!</p>
-<%--                    <a href="${pageContext.request.contextPath}/CartServlet?category=Deals" class="btn">Shop Now</a>--%>
                     <a href="#categories" class="btn">Shop Now</a>
                 </div>
             </div>
-
             <!-- Slide 3 -->
             <div class="swiper-slide slide" style="background: url('https://t3.ftcdn.net/jpg/06/14/08/90/360_F_614089075_9zP2Ybcr5fwsnHCzGsPNLLkpThUru9Zq.jpg') no-repeat center/cover;">
                 <div class="content">
@@ -73,7 +79,6 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
                     <a href="${pageContext.request.contextPath}/CartServlet?category=Proteins" class="btn">Shop Now</a>
                 </div>
             </div>
-
             <!-- Slide 4 -->
             <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1471438213/photo/dairy-products-bottles-of-milk-cheese-cottage-cheese-yogurt-butter-on-meadow-of-cows.jpg?s=612x612&w=0&k=20&c=hIUSgarP7-7h1KDF4AuPzzMNCPbJ5h5ofPF30G0rGhc=') no-repeat center/cover;">
                 <div class="content">
@@ -82,7 +87,6 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
                     <a href="${pageContext.request.contextPath}/CartServlet?category=Dairy" class="btn">Shop Now</a>
                 </div>
             </div>
-
             <!-- Slide 5 -->
             <div class="swiper-slide slide" style="background: url('https://t4.ftcdn.net/jpg/06/27/46/27/360_F_627462785_DyaFl6hi7cAmpmB4obBFewgFrM6A488N.jpg') no-repeat center/cover;">
                 <div class="content">
@@ -91,27 +95,22 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
                     <a href="${pageContext.request.contextPath}/CartServlet?category=Bakery" class="btn">Shop Now</a>
                 </div>
             </div>
-
             <!-- Slide 6 -->
             <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1227210244/photo/flat-lay-view-at-kitchen-table-full-with-non-perishable-foods-spase-for-text.jpg?s=612x612&w=0&k=20&c=yoKYTbSTaHdBtRjgOUsDYBSB_0B10QxrR6lKH_36Hps=') no-repeat center/cover;">
                 <div class="content">
                     <h3>Fresh <span>Pantry</span> Products</h3>
                     <p>Save big on your favorite grocery items this week!</p>
                     <a href="${pageContext.request.contextPath}/CartServlet?category=Pantry" class="btn">Shop Now</a>
-
                 </div>
             </div>
-
             <!-- Slide 7 -->
             <div class="swiper-slide slide" style="background: url('https://as1.ftcdn.net/jpg/03/68/66/94/1000_F_368669476_Cl7gGRuBWRYnPLwwY8pBgmeH1lGvpQ1r.jpg') no-repeat center/cover;">
                 <div class="content">
                     <h3>Tasty <span>Snacks</span></h3>
                     <p>Save big on your favorite grocery items this week!</p>
-                  <a href="${pageContext.request.contextPath}/CartServlet?category=Snacks" class="btn">Shop Now</a>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Snacks" class="btn">Shop Now</a>
                 </div>
             </div>
-
-
         </div>
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
@@ -121,6 +120,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
     </div>
 </section>
 
+<%--features section--%>
 <section class="features" id="features">
     <h1 class="heading">Our <span>Features</span></h1>
     <div class="box-container">
@@ -145,111 +145,40 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
     </div>
 </section>
 
+<%--deals section--%>
 <section class="Deals" id="Deals">
     <h1 class="heading">New <span>Deals</span></h1>
     <div class="swiper product-slider">
         <div class="swiper-wrapper">
+            <%
+                // Retrieve the dealProducts list set by DealServlet
+                List<GroceryItem> dealProducts = (List<GroceryItem>) request.getAttribute("dealProducts");
+                if (dealProducts != null && !dealProducts.isEmpty()) {
+                    for (GroceryItem item : dealProducts) {
+            %>
             <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-1.png">
-                <h1>Fresh Orange</h1>
-                <div class="price">$4.99/- - $8.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
+                <a href="${pageContext.request.contextPath}/ProductDetailsServlet?productId=<%= item.getProductID() %>">
+                    <img src="<%= item.getProductImageLink() %>" alt="<%= item.getProductName() %>">
+                    <h1><%= item.getProductName() %></h1>
+                    <div class="price">RS.<%= String.format("%.2f", item.getProductPrice()) %>/-</div>
+                </a>
             </div>
+            <%
+                }
+            } else {
+            %>
             <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-2.png">
-                <h1>Fresh Onion</h1>
-                <div class="price">$2.99/- - $5.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
+                <h1>No Deals Available</h1>
             </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-3.png">
-                <h1>Fresh Meat</h1>
-                <div class="price">$9.99/- - $14.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-4.png">
-                <h1>Fresh Cabbage</h1>
-                <div class="price">$3.99/- - $6.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-5.png">
-                <h1>Fresh Potato</h1>
-                <div class="price">$2.99/- - $5.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-6.png">
-                <h1>Fresh Avocado</h1>
-                <div class="price">$3.99/- - $4.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-7.png">
-                <h1>Fresh Carrot</h1>
-                <div class="price">$3.99/- - $6.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-8.png">
-                <h1>Fresh Lemon</h1>
-                <div class="price">$0.99/- - $2.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
+            <%
+                }
+            %>
         </div>
         <div class="swiper-pagination"></div>
     </div>
 </section>
 
+<%--category section--%>
 <section class="categories" id="categories">
     <h1 class="heading">Product <span>Category</span></h1>
     <div class="box-container">
@@ -321,10 +250,10 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
         </div>
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Home</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Features</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Deals</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Categories</a>
+            <a href="#Banner" class="links"><i class="fa-solid fa-arrow-right"></i> Home</a>
+            <a href="#features" class="links"><i class="fa-solid fa-arrow-right"></i> Features</a>
+            <a href="#Deals" class="links"><i class="fa-solid fa-arrow-right"></i> Deals</a>
+            <a href="#categories" class="links"><i class="fa-solid fa-arrow-right"></i> Categories</a>
         </div>
         <div class="box">
             <h3>News Letter</h3>

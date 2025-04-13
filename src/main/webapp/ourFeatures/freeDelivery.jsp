@@ -58,7 +58,7 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 
   <div class="box-container">
     <div class="box">
       <h3><i class="fa-solid fa-basket-shopping"></i> Grocery</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium lacus porttitor placerat malesuada.</p>
+      <p>Your one-stop shop for fresh, affordable, organic groceries delivered fast.</p>
       <div class="share">
         <a href="#" class="fa-brands fa-facebook-f"></a>
         <a href="#" class="fa-brands fa-x-twitter"></a>

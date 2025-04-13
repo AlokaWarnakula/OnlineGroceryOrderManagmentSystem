@@ -2,12 +2,14 @@ var swiper = new Swiper(".product-slider", {
     loop: true,
     spaceBetween: 20,
     autoplay: {
-        delay: 3500,
+        delay: 2500,
         disableOnInteraction: false,
     },
     pagination: {
         el: ".swiper-pagination",
+        clickable: true,
     },
+
     breakpoints: {
         0: {
             slidesPerView: 1,

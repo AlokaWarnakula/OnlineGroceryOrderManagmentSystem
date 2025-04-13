@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class StockAdminServlet extends HttpServlet {
-    private static final int LOW_STOCK_THRESHOLD = 100; // Define the threshold for low stock
+    private static final int LOW_STOCK_THRESHOLD = 250; // Define the threshold for low stock
     private static final String ITEMS_FILE_PATH = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/items.txt";
 
     @Override

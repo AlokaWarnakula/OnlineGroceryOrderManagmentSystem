@@ -739,3 +739,44 @@ productID=3, quantity=20
 totalPrice=14810.00
 --- Order End ---
 
+--- Order Start: OD929166235954 ---
+orderNumber=OD929166235954
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=same-day
+paymentMethod=online card
+deliveryDate=
+confirmationDate=2025-03-31 09:41:28
+paymentStatus=Completed
+deliveryStatus=Delivered
+orderStatus=delivered
+deliveredDate=2025-04-08 08:36:05
+[products]
+productID=15, quantity=1
+productID=9, quantity=1
+[total]
+totalPrice=1673.00
+--- Order End ---
+
+--- Order Start: OD997468229137 ---
+orderNumber=OD997468229137
+userNumber=US021583101081
+name=aloka warnakula
+phoneNum=0711641638
+address=21/6/6A, somanada mawatha, pitumpe, padukka
+deliveryMethod=store pickup
+paymentMethod=cash on delivery
+deliveryDate=
+confirmationDate=2025-04-13 18:41:19
+paymentStatus=Completed
+deliveryStatus=Delivered
+orderStatus=delivered
+deliveredDate=2025-04-13 18:42:11
+[products]
+productID=27, quantity=7
+[total]
+totalPrice=9359.00
+--- Order End ---
+
