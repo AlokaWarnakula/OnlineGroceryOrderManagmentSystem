@@ -1,0 +1,3 @@
+1,Produce,Apple,200.00,https://st.depositphotos.com/1002351/1943/i/950/depositphotos_19439353-stock-photo-red-apple.jpg,10,Fresh and crisp apples perfect for snacking or baking
+27,Produce,Orange,70.00,https://media.istockphoto.com/id/1194662606/photo/orange-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=612x612&w=0&k=20&c=rhITc7KJiHKvRe_aVnC_3Tjae4B67MrvAcH6HpxC8xM=,10,Sweet and tasty fucker
+2,Produce,Banana,450.00,https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg,1,Sweet and ripe bananas great for a quick energy boost
