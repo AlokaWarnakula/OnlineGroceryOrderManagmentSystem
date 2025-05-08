@@ -8,11 +8,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -222,6 +222,28 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 300px; /* Set a fixed height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to avoid content being hidden under scrollbar */
+}
+
+/* Webkit Scrollbar Styling */
+.activity-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: #8bc34a; /* Match the theme color */
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: #689f38; /* Darker shade on hover */
 }
 
 .activity-item {
@@ -272,7 +294,7 @@ header {
 .activity-item .cancel-link {
     display: inline-block; /* Makes it behave like a button */
     padding: 2px 8px; /* Same padding as the status */
-    background-color: #e74c3c; /* Red background */
+    background-color: #00CED1; /* Red background */
     color: #FFF; /* White text */
     border-radius: 10px; /* Rounded corners */
     font-size: 12px; /* Same font size as the status */
@@ -282,7 +304,7 @@ header {
 }
 
 .activity-item .cancel-link:hover {
-    background-color: #c0392b; /* Darker red on hover */
+    background-color: #00B7B9; /* Darker red on hover */
 }
 
 .form-group {
@@ -331,7 +353,6 @@ header {
     font-size: 14px;
     text-align: center;
 }
-
 
 .save-btn {
     background-color: #8bc34a;

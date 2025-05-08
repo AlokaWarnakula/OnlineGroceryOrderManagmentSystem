@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
+<%@ page import="model.GroceryItem" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +13,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
+<!-- Invoke DealServlet to fetch deal products -->
+<%
+    // Call DealServlet to set the dealProducts attribute
+    request.getRequestDispatcher("/DealServlet").include(request, response);
+%>
+
 <header class="Header">
     <a href="#" class="logo"><i class="fa-solid fa-basket-shopping"></i> Grocery</a>
     <nav class="navbar">
-        <a href="#home">Home</a>
+        <a href="#Banner">Home</a>
         <a href="#features">Features</a>
         <a href="#Deals">Deals</a>
         <a href="#categories">Categories</a>
@@ -27,162 +38,147 @@
             if (loggedInUser != null) {
         %>
         <a href="${pageContext.request.contextPath}/UserProfileServlet" class="icon-link">
-            <i class="fa-solid fa-user profile-icon"></i> <!-- Added profile-icon class -->
+            <i class="fa-solid fa-user profile-icon"></i>
         </a>
         <a href="${pageContext.request.contextPath}/LogoutServlet" class="icon-link">
-            <i class="fa-solid fa-sign-out-alt logout-icon"></i> <!-- Added logout-icon class -->
+            <i class="fa-solid fa-sign-out-alt logout-icon"></i>
         </a>
         <% } else { %>
         <a href="${pageContext.request.contextPath}/userLogin/login.jsp" class="icon-link">
-            <i class="fa-solid fa-user login-icon"></i> <!-- Added login-icon class -->
+            <i class="fa-solid fa-user login-icon"></i>
         </a>
         <% } %>
     </div>
 </header>
 
-<section class="home" id="home">
-    <div class="content">
-        <h3>Fresh and <span>Organic</span> Product For You</h3>
-        <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
-        <%
-            String success = request.getParameter("success");
-            if (success != null && !success.trim().isEmpty()) {
-        %>
-        <p style="color: green;"><%= success %></p>
-        <% } %>
-        <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
+<!-- Home Banners -->
+<section class="Banner" id="Banner">
+    <div class="swiper home-slider">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide slide" style="background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/FreshVegetables/FreshVegetablesWebBanner.png') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Vegetables</span></h3>
+                    <p>Discover the best organic produce for your healthy lifestyle.</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide slide" style="background: url('https://essstr.blob.core.windows.net/uiimg/Carousel/slide1.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Exclusive <span>Deals</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="#categories" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide slide" style="background: url('https://t3.ftcdn.net/jpg/06/14/08/90/360_F_614089075_9zP2Ybcr5fwsnHCzGsPNLLkpThUru9Zq.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Proteins</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Proteins" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1471438213/photo/dairy-products-bottles-of-milk-cheese-cottage-cheese-yogurt-butter-on-meadow-of-cows.jpg?s=612x612&w=0&k=20&c=hIUSgarP7-7h1KDF4AuPzzMNCPbJ5h5ofPF30G0rGhc=') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Dairy</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Dairy" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="swiper-slide slide" style="background: url('https://t4.ftcdn.net/jpg/06/27/46/27/360_F_627462785_DyaFl6hi7cAmpmB4obBFewgFrM6A488N.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Bakery</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Bakery" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="swiper-slide slide" style="background: url('https://media.istockphoto.com/id/1227210244/photo/flat-lay-view-at-kitchen-table-full-with-non-perishable-foods-spase-for-text.jpg?s=612x612&w=0&k=20&c=yoKYTbSTaHdBtRjgOUsDYBSB_0B10QxrR6lKH_36Hps=') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Fresh <span>Pantry</span> Products</h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Pantry" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 7 -->
+            <div class="swiper-slide slide" style="background: url('https://as1.ftcdn.net/jpg/03/68/66/94/1000_F_368669476_Cl7gGRuBWRYnPLwwY8pBgmeH1lGvpQ1r.jpg') no-repeat center/cover;">
+                <div class="content">
+                    <h3>Tasty <span>Snacks</span></h3>
+                    <p>Save big on your favorite grocery items this week!</p>
+                    <a href="${pageContext.request.contextPath}/CartServlet?category=Snacks" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </section>
 
+<%--features section--%>
 <section class="features" id="features">
     <h1 class="heading">Our <span>Features</span></h1>
     <div class="box-container">
         <div class="box">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMUypuoJ7jxCE6Ltc7o0v9mHbWFLyHj55VA&s">
             <h3>Fresh And Organic</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <p>Enjoy nutrient-rich, organic produce sourced from local farmers for a healthier, sustainable lifestyle.</p>
+            <a href="${pageContext.request.contextPath}/ourFeatures/freshAndOrganic.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://png.pngtree.com/png-clipart/20230211/original/pngtree-free-delivery-truck-icon-png-image_8951758.png">
             <h3>Free Delivery</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <p>Get your groceries delivered to your door for free on orders above a minimum amount.</p>
+            <a href="${pageContext.request.contextPath}/ourFeatures/freeDelivery.jsp" class="btn">Read More</a>
         </div>
         <div class="box">
             <img src="https://img.freepik.com/free-vector/hands-holding-credit-card-mobile-phone-with-banking-app-person-paying-with-bank-card-transferring-money-shopping-online-flat-vector-illustration-payment-finance-concept_74855-24760.jpg">
             <h3>Easy Payment</h3>
-            <p>"Savor the crisp, nutrient-rich taste of our fresh, organic vegetables, grown naturally for your health and the planet."</p>
-            <a href="#" class="btn">Read More</a>
+            <p>Checkout effortlessly with secure, flexible payment options tailored for your convenience.</p>
+            <a href="${pageContext.request.contextPath}/ourFeatures/easyPayment.jsp" class="btn">Read More</a>
         </div>
     </div>
 </section>
 
+<%--deals section--%>
 <section class="Deals" id="Deals">
     <h1 class="heading">New <span>Deals</span></h1>
     <div class="swiper product-slider">
         <div class="swiper-wrapper">
+            <%
+                // Retrieve the dealProducts list set by DealServlet
+                List<GroceryItem> dealProducts = (List<GroceryItem>) request.getAttribute("dealProducts");
+                if (dealProducts != null && !dealProducts.isEmpty()) {
+                    for (GroceryItem item : dealProducts) {
+            %>
             <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-1.png">
-                <h1>Fresh Orange</h1>
-                <div class="price">$4.99/- - $8.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
+                <a href="${pageContext.request.contextPath}/ProductDetailsServlet?productId=<%= item.getProductID() %>">
+                    <img src="<%= item.getProductImageLink() %>" alt="<%= item.getProductName() %>">
+                    <h1><%= item.getProductName() %></h1>
+                    <div class="price">RS.<%= String.format("%.2f", item.getProductPrice()) %>/-</div>
+                </a>
             </div>
+            <%
+                }
+            } else {
+            %>
             <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-2.png">
-                <h1>Fresh Onion</h1>
-                <div class="price">$2.99/- - $5.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
+                <h1>No Deals Available</h1>
             </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-3.png">
-                <h1>Fresh Meat</h1>
-                <div class="price">$9.99/- - $14.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-4.png">
-                <h1>Fresh Cabbage</h1>
-                <div class="price">$3.99/- - $6.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-5.png">
-                <h1>Fresh Potato</h1>
-                <div class="price">$2.99/- - $5.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-6.png">
-                <h1>Fresh Avocado</h1>
-                <div class="price">$3.99/- - $4.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-7.png">
-                <h1>Fresh Carrot</h1>
-                <div class="price">$3.99/- - $6.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
-            <div class="swiper-slide box">
-                <img src="./indexCJI/Images/product-8.png">
-                <h1>Fresh Lemon</h1>
-                <div class="price">$0.99/- - $2.99/-</div>
-                <div class="starts">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-            </div>
+            <%
+                }
+            %>
         </div>
         <div class="swiper-pagination"></div>
     </div>
 </section>
 
+<%--category section--%>
 <section class="categories" id="categories">
     <h1 class="heading">Product <span>Category</span></h1>
     <div class="box-container">
@@ -228,7 +224,7 @@
 <section class="home" id="home">
     <div class="content">
         <h3>Fresh and <span>Organic</span> Product For You</h3>
-        <p>"Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle."</p>
+        <p>Enjoy fresh, organic produce straight from local farms naturally grown, nutrient-rich, and delivered to your door for a healthy, sustainable lifestyle.</p>
         <a href="${pageContext.request.contextPath}/CartServlet?category=Produce" class="btn">Shop Now</a>
     </div>
 </section>
@@ -237,7 +233,7 @@
     <div class="box-container">
         <div class="box">
             <h3><i class="fa-solid fa-basket-shopping"></i> Grocery</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium lacus porttitor placerat malesuada.</p>
+            <p>Your one-stop shop for fresh, affordable, organic groceries delivered fast.</p>
             <div class="share">
                 <a href="#" class="fa-brands fa-facebook-f"></a>
                 <a href="#" class="fa-brands fa-x-twitter"></a>
@@ -254,10 +250,10 @@
         </div>
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Home</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Features</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Deals</a>
-            <a href="#" class="links"><i class="fa-solid fa-arrow-right"></i> Categories</a>
+            <a href="#Banner" class="links"><i class="fa-solid fa-arrow-right"></i> Home</a>
+            <a href="#features" class="links"><i class="fa-solid fa-arrow-right"></i> Features</a>
+            <a href="#Deals" class="links"><i class="fa-solid fa-arrow-right"></i> Deals</a>
+            <a href="#categories" class="links"><i class="fa-solid fa-arrow-right"></i> Categories</a>
         </div>
         <div class="box">
             <h3>News Letter</h3>

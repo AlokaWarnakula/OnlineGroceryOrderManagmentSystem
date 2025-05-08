@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserProfileSearchServlet extends HttpServlet {
-    private static final String ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/orders.txt";
-    private static final String DELIVERED_ORDERS_FILE = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/deliveredOrders.txt";
+    private static final String ORDERS_FILE = "/Users/gaganiprabuddhi/Downloads/OnlineGroceryOrderManagmentSystem-master/src/main/webapp/data/orders.txt";
+    private static final String DELIVERED_ORDERS_FILE = "/Users/gaganiprabuddhi/Downloads/OnlineGroceryOrderManagmentSystem-master/src/main/webapp/data/deliveredOrders.txt";
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
@@ -84,10 +84,6 @@ public class UserProfileSearchServlet extends HttpServlet {
             });
         }
 
-        // Limit to 5 orders
-        if (orders.size() > 5) {
-            orders = orders.subList(0, 5);
-        }
 
         // Set attributes and forward to JSP
         request.setAttribute("orders", orders);

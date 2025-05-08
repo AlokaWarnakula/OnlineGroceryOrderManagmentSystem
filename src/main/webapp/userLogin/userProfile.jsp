@@ -11,11 +11,14 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userProfile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <header>
   <a href="${pageContext.request.contextPath}/index.jsp" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
-  <a href="${pageContext.request.contextPath}/index.jsp" class="logo"><i class="fas fa-shopping-basket"></i> GROCERY</a>
-  <!-- Removed search bar from header -->
+  <a  class="logo"><i class="fa-solid fa-user"></i> User Profile</a>
+<%--  <a href="${pageContext.request.contextPath}/index.jsp"></a>--%>
 </header>
 
 <div class="content">
@@ -83,7 +86,6 @@
       <div class="activity-tabs">
         <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Active" class="tab <%= "Active".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Active</a>
         <a href="${pageContext.request.contextPath}/UserProfileSearchServlet?tab=Delivered" class="tab <%= "Delivered".equals(request.getAttribute("activeTab")) ? "active" : "" %>">Delivered</a>
-        <!-- Removed Chat tab -->
         <div class="search-bar">
           <form action="${pageContext.request.contextPath}/UserProfileSearchServlet" method="get">
             <input type="hidden" name="tab" value="${activeTab != null ? activeTab : 'Active'}">
@@ -116,10 +118,18 @@
             Order <%= order.getOrderNumber() %> placed on <%= order.getConfirmationDate() %>
             (Status: <span class="status <%= statusClass %>"><%= order.getDeliveryStatus() %></span>)
             <% if ("Active".equals(request.getAttribute("activeTab")) && !"Cancelled".equalsIgnoreCase(order.getOrderStatus())) { %>
-            <a href="${pageContext.request.contextPath}/UserProfileServlet?action=cancelOrder&orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Cancel</a>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCancel.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
+            <% } else if ("Delivered".equals(request.getAttribute("activeTab"))) { %>
+            <a href="${pageContext.request.contextPath}/userLogin/orderCheck.jsp?orderNumber=<%= order.getOrderNumber() %>" class="cancel-link">Info</a>
             <% } %>
           </p>
-          <span class="timestamp"><%= order.getConfirmationDate() %></span>
+          <span class="timestamp">
+            <% if ("Delivered".equals(request.getAttribute("activeTab"))) { %>
+              <%= order.getDeliveredDate() != null && !order.getDeliveredDate().isEmpty() ? order.getDeliveredDate() : "N/A" %>
+            <% } else { %>
+              <%= order.getConfirmationDate() %>
+            <% } %>
+          </span>
         </div>
         <%
             }

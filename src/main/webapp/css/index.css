@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 :root {
-   /* --green: #27ae60; */
     --green: green;
     --red: #e74c3c;
     --black: #130f40;
@@ -64,6 +63,7 @@ body {
     background: #fff;
     box-shadow: var(--box-shadow);
     z-index: 1000;
+    height: 80px; /* Fixed height for the header */
 }
 
 .Header .logo {
@@ -90,21 +90,21 @@ body {
 }
 
 .Header .navbar a:hover {
-    color:  #27ae60;
+    color: #27ae60;
 }
 
 .Header .icons {
-    display: flex; /* Changed to flex */
-    flex-direction: row; /* Ensures horizontal layout */
-    gap: 0.5rem; /* Adds spacing between icons */
-    align-items: center; /* Vertically centers the icons */
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .Header .icons div, .Header .icons a {
     height: 4.5rem;
     width: 4.5rem;
     line-height: 4.5rem;
-    border-radius: 50%; /* Changed to 50% for circular shape */
+    border-radius: 50%;
     background: none;
     color: var(--black);
     font-size: 2rem;
@@ -120,7 +120,6 @@ body {
     color: var(--green);
 }
 
-/* Icon Link Styling */
 .icons .icon-link {
     display: inline-block;
     margin-left: 10px;
@@ -131,11 +130,11 @@ body {
 }
 
 .icons .icon-link i {
-    font-size: 2rem; /* Font size for icons */
-    width: 4.5rem; /* Match container width */
-    height: 4.5rem; /* Match container height */
-    line-height: 4.5rem; /* Vertically center the icon */
-    border-radius: 50%; /* Ensure circular shape */
+    font-size: 2rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     display: flex;
@@ -144,40 +143,155 @@ body {
     text-align: center;
 }
 
-/* Before login: Login Icon (Red background) */
 .icons .icon-link .login-icon {
-    background-color: var(--red); /* Red background */
-    color: white; /* White icon color */
+    background-color: var(--red);
+    color: white;
 }
 
 .icons .icon-link:hover .login-icon {
-    background-color: #ff7061; /* Slightly lighter red on hover */
+    background-color: #ff7061;
 }
 
-/* After login: Profile Icon (Green background) */
 .icons .icon-link .profile-icon {
-    background-color: var(--green); /* Green background */
-    color: white; /* White icon color */
+    background-color: var(--green);
+    color: white;
 }
 
 .icons .icon-link:hover .profile-icon {
-    background-color: #2ecc71; /* Slightly lighter green on hover */
+    background-color: #2ecc71;
 }
 
-/* After login: Logout Icon (Red background) */
 .icons .icon-link .logout-icon {
-    background-color: var(--red); /* Red background */
-    color: white; /* White icon color */
+    background-color: var(--red);
+    color: white;
 }
 
 .icons .icon-link:hover .logout-icon {
-    background-color: #ff7061; /* Slightly lighter red on hover */
+    background-color: #ff7061;
 }
 
 #menu-btn {
     display: none;
 }
 
+/* Banner Section */
+.Banner {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    position: relative;
+    margin-top: 80px; /* Offset for the fixed header */
+    overflow: hidden;
+}
+
+.home-slider {
+    width: 100%;
+    height: 100%;
+}
+
+.home-slider .swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Overlay for better text readability */
+.home-slider .swiper-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+
+.home-slider .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.home-slider .content h3 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-slider .content h3 span {
+    color: #27ae60;
+}
+
+.home-slider .content p {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-slider .content .btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: #27ae60;
+    color: #fff;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    border: none;
+    margin-top: 0; /* Remove the excessive margin */
+    text-shadow: none;
+}
+
+.home-slider .content .btn:hover {
+    background: #2ecc71;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 2rem;
+}
+
+.swiper-pagination {
+    bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background: #27ae60;
+    opacity: 1;
+}
+
+/* Other Sections */
 .home {
     display: flex;
     justify-content: center;
@@ -447,6 +561,9 @@ body {
     section {
         padding: 2rem;
     }
+    .Banner {
+        height: 70vh;
+    }
 }
 
 @media (max-width: 768px) {
@@ -471,6 +588,15 @@ body {
         margin: 2rem 2.5rem;
         display: block;
     }
+    .Banner {
+        height: 60vh;
+    }
+    .home-slider .content h3 {
+        font-size: 3rem;
+    }
+    .home-slider .content p {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 450px) {
@@ -482,5 +608,14 @@ body {
     }
     .footer {
         text-align: center;
+    }
+    .Banner {
+        height: 50vh;
+    }
+    .home-slider .content h3 {
+        font-size: 2.5rem;
+    }
+    .home-slider .content p {
+        font-size: 1.3rem;
     }
 }

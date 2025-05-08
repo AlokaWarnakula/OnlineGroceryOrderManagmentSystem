@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
-<body>
+<body style="
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,255,240,1) 100%);
+">
 <%
   User loggedInUser = (User) session.getAttribute("user");
   if (loggedInUser == null) {
@@ -72,6 +75,13 @@
         <div class="filter-item">
           <label for="maxPrice">Max Price:</label>
           <input type="number" name="maxPrice" id="maxPrice" min="0" step="0.01" placeholder="100.00" value="<%= maxPrice != null ? maxPrice : "" %>">
+        </div>
+        <div class="filter-item">
+          <label for="sortBy">Sort By:</label>
+          <select name="sortBy" id="sortBy">
+            <option value="name" <%= "name".equals(request.getParameter("sortBy")) ? "selected" : "" %>>Name</option>
+            <option value="price" <%= "price".equals(request.getParameter("sortBy")) ? "selected" : "" %>>Price</option>
+          </select>
         </div>
       </div>
     </form>

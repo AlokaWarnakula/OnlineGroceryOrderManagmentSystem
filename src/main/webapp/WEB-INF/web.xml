@@ -96,6 +96,77 @@
   </servlet-mapping>
 
 
+  <!-- Add AdminServlet mapping -->
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Define the OrderAdminServlet -->
+  <servlet>
+    <servlet-name>OrderAdminServlet</servlet-name>
+    <servlet-class>servlet.OrderAdminServlet</servlet-class>
+  </servlet>
+
+  <!-- Map the OrderAdminServlet to /OrderAdminServlet URL pattern -->
+  <servlet-mapping>
+    <servlet-name>OrderAdminServlet</servlet-name>
+    <url-pattern>/OrderAdminServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Servlet Definition for StockAdminServlet -->
+  <servlet>
+    <servlet-name>StockAdminServlet</servlet-name>
+    <servlet-class>servlet.StockAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StockAdminServlet</servlet-name>
+    <url-pattern>/StockAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Servlet Definition for ProductAdminServlet -->
+  <servlet>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <servlet-class>servlet.ProductAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <url-pattern>/ProductAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Servlet Definition for UserAdminServlet -->
+  <servlet>
+    <servlet-name>UserAdminServlet</servlet-name>
+    <servlet-class>servlet.UserAdminServlet</servlet-class>
+  </servlet>
+
+  <!-- Servlet Mapping for UserAdminServlet -->
+  <servlet-mapping>
+    <servlet-name>UserAdminServlet</servlet-name>
+    <url-pattern>/UserAdminServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Servlet Definition for DealServlet -->
+  <servlet>
+    <servlet-name>DealServlet</servlet-name>
+    <servlet-class>servlet.DealServlet</servlet-class>
+  </servlet>
+
+  <!-- Servlet Mapping for DealServlet -->
+  <servlet-mapping>
+    <servlet-name>DealServlet</servlet-name>
+    <url-pattern>/DealServlet</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Optional: Welcome file list -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

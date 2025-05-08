@@ -1,0 +1,325 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styling (same as stockDashboard.css) */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-icon {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-icon:hover {
+    background-color: #e9ecef;
+}
+
+.logo {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a;
+    margin-right: 5px;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px 16px 8px 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #8bc34a;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 12px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Product Section */
+.product-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.add-btn {
+    padding: 8px 16px;
+    background-color: #8bc34a;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #6b9e38;
+}
+
+.product-list {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.product-row {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.product-row:hover {
+    /*background-color: #f8f9fa;*/
+    background-color: #dddddd ;
+}
+
+.product-row:last-child {
+    margin-bottom: 0;
+}
+
+.product-id {
+    width: 10%;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-image {
+    width: 10%;
+}
+
+.item-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.product-name {
+    width: 15%;
+    color: #333;
+}
+
+.product-category {
+    width: 15%;
+    color: #666;
+}
+
+.product-price {
+    width: 10%;
+    color: #333;
+}
+
+.product-quantity {
+    width: 10%;
+    color: #333;
+}
+
+.product-description {
+    width: 20%;
+    color: #666;
+}
+
+.info-btn {
+    width: 10%;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.info-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Message styling for no products */
+.product-list p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+/* Product Info Section (for productDashboardInfo.jsp) */
+.product-info-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-preview {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-image-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-image-preview p {
+    color: #666;
+    font-size: 16px;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group label {
+    width: 30%;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group span {
+    width: 70%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 60px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #8bc34a;
+}
+
+.form-group span {
+    background-color: #f0f0f0;
+    border: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-btn {
+    padding: 10px 20px;
+    background-color: #8bc34a;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #6b9e38;
+}
+
+.delete-btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #b02a37;
+}

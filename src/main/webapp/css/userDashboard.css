@@ -1,0 +1,388 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Apply box-sizing globally to prevent padding issues */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /*background-image: url('https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+.back-link, .nav-links .back-icon {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+
+.back-link:hover, .nav-links .back-icon:hover {
+    background-color: #e9ecef;
+}
+
+.logo {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo i {
+    color: #8bc34a;
+    margin-right: 5px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover i {
+    color: #689f38;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1; /* Light gray background */
+    border: 1px solid #DDD; /* Subtle border */
+    border-radius: 20px; /* Fully rounded corners */
+}
+
+.search-bar input {
+    padding: 8px;
+    font-size: 14px;
+    border: none; /* Remove border since the parent has it */
+    border-radius: 20px 0 0 20px; /* Rounded on the left side */
+    outline: none;
+    background-color: transparent; /* Transparent to blend with parent background */
+    color: #333; /* Dark text for contrast */
+    flex: 1; /* Take up remaining space */
+}
+
+.search-bar input::placeholder {
+    color: #666; /* Placeholder text color */
+}
+
+.search-bar i {
+    padding: 8px 10px; /* Reduced padding to make the button narrower */
+    background-color: #8bc34a; /* Full green background */
+    color: #FFF; /* White icon */
+    border: none;
+    border-radius: 0 20px 20px 0; /* Rounded on the right side */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar i:hover {
+    background-color: #689f38; /* Darker green on hover */
+}
+
+.content {
+    width: 100%;
+    padding: 5px 1cm 20px 1cm;
+    background-color: transparent;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 10px auto 20px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.user-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-info-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.user-details {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.user-details-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.user-icon {
+    font-size: 60px;
+    color: #333;
+}
+
+.user-details-text p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.user-details-text p strong {
+    color: #333;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-row:hover {
+    background-color: #e6e6e6; /* Slightly darker gray for hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow on hover */
+}
+
+.user-number, .user-email, .user-fullname {
+    flex: 1;
+    font-size: 14px;
+    color: #555;
+}
+
+.activity-section {
+    margin-top: 20px;
+}
+
+.activity-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 20px;
+}
+
+.activity-tabs .tab {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.activity-tabs .tab.active {
+    color: #333;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+}
+
+.activity-tabs .tab:hover {
+    color: #333;
+}
+
+.activity-tabs .search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes the search bar to the far right */
+    background-color: #f1f1f1; /* Light background */
+    border: 1px solid #DDD; /* Subtle border */
+    border-radius: 20px; /* Fully rounded corners */
+}
+
+.activity-tabs .search-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.activity-tabs .search-bar input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: none; /* Remove border since the parent has it */
+    border-radius: 20px 0 0 20px; /* Rounded on the left side */
+    outline: none;
+    background-color: transparent; /* Transparent to blend with parent background */
+    color: #333; /* Dark text for contrast */
+    flex: 1; /* Take up remaining space */
+}
+
+.activity-tabs .search-bar input[type="text"]::placeholder {
+    color: #666; /* Placeholder text color */
+}
+
+.activity-tabs .search-bar button {
+    padding: 2px 7px; /* Reduced padding to make the button narrower */
+    background-color: #8bc34a; /* Full green background */
+    color: #FFF; /* White icon */
+    border: none;
+    border-radius: 0 20px 20px 0; /* Rounded on the right side */
+    cursor: pointer;
+    outline: none; /* Remove default outline */
+    transition: background-color 0.3s ease;
+}
+
+
+.activity-tabs .search-bar i:hover {
+    background-color: #689f38; /* Darker green on hover */
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.activity-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: #8bc34a;
+    border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: #689f38;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    background-color: #F9F9F9;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.activity-item i {
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.activity-item p {
+    margin: 0;
+    flex: 1;
+}
+
+.activity-item .timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+.activity-item .status {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #FFF;
+}
+
+.activity-item .status.pending {
+    background-color: #FFA500;
+}
+
+.activity-item .status.completed {
+    background-color: #28A745;
+}
+
+.activity-item .status.disabled {
+    background-color: #DC3545;
+}
+
+.cancel-link {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #00CED1;
+    color: #FFF;
+    border-radius: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-link:hover {
+    background-color: #00B7B9;
+}
+
+.total-info {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.activity-item-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}

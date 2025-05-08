@@ -14,7 +14,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        String basePath = "/Users/alokawarnakula/TestOOPProjectFolder/OnlineGroceryOrderSystem/src/main/webapp/data/";
+        String basePath = "/Users/gaganiprabuddhi/Downloads/OnlineGroceryOrderManagmentSystem-master/src/main/webapp/data/";
         LOGGED_IN_USER_FILE = basePath + "loggedInUser.txt";
         System.out.println("LogoutServlet initialized with LOGGED_IN_USER_FILE: " + LOGGED_IN_USER_FILE);
     }
@@ -24,11 +24,16 @@ public class LogoutServlet extends HttpServlet {
         // Invalidate session
         HttpSession session = request.getSession(false);
         if (session != null) {
+            // Clear admin-specific session attributes
+            session.removeAttribute("adminEmail");
+            session.removeAttribute("adminRole");
+            // Clear user-specific session attributes
+            session.removeAttribute("user");
             session.invalidate();
             System.out.println("Session invalidated during logout.");
         }
 
-        // Clear loggedInUser.txt
+        // Clear loggedInUser.txt (only used for regular users)
         try {
             FileUtil.clearLoggedInUser(LOGGED_IN_USER_FILE);
             System.out.println("Cleared loggedInUser.txt during logout.");

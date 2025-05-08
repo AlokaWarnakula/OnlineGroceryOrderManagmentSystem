@@ -1,0 +1,27 @@
+--- Admin Start: AD181627987901 ---
+adminNumber=AD181627987901
+email=admin1@gmail.admin
+password=admin123
+role=order
+--- Admin End ---
+
+--- Admin Start: AD181627987902 ---
+adminNumber=AD181627987902
+email=admin2@gmail.admin
+password=admin456
+role=stock
+--- Admin End ---
+
+--- Admin Start: AD181627987903 ---
+adminNumber=AD181627987903
+email=admin3@gmail.admin
+password=admin789
+role=super
+--- Admin End ---
+
+--- Admin Start: AD181627987904 ---
+adminNumber=AD181627987904
+email=admin4@gmail.admin
+password=admin012
+role=product
+--- Admin End ---
